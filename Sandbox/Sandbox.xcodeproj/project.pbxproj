@@ -260,7 +260,10 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Phoenix/src\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../Phoenix/src\"",
+					"\"$(SRCROOT)/../Phoenix/vendor/spdlog/include\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = x86_64;
 			};
@@ -275,7 +278,10 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Phoenix/src\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../Phoenix/src\"",
+					"\"$(SRCROOT)/../Phoenix/vendor/spdlog/include\"",
+				);
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = x86_64;

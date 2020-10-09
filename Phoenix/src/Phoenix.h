@@ -9,11 +9,11 @@
 #ifndef Phoenix_h
 #define Phoenix_h
 
-#include <iostream>
 #include <memory>
 
 /* For use by Phoenix applications */
 #include "Phoenix/Application.hpp"
+#include "Phoenix/Logger.hpp"
 
 /* Entry point */
 #include "Phoenix/EntryPoint.h"

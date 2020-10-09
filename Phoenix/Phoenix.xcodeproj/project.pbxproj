@@ -12,6 +12,8 @@
 		72C93CB02530CDA4008D271D /* Application.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CAE2530CDA4008D271D /* Application.hpp */; };
 		72C93CB42530D09A008D271D /* Phoenix.h in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CB32530D09A008D271D /* Phoenix.h */; };
 		72C93CB62530D749008D271D /* EntryPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CB52530D749008D271D /* EntryPoint.h */; };
+		72C93CB92530E4D8008D271D /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 72C93CB72530E4D8008D271D /* Logger.cpp */; };
+		72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CB82530E4D8008D271D /* Logger.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		72C93CAE2530CDA4008D271D /* Application.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
 		72C93CB32530D09A008D271D /* Phoenix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Phoenix.h; sourceTree = "<group>"; };
 		72C93CB52530D749008D271D /* EntryPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntryPoint.h; sourceTree = "<group>"; };
+		72C93CB72530E4D8008D271D /* Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		72C93CB82530E4D8008D271D /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				72C93CAD2530CDA4008D271D /* Application.cpp */,
 				72C93CAE2530CDA4008D271D /* Application.hpp */,
 				72C93CB52530D749008D271D /* EntryPoint.h */,
+				72C93CB72530E4D8008D271D /* Logger.cpp */,
+				72C93CB82530E4D8008D271D /* Logger.hpp */,
 			);
 			path = Phoenix;
 			sourceTree = "<group>";
@@ -78,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C93CB42530D09A008D271D /* Phoenix.h in Headers */,
+				72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */,
 				72C93CAC2530CD7A008D271D /* Core.h in Headers */,
 				72C93CB62530D749008D271D /* EntryPoint.h in Headers */,
 				72C93CB02530CDA4008D271D /* Application.hpp in Headers */,
@@ -143,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C93CAF2530CDA4008D271D /* Application.cpp in Sources */,
+				72C93CB92530E4D8008D271D /* Logger.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +280,7 @@
 					"DEBUG=1",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/vendor/spdlog/include\"";
 				LLVM_LTO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -290,6 +299,7 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = _PLATFORM_MAC;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/vendor/spdlog/include\"";
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

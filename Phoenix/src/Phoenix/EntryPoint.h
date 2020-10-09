@@ -13,7 +13,11 @@ extern std::unique_ptr<Phoenix::Application> Phoenix::CreateApplication();
 
 int main()
 {
-    std::cout << "Phoenix Engine!" << std::endl;
+    Phoenix::Logger::Init();
+    
+    PX_ENGINE_TRACE("Phoenix Engine!");
+    PX_ENGINE_WARN("test!");
+
     auto application = Phoenix::CreateApplication();
     application->Run();
 }
