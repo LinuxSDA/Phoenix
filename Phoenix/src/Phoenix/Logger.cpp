@@ -6,6 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
+#include "px.pch"
 #include "Logger.hpp"
 #include "spdlog/sinks/stdout_color_sinks.h"
 

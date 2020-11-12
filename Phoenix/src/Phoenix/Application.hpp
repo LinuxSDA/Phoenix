@@ -9,7 +9,8 @@
 #ifndef Application_hpp
 #define Application_hpp
 
-#include <memory>
+#include "Core.h"
+#include "Events/Event.h"
 
 namespace Phoenix
 {

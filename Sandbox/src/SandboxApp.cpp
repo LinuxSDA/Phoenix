@@ -6,6 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
+#include <px.pch>
 #include <Phoenix.h>
 
 class Sandbox : public Phoenix::Application

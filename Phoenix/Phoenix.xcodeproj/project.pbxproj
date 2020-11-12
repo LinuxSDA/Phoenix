@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7277A7F0255D36930028E5A8 /* px.pch in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7EF255D36930028E5A8 /* px.pch */; };
+		728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */; };
+		728FFC29253CAC82006AA2F2 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC28253CAC82006AA2F2 /* Event.h */; };
+		728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2A253CACC6006AA2F2 /* KeyEvent.h */; };
+		728FFC2D253CACF4006AA2F2 /* MouseEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2C253CACF4006AA2F2 /* MouseEvent.h */; };
 		72C93CAC2530CD7A008D271D /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CAB2530CD7A008D271D /* Core.h */; };
 		72C93CAF2530CDA4008D271D /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 72C93CAD2530CDA4008D271D /* Application.cpp */; };
 		72C93CB02530CDA4008D271D /* Application.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CAE2530CDA4008D271D /* Application.hpp */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
+		728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
+		728FFC28253CAC82006AA2F2 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		728FFC2A253CACC6006AA2F2 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
+		728FFC2C253CACF4006AA2F2 /* MouseEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseEvent.h; sourceTree = "<group>"; };
 		72C93C7725305EF8008D271D /* libPhoenix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhoenix.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C93CAB2530CD7A008D271D /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		72C93CAD2530CDA4008D271D /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
@@ -38,6 +48,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		728FFC25253CABFC006AA2F2 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */,
+				728FFC28253CAC82006AA2F2 /* Event.h */,
+				728FFC2A253CACC6006AA2F2 /* KeyEvent.h */,
+				728FFC2C253CACF4006AA2F2 /* MouseEvent.h */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		72C93C6E25305EF8008D271D = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +80,7 @@
 			children = (
 				72C93CAA2530CB82008D271D /* Phoenix */,
 				72C93CB32530D09A008D271D /* Phoenix.h */,
+				7277A7EF255D36930028E5A8 /* px.pch */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -66,6 +88,7 @@
 		72C93CAA2530CB82008D271D /* Phoenix */ = {
 			isa = PBXGroup;
 			children = (
+				728FFC25253CABFC006AA2F2 /* Events */,
 				72C93CAB2530CD7A008D271D /* Core.h */,
 				72C93CAD2530CDA4008D271D /* Application.cpp */,
 				72C93CAE2530CDA4008D271D /* Application.hpp */,
@@ -85,8 +108,13 @@
 			files = (
 				72C93CB42530D09A008D271D /* Phoenix.h in Headers */,
 				72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */,
+				728FFC2D253CACF4006AA2F2 /* MouseEvent.h in Headers */,
 				72C93CAC2530CD7A008D271D /* Core.h in Headers */,
+				728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */,
+				728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */,
 				72C93CB62530D749008D271D /* EntryPoint.h in Headers */,
+				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
+				728FFC29253CAC82006AA2F2 /* Event.h in Headers */,
 				72C93CB02530CDA4008D271D /* Application.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,12 +303,17 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/px.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_PLATFORM_MAC,
 					"DEBUG=1",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/vendor/spdlog/include\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/vendor/spdlog/include\"",
+					"\"$(SRCROOT)/src\"",
+				);
 				LLVM_LTO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -297,9 +330,14 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/px.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = _PLATFORM_MAC;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/vendor/spdlog/include\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/vendor/spdlog/include\"",
+					"\"$(SRCROOT)/src\"",
+				);
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

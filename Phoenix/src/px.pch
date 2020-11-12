@@ -1,0 +1,27 @@
+//
+//  px.pch
+//  Phoenix
+//
+//  Created by SD on 12/11/20.
+//  Copyright © 2020 LinuxSDA. All rights reserved.
+//
+
+#ifndef px_pch
+#define px_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#include <iostream>
+#include <memory>
+#include <utility>
+#include <algorithm>
+#include <functional>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+
+#endif /* pxpch_pch */

@@ -9,8 +9,9 @@
 #ifndef Logger_hpp
 #define Logger_hpp
 
-#include "spdlog/spdlog.h"
 #include "Core.h"
+#include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Phoenix
 {
