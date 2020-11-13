@@ -15,8 +15,7 @@ namespace Phoenix
     class MouseMovedEvent : public Event
     {
     public:
-        MouseMovedEvent(float x, float y)
-            : m_MouseX(x), m_MouseY(y) {}
+        MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
 
         inline float GetX() const { return m_MouseX; }
         inline float GetY() const { return m_MouseY; }
@@ -27,9 +26,13 @@ namespace Phoenix
             ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
             return ss.str();
         }
+        
+        static EventType GetStaticType() { return EventType::MouseMoved;}
+        virtual EventType GetEventType() const override { return GetStaticType(); }
+        virtual const char* GetName() const override { return "MouseMoved"; }
 
-        EVENT_CLASS_TYPE(MouseMoved)
-        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+        virtual int GetCategoryFlags() const override { return EventCategoryMouse | EventCategoryInput;}
+
     private:
         float m_MouseX, m_MouseY;
     };
@@ -37,8 +40,7 @@ namespace Phoenix
     class MouseScrolledEvent : public Event
     {
     public:
-        MouseScrolledEvent(float xOffset, float yOffset)
-            : m_XOffset(xOffset), m_YOffset(yOffset) {}
+        MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
         inline float GetXOffset() const { return m_XOffset; }
         inline float GetYOffset() const { return m_YOffset; }
@@ -50,8 +52,12 @@ namespace Phoenix
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MouseScrolled)
-        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+        static EventType GetStaticType() { return EventType::MouseScrolled;}
+        virtual EventType GetEventType() const override { return GetStaticType(); }
+        virtual const char* GetName() const override { return "MouseScrolled"; }
+
+        virtual int GetCategoryFlags() const override { return EventCategoryMouse | EventCategoryInput;}
+
     private:
         float m_XOffset, m_YOffset;
     };
@@ -60,11 +66,9 @@ namespace Phoenix
     {
     public:
         inline int GetMouseButton() const { return m_Button; }
-
-        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+        virtual int GetCategoryFlags() const override { return EventCategoryMouse | EventCategoryInput;}
     protected:
-        MouseButtonEvent(int button)
-            : m_Button(button) {}
+        MouseButtonEvent(int button) : m_Button(button) {}
 
         int m_Button;
     };
@@ -72,8 +76,7 @@ namespace Phoenix
     class MouseButtonPressedEvent : public MouseButtonEvent
     {
     public:
-        MouseButtonPressedEvent(int button)
-            : MouseButtonEvent(button) {}
+        MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
 
         std::string ToString() const override
         {
@@ -82,7 +85,9 @@ namespace Phoenix
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MouseButtonPressed)
+        static EventType GetStaticType() { return EventType::MouseButtonPressed;}
+        virtual EventType GetEventType() const override { return GetStaticType(); }
+        virtual const char* GetName() const override { return "MouseButtonPressed"; }
     };
 
     class MouseButtonReleasedEvent : public MouseButtonEvent
@@ -98,7 +103,8 @@ namespace Phoenix
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MouseButtonReleased)
+        static EventType GetStaticType() { return EventType::MouseButtonReleased;}
+        virtual EventType GetEventType() const override { return GetStaticType(); }
+        virtual const char* GetName() const override { return "MouseButtonReleased"; }
     };
-
 }

@@ -16,9 +16,9 @@ int main()
     Phoenix::Logger::Init();
     
     PX_ENGINE_TRACE("Phoenix Engine!");
-    PX_ENGINE_WARN("test!");
+    PX_ENGINE_WARN("Test!");
 
-    auto application = Phoenix::CreateApplication();
+    std::unique_ptr<Phoenix::Application> application = Phoenix::CreateApplication();
     application->Run();
 }
 #endif /* EntryPoint_h */
