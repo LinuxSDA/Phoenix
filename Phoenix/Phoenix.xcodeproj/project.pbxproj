@@ -11,6 +11,8 @@
 		7277A7F2255DA2F00028E5A8 /* Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F1255DA2F00028E5A8 /* Window.h */; };
 		7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */; };
 		7277A7F8255DA94E0028E5A8 /* MacWindow.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F6255DA94E0028E5A8 /* MacWindow.hpp */; };
+		7277A81F255EB1330028E5A8 /* Layers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A81D255EB1330028E5A8 /* Layers.cpp */; };
+		7277A820255EB1330028E5A8 /* Layers.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A81E255EB1330028E5A8 /* Layers.hpp */; };
 		728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */; };
 		728FFC29253CAC82006AA2F2 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC28253CAC82006AA2F2 /* Event.h */; };
 		728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2A253CACC6006AA2F2 /* KeyEvent.h */; };
@@ -35,6 +37,8 @@
 		7277A801255DBC130028E5A8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		7277A803255DBC250028E5A8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		7277A805255DBED20028E5A8 /* libglfw.3.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.4.dylib; path = vendor/GLFW/build/Debug/libglfw.3.4.dylib; sourceTree = "<group>"; };
+		7277A81D255EB1330028E5A8 /* Layers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layers.cpp; sourceTree = "<group>"; };
+		7277A81E255EB1330028E5A8 /* Layers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layers.hpp; sourceTree = "<group>"; };
 		728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
 		728FFC28253CAC82006AA2F2 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		728FFC2A253CACC6006AA2F2 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				72C93CB72530E4D8008D271D /* Logger.cpp */,
 				72C93CB82530E4D8008D271D /* Logger.hpp */,
 				7277A7F1255DA2F00028E5A8 /* Window.h */,
+				7277A81D255EB1330028E5A8 /* Layers.cpp */,
+				7277A81E255EB1330028E5A8 /* Layers.hpp */,
 			);
 			path = Phoenix;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 				72C93CB62530D749008D271D /* EntryPoint.h in Headers */,
 				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
 				728FFC29253CAC82006AA2F2 /* Event.h in Headers */,
+				7277A820255EB1330028E5A8 /* Layers.hpp in Headers */,
 				7277A7F2255DA2F00028E5A8 /* Window.h in Headers */,
 				72C93CB02530CDA4008D271D /* Application.hpp in Headers */,
 			);
@@ -227,6 +234,7 @@
 				7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */,
 				72C93CAF2530CDA4008D271D /* Application.cpp in Sources */,
 				72C93CB92530E4D8008D271D /* Logger.cpp in Sources */,
+				7277A81F255EB1330028E5A8 /* Layers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
