@@ -53,8 +53,6 @@ namespace Phoenix
 
     class Event
     {
-        friend class EventDispatcher;
-    
     public:
         Event() {}
         virtual ~Event() {}
@@ -68,7 +66,7 @@ namespace Phoenix
         {
             return GetCategoryFlags() & category;
         }
-    protected:
+
         bool m_Handled = false;
     };
 

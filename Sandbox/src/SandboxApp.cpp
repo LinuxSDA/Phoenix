@@ -8,16 +8,38 @@
 
 #include <Phoenix.h>
 
+class ExampleLayer : public Phoenix::Layer
+{
+public:
+    ExampleLayer(): Layer("Example")
+    {
+    }
+
+    void OnUpdate() override
+    {
+        PX_INFO("ExampleLayer::Update");
+    }
+
+    void OnEvent(Phoenix::Event& event) override
+    {
+        PX_TRACE("{0}", event);
+    }
+
+};
+
 class Sandbox : public Phoenix::Application
 {
     
 public:
-    Sandbox(){}
+    Sandbox()
+    {
+        PushLayer(std::make_unique<ExampleLayer>());
+    }
     ~Sandbox(){}
 };
 
 
-std::unique_ptr<Phoenix::Application> Phoenix::CreateApplication()
+std::unique_ptr<Phoenix::Application> Phoenix::Application::Create()
 {
-    return std::make_unique<Phoenix::Application>();
+    return std::make_unique<Sandbox>();
 }

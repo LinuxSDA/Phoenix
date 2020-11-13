@@ -26,11 +26,26 @@ namespace Phoenix
         
     }
 
+    void Application::PushLayer(std::unique_ptr<Layer> layer)
+    {
+        m_LayerStack.PushLayer(std::move(layer));
+    }
+
+    void Application::PushOverlay(std::unique_ptr<Layer> layer)
+    {
+        m_LayerStack.PushOverlay(std::move(layer));
+    }
+
     void Application::OnEvent(Event &e)
     {
         EventDispatcher dispatch(e);
         
         dispatch.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+        
+        for (auto it = m_LayerStack.end(); it != m_LayerStack.begin() && !e.m_Handled; )
+        {
+            (*--it)->OnEvent(e);
+        }
     }
 
     bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -43,6 +58,9 @@ namespace Phoenix
     {
         while (m_Running)
         {
+            for (auto& layer : m_LayerStack)
+                layer->OnUpdate();
+
             m_Window->OnUpdate();
         }
     }
