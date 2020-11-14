@@ -11,6 +11,8 @@
 #include "Application.hpp"
 #include "Logger.hpp"
 
+#include <glad/glad.h>
+
 namespace Phoenix
 {
     #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -18,6 +20,7 @@ namespace Phoenix
     Application::Application()
     {
         m_Window = Window::Create();
+        PX_ENGINE_TRACE(glGetString(GL_VERSION));
         m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
     }
 

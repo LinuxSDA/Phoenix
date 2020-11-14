@@ -15,6 +15,7 @@
 		7277A820255EB1330028E5A8 /* Layer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A81E255EB1330028E5A8 /* Layer.hpp */; };
 		7277A823255EB5850028E5A8 /* LayerStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A821255EB5850028E5A8 /* LayerStack.cpp */; };
 		7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A822255EB5850028E5A8 /* LayerStack.hpp */; };
+		7277A83F255FABA10028E5A8 /* glad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A83E255FABA10028E5A8 /* glad.a */; };
 		728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */; };
 		728FFC29253CAC82006AA2F2 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC28253CAC82006AA2F2 /* Event.h */; };
 		728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2A253CACC6006AA2F2 /* KeyEvent.h */; };
@@ -37,6 +38,7 @@
 		7277A81E255EB1330028E5A8 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
 		7277A821255EB5850028E5A8 /* LayerStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LayerStack.cpp; sourceTree = "<group>"; };
 		7277A822255EB5850028E5A8 /* LayerStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayerStack.hpp; sourceTree = "<group>"; };
+		7277A83E255FABA10028E5A8 /* glad.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glad.a; path = vendor/glad/src/glad.a; sourceTree = "<group>"; };
 		728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
 		728FFC28253CAC82006AA2F2 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		728FFC2A253CACC6006AA2F2 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7277A83F255FABA10028E5A8 /* glad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +85,7 @@
 		7277A7F9255DBB4B0028E5A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7277A83E255FABA10028E5A8 /* glad.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -368,7 +372,12 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/vendor/spdlog/include\"",
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
+					"\"$(SRCROOT)/vendor/glad/include\"",
 					"\"$(SRCROOT)/src\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vendor/glad/src",
 				);
 				LLVM_LTO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -397,7 +406,12 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/vendor/spdlog/include\"",
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
+					"\"$(SRCROOT)/vendor/glad/include\"",
 					"\"$(SRCROOT)/src\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vendor/glad/src",
 				);
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
