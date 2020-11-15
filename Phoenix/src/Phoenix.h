@@ -15,6 +15,13 @@
 #include "Phoenix/Application/Application.hpp"
 #include "Phoenix/Application/Logger.hpp"
 #include "Phoenix/Application/Layer.hpp"
+
+#include "Phoenix/Application/Window.h"
+#include "Phoenix/Application/Input.h"
+
+#include "Phoenix/Application/KeyCodes.h"
+#include "Phoenix/Application/MouseButtonCodes.h"
+
 #include "Phoenix/ImGui/ImGuiLayer.hpp"
 
 /* Entry point */

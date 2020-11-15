@@ -275,7 +275,7 @@
 					"\"$(SRCROOT)/../Phoenix/src\"",
 					"\"$(SRCROOT)/../Phoenix/vendor/spdlog/include\"",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Phoenix/vendor/GLFW/build/Debug\"";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = x86_64;
 			};
@@ -294,7 +294,7 @@
 					"\"$(SRCROOT)/../Phoenix/src\"",
 					"\"$(SRCROOT)/../Phoenix/vendor/spdlog/include\"",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Phoenix/vendor/GLFW/build/Release\"";
+				LIBRARY_SEARCH_PATHS = "";
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = x86_64;

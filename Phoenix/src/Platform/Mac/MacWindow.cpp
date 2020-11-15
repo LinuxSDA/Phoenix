@@ -46,7 +46,7 @@ namespace Phoenix
         m_Data.Width = props.Width;
         m_Data.Height = props.Height;
 
-        PX_ENGINE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+        PX_ENGINE_INFO("Creating Window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
         if (!s_GLFWInitialized)
         {

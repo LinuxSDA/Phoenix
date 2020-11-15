@@ -17,12 +17,12 @@ public:
 
     void OnUpdate() override
     {
-
     }
 
     void OnEvent(Phoenix::Event& event) override
     {
-
+        if(event.GetEventType() == Phoenix::EventType::KeyPressed)
+            PX_TRACE("Space Pressed? : {0}" , Phoenix::Input::IsKeyPressed(PX_KEY_SPACE));
     }
 
 };
