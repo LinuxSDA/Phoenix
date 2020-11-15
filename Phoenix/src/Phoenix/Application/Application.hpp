@@ -14,8 +14,8 @@
 #include "Window.h"
 
 #include "LayerStack.hpp"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "Phoenix/Events/Event.h"
+#include "Phoenix/Events/ApplicationEvent.h"
 
 namespace Phoenix
 {

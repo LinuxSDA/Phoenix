@@ -9,7 +9,7 @@
 #pragma once
 
 #include <px.pch>
-#include "Phoenix/Core.h"
+#include "Phoenix/Application/Core.h"
 
 namespace Phoenix
 {

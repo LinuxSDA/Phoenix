@@ -121,6 +121,24 @@
 			path = OpenGL;
 			sourceTree = "<group>";
 		};
+		7277A869256182960028E5A8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				72C93CAB2530CD7A008D271D /* Core.h */,
+				72C93CAD2530CDA4008D271D /* Application.cpp */,
+				72C93CAE2530CDA4008D271D /* Application.hpp */,
+				72C93CB52530D749008D271D /* EntryPoint.h */,
+				72C93CB72530E4D8008D271D /* Logger.cpp */,
+				72C93CB82530E4D8008D271D /* Logger.hpp */,
+				7277A7F1255DA2F00028E5A8 /* Window.h */,
+				7277A81D255EB1330028E5A8 /* Layer.cpp */,
+				7277A81E255EB1330028E5A8 /* Layer.hpp */,
+				7277A821255EB5850028E5A8 /* LayerStack.cpp */,
+				7277A822255EB5850028E5A8 /* LayerStack.hpp */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		728FFC25253CABFC006AA2F2 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,19 +181,9 @@
 		72C93CAA2530CB82008D271D /* Phoenix */ = {
 			isa = PBXGroup;
 			children = (
+				7277A869256182960028E5A8 /* Application */,
 				7277A846255FD17B0028E5A8 /* ImGui */,
 				728FFC25253CABFC006AA2F2 /* Events */,
-				72C93CAB2530CD7A008D271D /* Core.h */,
-				72C93CAD2530CDA4008D271D /* Application.cpp */,
-				72C93CAE2530CDA4008D271D /* Application.hpp */,
-				72C93CB52530D749008D271D /* EntryPoint.h */,
-				72C93CB72530E4D8008D271D /* Logger.cpp */,
-				72C93CB82530E4D8008D271D /* Logger.hpp */,
-				7277A7F1255DA2F00028E5A8 /* Window.h */,
-				7277A81D255EB1330028E5A8 /* Layer.cpp */,
-				7277A81E255EB1330028E5A8 /* Layer.hpp */,
-				7277A821255EB5850028E5A8 /* LayerStack.cpp */,
-				7277A822255EB5850028E5A8 /* LayerStack.hpp */,
 			);
 			path = Phoenix;
 			sourceTree = "<group>";

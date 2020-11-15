@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Core.h"
-#include "Events/Event.h"
+#include "Phoenix/Events/Event.h"
 
 namespace Phoenix
 {

@@ -12,11 +12,11 @@
 #include "px.pch"
 
 /* For use by Phoenix applications */
-#include "Phoenix/Application.hpp"
-#include "Phoenix/Logger.hpp"
-#include "Phoenix/Layer.hpp"
+#include "Phoenix/Application/Application.hpp"
+#include "Phoenix/Application/Logger.hpp"
+#include "Phoenix/Application/Layer.hpp"
 #include "Phoenix/ImGui/ImGuiLayer.hpp"
 
 /* Entry point */
-#include "Phoenix/EntryPoint.h"
+#include "Phoenix/Application/EntryPoint.h"
 #endif /* Header_h */
