@@ -10,6 +10,7 @@
 
 #include "Application.hpp"
 #include "Logger.hpp"
+#include "Input.h"
 
 #include <glad/glad.h>
 
@@ -75,7 +76,7 @@ namespace Phoenix
         {
             glClearColor(1,1,0,1);
             glClear(GL_COLOR_BUFFER_BIT);
-            
+                        
             for (auto& layer : m_LayerStack)
                 layer->OnUpdate();
 

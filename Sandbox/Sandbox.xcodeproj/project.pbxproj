@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		7277A85525600AB10028E5A8 /* libPhoenix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85425600AB10028E5A8 /* libPhoenix.a */; };
 		7277A85925600DFD0028E5A8 /* libPhoenix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85425600AB10028E5A8 /* libPhoenix.a */; };
-		7277A85A25600E0F0028E5A8 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85825600DE30028E5A8 /* libglfw3.a */; };
-		7277A85C25600E890028E5A8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85B25600E890028E5A8 /* IOKit.framework */; };
-		7277A85E25600E8E0028E5A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85D25600E8E0028E5A8 /* Cocoa.framework */; };
-		7277A86025600EAA0028E5A8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85F25600EAA0028E5A8 /* OpenGL.framework */; };
+		7277A88125619F890028E5A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A88025619F880028E5A8 /* Cocoa.framework */; };
+		7277A88325619F960028E5A8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A88225619F960028E5A8 /* IOKit.framework */; };
 		72C93CB22530D05E008D271D /* SandboxApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 72C93CB12530D05E008D271D /* SandboxApp.cpp */; };
 /* End PBXBuildFile section */
 
@@ -30,10 +28,8 @@
 
 /* Begin PBXFileReference section */
 		7277A85425600AB10028E5A8 /* libPhoenix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPhoenix.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7277A85825600DE30028E5A8 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../Phoenix/vendor/GLFW/build/Debug/libglfw3.a; sourceTree = "<group>"; };
-		7277A85B25600E890028E5A8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		7277A85D25600E8E0028E5A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		7277A85F25600EAA0028E5A8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		7277A88025619F880028E5A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7277A88225619F960028E5A8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		72C93C8E25306498008D271D /* Sandbox */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sandbox; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C93CB12530D05E008D271D /* SandboxApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SandboxApp.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -44,11 +40,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7277A85525600AB10028E5A8 /* libPhoenix.a in Frameworks */,
-				7277A85E25600E8E0028E5A8 /* Cocoa.framework in Frameworks */,
 				7277A85925600DFD0028E5A8 /* libPhoenix.a in Frameworks */,
-				7277A85A25600E0F0028E5A8 /* libglfw3.a in Frameworks */,
-				7277A85C25600E890028E5A8 /* IOKit.framework in Frameworks */,
-				7277A86025600EAA0028E5A8 /* OpenGL.framework in Frameworks */,
+				7277A88125619F890028E5A8 /* Cocoa.framework in Frameworks */,
+				7277A88325619F960028E5A8 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +69,8 @@
 		72C93C982530667B008D271D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7277A85F25600EAA0028E5A8 /* OpenGL.framework */,
-				7277A85D25600E8E0028E5A8 /* Cocoa.framework */,
-				7277A85B25600E890028E5A8 /* IOKit.framework */,
-				7277A85825600DE30028E5A8 /* libglfw3.a */,
+				7277A88225619F960028E5A8 /* IOKit.framework */,
+				7277A88025619F880028E5A8 /* Cocoa.framework */,
 				7277A85425600AB10028E5A8 /* libPhoenix.a */,
 			);
 			name = Frameworks;
