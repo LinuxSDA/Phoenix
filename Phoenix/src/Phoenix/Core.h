@@ -25,13 +25,19 @@
 #define PX_ERROR(...)         ::Phoenix::Logger::GetClientLogger()->error(__VA_ARGS__)
 #define PX_FATAL(...)         ::Phoenix::Logger::GetClientLogger()->fatal(__VA_ARGS__)
 
+#ifdef DEBUG
+    #define PX_ENABLE_ASSERTS 1
+#endif
 
-#ifdef PX_ENABLE_ASSERTS
+
+#if PX_ENABLE_ASSERTS
     #define PX_ASSERT(x, ...) { if(!(x)) { PX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __asm("int3"); } }
     #define PX_ENGINE_ASSERT(x, ...) { if(!(x)) { PX_ENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __asm("int3"); } }
 #else
     #define PX_ASSERT(x, ...) {(void)(x);}
     #define PX_ENGINE_ASSERT(x, ...) {(void)(x);}
 #endif
+
+#define PX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
 #endif /* Core_h */

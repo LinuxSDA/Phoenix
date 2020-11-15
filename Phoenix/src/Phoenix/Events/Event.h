@@ -34,6 +34,7 @@ namespace Phoenix
         
         KeyPressed,
         KeyReleased,
+        KeyTyped,
  
         MouseButtonPressed,
         MouseButtonReleased,

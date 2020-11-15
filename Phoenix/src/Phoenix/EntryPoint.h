@@ -16,7 +16,6 @@ int main()
     Phoenix::Logger::Init();
     
     PX_ENGINE_TRACE("Phoenix Engine!");
-    PX_ENGINE_WARN("Test!");
 
     std::unique_ptr<Phoenix::Application> application = Phoenix::Application::Create();
     application->Run();

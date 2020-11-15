@@ -18,7 +18,7 @@ namespace Phoenix
     void Logger::Init()
     {
         spdlog::set_pattern("%^[%T] %n: %v%$");
-        sCoreLogger = spdlog::stdout_color_mt("Core");
+        sCoreLogger = spdlog::stdout_color_mt("Engine");
         sCoreLogger->set_level(spdlog::level::trace);
 
         sClientLogger = spdlog::stdout_color_mt("Client");

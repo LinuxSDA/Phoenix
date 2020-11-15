@@ -36,10 +36,12 @@ namespace Phoenix
         void PushLayer(std::unique_ptr<Layer> layer);
         void PushOverlay(std::unique_ptr<Layer> layer);
 
+        static const Window& GetWindow();
+        
     private:
         bool OnWindowClose(WindowCloseEvent& e);
 
-        std::unique_ptr<Window> m_Window;
+        static std::unique_ptr<Window> m_Window;
         bool m_Running = true;
         LayerStack m_LayerStack;
     };

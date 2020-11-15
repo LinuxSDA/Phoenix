@@ -15,7 +15,12 @@
 		7277A820255EB1330028E5A8 /* Layer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A81E255EB1330028E5A8 /* Layer.hpp */; };
 		7277A823255EB5850028E5A8 /* LayerStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A821255EB5850028E5A8 /* LayerStack.cpp */; };
 		7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A822255EB5850028E5A8 /* LayerStack.hpp */; };
-		7277A83F255FABA10028E5A8 /* glad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A83E255FABA10028E5A8 /* glad.a */; };
+		7277A84A255FD1B20028E5A8 /* ImGuiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */; };
+		7277A84B255FD1B20028E5A8 /* ImGuiLayer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */; };
+		7277A86125600ED90028E5A8 /* glad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85625600C740028E5A8 /* glad.a */; };
+		7277A863256016E80028E5A8 /* imgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A862256016E80028E5A8 /* imgui.a */; };
+		7277A86725601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A86525601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp */; };
+		7277A86825601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A86625601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp */; };
 		728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */; };
 		728FFC29253CAC82006AA2F2 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC28253CAC82006AA2F2 /* Event.h */; };
 		728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2A253CACC6006AA2F2 /* KeyEvent.h */; };
@@ -38,7 +43,12 @@
 		7277A81E255EB1330028E5A8 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
 		7277A821255EB5850028E5A8 /* LayerStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LayerStack.cpp; sourceTree = "<group>"; };
 		7277A822255EB5850028E5A8 /* LayerStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayerStack.hpp; sourceTree = "<group>"; };
-		7277A83E255FABA10028E5A8 /* glad.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glad.a; path = vendor/glad/src/glad.a; sourceTree = "<group>"; };
+		7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiLayer.cpp; sourceTree = "<group>"; };
+		7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImGuiLayer.hpp; sourceTree = "<group>"; };
+		7277A85625600C740028E5A8 /* glad.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glad.a; path = vendor/glad/build/glad.a; sourceTree = "<group>"; };
+		7277A862256016E80028E5A8 /* imgui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = imgui.a; path = vendor/imgui/build/imgui.a; sourceTree = "<group>"; };
+		7277A86525601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiOpenGLRenderer.cpp; sourceTree = "<group>"; };
+		7277A86625601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImGuiOpenGLRenderer.hpp; sourceTree = "<group>"; };
 		728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
 		728FFC28253CAC82006AA2F2 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		728FFC2A253CACC6006AA2F2 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
@@ -58,7 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7277A83F255FABA10028E5A8 /* glad.a in Frameworks */,
+				7277A863256016E80028E5A8 /* imgui.a in Frameworks */,
+				7277A86125600ED90028E5A8 /* glad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +79,7 @@
 		7277A7F3255DA90A0028E5A8 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				7277A864256019430028E5A8 /* OpenGL */,
 				7277A7F4255DA91B0028E5A8 /* Mac */,
 			);
 			path = Platform;
@@ -85,9 +97,28 @@
 		7277A7F9255DBB4B0028E5A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7277A83E255FABA10028E5A8 /* glad.a */,
+				7277A862256016E80028E5A8 /* imgui.a */,
+				7277A85625600C740028E5A8 /* glad.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7277A846255FD17B0028E5A8 /* ImGui */ = {
+			isa = PBXGroup;
+			children = (
+				7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */,
+				7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */,
+			);
+			path = ImGui;
+			sourceTree = "<group>";
+		};
+		7277A864256019430028E5A8 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				7277A86525601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp */,
+				7277A86625601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp */,
+			);
+			path = OpenGL;
 			sourceTree = "<group>";
 		};
 		728FFC25253CABFC006AA2F2 /* Events */ = {
@@ -132,6 +163,7 @@
 		72C93CAA2530CB82008D271D /* Phoenix */ = {
 			isa = PBXGroup;
 			children = (
+				7277A846255FD17B0028E5A8 /* ImGui */,
 				728FFC25253CABFC006AA2F2 /* Events */,
 				72C93CAB2530CD7A008D271D /* Core.h */,
 				72C93CAD2530CDA4008D271D /* Application.cpp */,
@@ -159,10 +191,12 @@
 				7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */,
 				72C93CB42530D09A008D271D /* Phoenix.h in Headers */,
 				72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */,
+				7277A86825601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp in Headers */,
 				728FFC2D253CACF4006AA2F2 /* MouseEvent.h in Headers */,
 				72C93CAC2530CD7A008D271D /* Core.h in Headers */,
 				728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */,
 				728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */,
+				7277A84B255FD1B20028E5A8 /* ImGuiLayer.hpp in Headers */,
 				72C93CB62530D749008D271D /* EntryPoint.h in Headers */,
 				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
 				728FFC29253CAC82006AA2F2 /* Event.h in Headers */,
@@ -231,9 +265,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */,
+				7277A84A255FD1B20028E5A8 /* ImGuiLayer.cpp in Sources */,
 				72C93CAF2530CDA4008D271D /* Application.cpp in Sources */,
 				72C93CB92530E4D8008D271D /* Logger.cpp in Sources */,
 				7277A823255EB5850028E5A8 /* LayerStack.cpp in Sources */,
+				7277A86725601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp in Sources */,
 				7277A81F255EB1330028E5A8 /* Layer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,19 +401,19 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_PLATFORM_MAC,
 					"DEBUG=1",
-					"PX_ENABLE_ASSERTS=1",
-					GL_SILENCE_DEPRECATION,
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/vendor/spdlog/include\"",
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
 					"\"$(SRCROOT)/vendor/glad/include\"",
+					"\"$(SRCROOT)/vendor/imgui/include\"",
 					"\"$(SRCROOT)/src\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/vendor/glad/src",
+					"$(PROJECT_DIR)/vendor/glad/build",
+					"$(PROJECT_DIR)/vendor/imgui/build",
 				);
 				LLVM_LTO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,11 +443,13 @@
 					"\"$(SRCROOT)/vendor/spdlog/include\"",
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
 					"\"$(SRCROOT)/vendor/glad/include\"",
+					"\"$(SRCROOT)/vendor/imgui/include\"",
 					"\"$(SRCROOT)/src\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/vendor/glad/src",
+					"$(PROJECT_DIR)/vendor/glad/build",
+					"$(PROJECT_DIR)/vendor/imgui/build",
 				);
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

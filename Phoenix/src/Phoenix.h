@@ -15,6 +15,7 @@
 #include "Phoenix/Application.hpp"
 #include "Phoenix/Logger.hpp"
 #include "Phoenix/Layer.hpp"
+#include "Phoenix/ImGui/ImGuiLayer.hpp"
 
 /* Entry point */
 #include "Phoenix/EntryPoint.h"

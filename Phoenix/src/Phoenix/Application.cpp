@@ -15,13 +15,17 @@
 
 namespace Phoenix
 {
-    #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+    std::unique_ptr<Window> Application::m_Window;
 
     Application::Application()
     {
+        PX_ENGINE_ASSERT(m_Window == nullptr, "Application already exists!");
         m_Window = Window::Create();
+        PX_ENGINE_ASSERT(m_Window != nullptr, "Cannnot create window!");
+
         PX_ENGINE_TRACE(glGetString(GL_VERSION));
-        m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+        m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
     }
 
     Application::~Application()
@@ -29,13 +33,21 @@ namespace Phoenix
         
     }
 
+    const Window& Application::GetWindow()
+    {
+        PX_ENGINE_ASSERT(m_Window != nullptr, "Window not intialized!");
+        return *m_Window;
+    }
+
     void Application::PushLayer(std::unique_ptr<Layer> layer)
     {
+        layer->OnAttach();
         m_LayerStack.PushLayer(std::move(layer));
     }
 
     void Application::PushOverlay(std::unique_ptr<Layer> layer)
     {
+        layer->OnAttach();
         m_LayerStack.PushOverlay(std::move(layer));
     }
 
@@ -43,7 +55,7 @@ namespace Phoenix
     {
         EventDispatcher dispatch(e);
         
-        dispatch.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+        dispatch.Dispatch<WindowCloseEvent>(PX_BIND_EVENT_FN(Application::OnWindowClose));
         
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin() && !e.m_Handled; )
         {
@@ -61,6 +73,9 @@ namespace Phoenix
     {
         while (m_Running)
         {
+            glClearColor(1,1,0,1);
+            glClear(GL_COLOR_BUFFER_BIT);
+            
             for (auto& layer : m_LayerStack)
                 layer->OnUpdate();
 

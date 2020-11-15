@@ -17,12 +17,12 @@ public:
 
     void OnUpdate() override
     {
-        PX_INFO("ExampleLayer::Update");
+
     }
 
     void OnEvent(Phoenix::Event& event) override
     {
-        PX_TRACE("{0}", event);
+
     }
 
 };
@@ -34,6 +34,7 @@ public:
     Sandbox()
     {
         PushLayer(std::make_unique<ExampleLayer>());
+        PushOverlay(std::make_unique<Phoenix::ImGuiLayer>());
     }
     ~Sandbox(){}
 };
