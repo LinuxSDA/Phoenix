@@ -6,9 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
-#ifndef EntryPoint_h
-#define EntryPoint_h
-
+#pragma once
 #include "Application.hpp"
 
 int main()
@@ -20,4 +18,3 @@ int main()
     std::unique_ptr<Phoenix::Application> application = Phoenix::Application::Create();
     application->Run();
 }
-#endif /* EntryPoint_h */

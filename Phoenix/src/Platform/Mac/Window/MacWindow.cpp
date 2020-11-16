@@ -9,10 +9,12 @@
 #include "px.pch"
 #include <glad/glad.h>
 #include "MacWindow.hpp"
+
 #include "Phoenix/Events/ApplicationEvent.h"
 #include "Phoenix/Events/MouseEvent.h"
 #include "Phoenix/Events/KeyEvent.h"
 
+#include "Platform/Mac/OpenGL/OpenGLContext.hpp"
 
 namespace Phoenix
 {
@@ -66,11 +68,10 @@ namespace Phoenix
         #endif
         
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(m_Window);
         
-        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-        PX_ENGINE_ASSERT(status, "Failed to load glad!");
-        
+        m_Context = std::make_unique<OpenGLContext>(m_Window);
+        m_Context->Init();
+                
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
     }
@@ -176,7 +177,7 @@ namespace Phoenix
     void MacWindow::OnUpdate()
     {
         glfwPollEvents();
-        glfwSwapBuffers(m_Window);
+        m_Context->SwapBuffers();
     }
 
     void MacWindow::SetVSync(bool enabled)

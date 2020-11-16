@@ -6,8 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
-#ifndef Phoenix_h
-#define Phoenix_h
+#pragma once
 
 #include "px.pch"
 
@@ -26,4 +25,3 @@
 
 /* Entry point */
 #include "Phoenix/Application/EntryPoint.h"
-#endif /* Header_h */

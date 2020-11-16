@@ -8,8 +8,10 @@
 
 #pragma once
 
-#include "Phoenix/Window.h"
 #include <GLFW/glfw3.h>
+
+#include "Phoenix/Window.h"
+#include "Phoenix/Renderer/GraphicsContext.h"
 
 namespace Phoenix
 {
@@ -36,6 +38,7 @@ namespace Phoenix
 
     private:
         GLFWwindow* m_Window;
+        std::unique_ptr<GraphicsContext> m_Context;
 
         void GLFWSetEventCallbacks();
         

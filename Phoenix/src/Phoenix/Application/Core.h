@@ -6,8 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
-#ifndef Core_h
-#define Core_h
+#pragma once
 
 #include "Logger.hpp"
 
@@ -39,5 +38,3 @@
 #endif
 
 #define PX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
-
-#endif /* Core_h */

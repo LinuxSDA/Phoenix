@@ -6,8 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
-#ifndef Logger_hpp
-#define Logger_hpp
+#pragma once
 
 #include "Core.h"
 #include <spdlog/spdlog.h>
@@ -27,5 +26,3 @@ namespace Phoenix
         static std::shared_ptr<spdlog::logger> sClientLogger;
     };
 }
-
-#endif /* Logger_hpp */

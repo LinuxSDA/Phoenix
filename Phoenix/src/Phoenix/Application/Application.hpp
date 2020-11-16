@@ -6,8 +6,7 @@
 //  Copyright © 2020 LinuxSDA. All rights reserved.
 //
 
-#ifndef Application_hpp
-#define Application_hpp
+#pragma once
 
 #include "Core.h"
 
@@ -53,5 +52,3 @@ namespace Phoenix
     };
 }
 
-
-#endif /* Application_hpp */

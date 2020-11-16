@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		725C5D532562C2BC009AC83F /* GraphicsContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D522562C2BC009AC83F /* GraphicsContext.h */; };
+		725C5D572562C3C7009AC83F /* OpenGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D552562C3C7009AC83F /* OpenGLContext.cpp */; };
+		725C5D582562C3C7009AC83F /* OpenGLContext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D562562C3C7009AC83F /* OpenGLContext.hpp */; };
 		7277A7F0255D36930028E5A8 /* px.pch in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7EF255D36930028E5A8 /* px.pch */; };
 		7277A7F2255DA2F00028E5A8 /* Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F1255DA2F00028E5A8 /* Window.h */; };
 		7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */; };
@@ -51,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		725C5D522562C2BC009AC83F /* GraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsContext.h; sourceTree = "<group>"; };
+		725C5D552562C3C7009AC83F /* OpenGLContext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLContext.cpp; sourceTree = "<group>"; };
+		725C5D562562C3C7009AC83F /* OpenGLContext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLContext.hpp; sourceTree = "<group>"; };
 		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
 		7277A7F1255DA2F00028E5A8 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacWindow.cpp; sourceTree = "<group>"; };
@@ -110,6 +116,23 @@
 			path = Window;
 			sourceTree = "<group>";
 		};
+		725C5D512562C29A009AC83F /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				725C5D522562C2BC009AC83F /* GraphicsContext.h */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
+		725C5D542562C3A8009AC83F /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				725C5D552562C3C7009AC83F /* OpenGLContext.cpp */,
+				725C5D562562C3C7009AC83F /* OpenGLContext.hpp */,
+			);
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
 		7277A7F3255DA90A0028E5A8 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +144,7 @@
 		7277A7F4255DA91B0028E5A8 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				725C5D542562C3A8009AC83F /* OpenGL */,
 				7277A846255FD17B0028E5A8 /* ImGui */,
 				725C5D4F25628F04009AC83F /* Window */,
 			);
@@ -219,6 +243,7 @@
 		72C93CAA2530CB82008D271D /* Phoenix */ = {
 			isa = PBXGroup;
 			children = (
+				725C5D512562C29A009AC83F /* Renderer */,
 				7277A869256182960028E5A8 /* Application */,
 				728FFC25253CABFC006AA2F2 /* Events */,
 			);
@@ -234,6 +259,7 @@
 			files = (
 				7277A7F8255DA94E0028E5A8 /* MacWindow.hpp in Headers */,
 				7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */,
+				725C5D532562C2BC009AC83F /* GraphicsContext.h in Headers */,
 				72C93CB42530D09A008D271D /* Phoenix.h in Headers */,
 				72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */,
 				7277A91925627CB00028E5A8 /* MacImGuiLayer.hpp in Headers */,
@@ -248,6 +274,7 @@
 				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
 				728FFC29253CAC82006AA2F2 /* Event.h in Headers */,
 				7277A820255EB1330028E5A8 /* Layer.hpp in Headers */,
+				725C5D582562C3C7009AC83F /* OpenGLContext.hpp in Headers */,
 				7277A7F2255DA2F00028E5A8 /* Window.h in Headers */,
 				7277A86B25618E8E0028E5A8 /* Input.h in Headers */,
 				72C93CB02530CDA4008D271D /* Application.hpp in Headers */,
@@ -337,6 +364,7 @@
 				7277A86E256190750028E5A8 /* MacInput.cpp in Sources */,
 				7277A88C256268ED0028E5A8 /* MacImGuiBuild.cpp in Sources */,
 				7277A81F255EB1330028E5A8 /* Layer.cpp in Sources */,
+				725C5D572562C3C7009AC83F /* OpenGLContext.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
