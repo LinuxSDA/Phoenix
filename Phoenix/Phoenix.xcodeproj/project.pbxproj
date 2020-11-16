@@ -27,6 +27,7 @@
 		7277A8862561B08D0028E5A8 /* MouseButtonCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A8852561B08D0028E5A8 /* MouseButtonCodes.h */; };
 		7277A8882561B0C70028E5A8 /* KeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A8872561B0C70028E5A8 /* KeyCodes.h */; };
 		7277A88A2561B1A00028E5A8 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A8892561B1A00028E5A8 /* libglfw3.a */; };
+		7277A88C256268ED0028E5A8 /* ImGuiBuild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A88B256268ED0028E5A8 /* ImGuiBuild.cpp */; };
 		728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */; };
 		728FFC29253CAC82006AA2F2 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC28253CAC82006AA2F2 /* Event.h */; };
 		728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2A253CACC6006AA2F2 /* KeyEvent.h */; };
@@ -61,6 +62,7 @@
 		7277A8852561B08D0028E5A8 /* MouseButtonCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseButtonCodes.h; sourceTree = "<group>"; };
 		7277A8872561B0C70028E5A8 /* KeyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodes.h; sourceTree = "<group>"; };
 		7277A8892561B1A00028E5A8 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = vendor/GLFW/build/libglfw3.a; sourceTree = "<group>"; };
+		7277A88B256268ED0028E5A8 /* ImGuiBuild.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiBuild.cpp; sourceTree = "<group>"; };
 		728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
 		728FFC28253CAC82006AA2F2 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		728FFC2A253CACC6006AA2F2 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */,
 				7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */,
+				7277A88B256268ED0028E5A8 /* ImGuiBuild.cpp */,
 			);
 			path = ImGui;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				7277A823255EB5850028E5A8 /* LayerStack.cpp in Sources */,
 				7277A86725601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp in Sources */,
 				7277A86E256190750028E5A8 /* MacInput.cpp in Sources */,
+				7277A88C256268ED0028E5A8 /* ImGuiBuild.cpp in Sources */,
 				7277A81F255EB1330028E5A8 /* Layer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
