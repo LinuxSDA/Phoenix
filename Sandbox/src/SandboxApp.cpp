@@ -7,6 +7,7 @@
 //
 
 #include <Phoenix.h>
+#include <imgui.h>
 
 class ExampleLayer : public Phoenix::Layer
 {
@@ -19,6 +20,13 @@ public:
     {
     }
 
+    void OnImGuiRender() override
+    {
+        ImGui::Begin("Test");
+        ImGui::Text("Hello Test!");
+        ImGui::End();
+    }
+    
     void OnEvent(Phoenix::Event& event) override
     {
         if(event.GetEventType() == Phoenix::EventType::KeyPressed)

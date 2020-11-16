@@ -62,7 +62,6 @@
 		7277A848255FD1B20028E5A8 /* MacImGuiLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacImGuiLayer.cpp; sourceTree = "<group>"; };
 		7277A849255FD1B20028E5A8 /* ImGuiLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImGuiLayer.h; sourceTree = "<group>"; };
 		7277A85625600C740028E5A8 /* glad.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glad.a; path = vendor/glad/build/glad.a; sourceTree = "<group>"; };
-		7277A862256016E80028E5A8 /* imgui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = imgui.a; path = vendor/imgui/build/imgui.a; sourceTree = "<group>"; };
 		7277A86A25618E8E0028E5A8 /* Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
 		7277A86C256190750028E5A8 /* MacInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacInput.cpp; sourceTree = "<group>"; };
 		7277A86D256190750028E5A8 /* MacInput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MacInput.hpp; sourceTree = "<group>"; };
@@ -100,10 +99,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		725C5D4F25628F04009AC83F /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */,
+				7277A7F6255DA94E0028E5A8 /* MacWindow.hpp */,
+				7277A86C256190750028E5A8 /* MacInput.cpp */,
+				7277A86D256190750028E5A8 /* MacInput.hpp */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
 		7277A7F3255DA90A0028E5A8 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				7277A846255FD17B0028E5A8 /* ImGui */,
 				7277A7F4255DA91B0028E5A8 /* Mac */,
 			);
 			path = Platform;
@@ -112,10 +121,8 @@
 		7277A7F4255DA91B0028E5A8 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
-				7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */,
-				7277A7F6255DA94E0028E5A8 /* MacWindow.hpp */,
-				7277A86C256190750028E5A8 /* MacInput.cpp */,
-				7277A86D256190750028E5A8 /* MacInput.hpp */,
+				7277A846255FD17B0028E5A8 /* ImGui */,
+				725C5D4F25628F04009AC83F /* Window */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -124,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				7277A8892561B1A00028E5A8 /* libglfw3.a */,
-				7277A862256016E80028E5A8 /* imgui.a */,
 				7277A85625600C740028E5A8 /* glad.a */,
 			);
 			name = Frameworks;

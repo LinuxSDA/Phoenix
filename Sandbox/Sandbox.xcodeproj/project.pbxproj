@@ -274,6 +274,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../Phoenix/src\"",
 					"\"$(SRCROOT)/../Phoenix/vendor/spdlog/include\"",
+					"\"$(SRCROOT)/../Phoenix/vendor/imgui\"",
 					"\"$(SRCROOT)/../Phoenix/vendor/glm\"",
 				);
 				LIBRARY_SEARCH_PATHS = "";
@@ -294,6 +295,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../Phoenix/src\"",
 					"\"$(SRCROOT)/../Phoenix/vendor/spdlog/include\"",
+					"\"$(SRCROOT)/../Phoenix/vendor/imgui\"",
 					"\"$(SRCROOT)/../Phoenix/vendor/glm\"",
 				);
 				LIBRARY_SEARCH_PATHS = "";
