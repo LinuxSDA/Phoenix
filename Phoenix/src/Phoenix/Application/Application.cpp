@@ -35,11 +35,6 @@ namespace Phoenix
         m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
     }
 
-    Application::~Application()
-    {
-        
-    }
-
     const Window& Application::GetWindow()
     {
         PX_ENGINE_ASSERT(m_Window != nullptr, "Window not intialized!");
@@ -48,13 +43,11 @@ namespace Phoenix
 
     void Application::PushLayer(std::unique_ptr<Layer> layer)
     {
-        layer->OnAttach();
         m_LayerStack.PushLayer(std::move(layer));
     }
 
     void Application::PushOverlay(std::unique_ptr<Layer> layer)
     {
-        layer->OnAttach();
         m_LayerStack.PushOverlay(std::move(layer));
     }
 

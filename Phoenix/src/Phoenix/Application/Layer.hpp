@@ -37,7 +37,7 @@ namespace Phoenix
         Layer(const Layer&) = delete;
         Layer& operator=(const Layer&) = delete;
         
-        virtual ~Layer();
+        virtual ~Layer() = default;
 
         virtual void OnAttach() {}
         virtual void OnDetach() {}

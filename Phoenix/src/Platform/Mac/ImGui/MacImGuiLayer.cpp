@@ -81,7 +81,7 @@ namespace Phoenix
     {
         ImGuiIO& io = ImGui::GetIO();
         const Window& window = Application::GetWindow();
-        io.DisplaySize = ImVec2(window.GetWidth(), window.GetHeight());
+        io.DisplaySize = ImVec2((float)window.GetWidth(), (float)window.GetHeight());
         // Rendering
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

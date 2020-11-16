@@ -20,6 +20,7 @@ namespace Phoenix
     {
     public:
         ImGuiLayer() : Layer("ImGuiLayer"){}
+        ~ImGuiLayer() = default;
         
         virtual void Begin() = 0;
         virtual void End() = 0;

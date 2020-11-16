@@ -16,14 +16,14 @@
 #define PX_ENGINE_INFO(...)   ::Phoenix::Logger::GetCoreLogger()->info(__VA_ARGS__)
 #define PX_ENGINE_WARN(...)   ::Phoenix::Logger::GetCoreLogger()->warn(__VA_ARGS__)
 #define PX_ENGINE_ERROR(...)  ::Phoenix::Logger::GetCoreLogger()->error(__VA_ARGS__)
-#define PX_ENGINE_FATAL(...)  ::Phoenix::Logger::GetCoreLogger()->fatal(__VA_ARGS__)
+#define PX_ENGINE_FATAL(...)  ::Phoenix::Logger::GetCoreLogger()->critical(__VA_ARGS__)
 
 /* LOGGER CLIENT MACROS*/
 #define PX_TRACE(...)         ::Phoenix::Logger::GetClientLogger()->trace(__VA_ARGS__)
 #define PX_INFO(...)          ::Phoenix::Logger::GetClientLogger()->info(__VA_ARGS__)
 #define PX_WARN(...)          ::Phoenix::Logger::GetClientLogger()->warn(__VA_ARGS__)
 #define PX_ERROR(...)         ::Phoenix::Logger::GetClientLogger()->error(__VA_ARGS__)
-#define PX_FATAL(...)         ::Phoenix::Logger::GetClientLogger()->fatal(__VA_ARGS__)
+#define PX_FATAL(...)         ::Phoenix::Logger::GetClientLogger()->critical(__VA_ARGS__)
 
 #ifdef DEBUG
     #define PX_ENABLE_ASSERTS 1

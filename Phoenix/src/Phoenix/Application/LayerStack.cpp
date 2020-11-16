@@ -21,6 +21,7 @@ namespace Phoenix
     Layer::UniqueID LayerStack::PushLayer(Layer::UniquePtr layer)
     {
         auto id = layer->GetLayerID();
+        layer->OnAttach();
         m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, std::move(layer));
         ++m_LayerInsertIndex;
         
@@ -30,6 +31,7 @@ namespace Phoenix
     Layer::UniqueID LayerStack::PushOverlay(Layer::UniquePtr overlay)
     {
         auto id = overlay->GetLayerID();
+        overlay->OnAttach();
         m_Layers.emplace_back(std::move(overlay));
 
         return id;
@@ -37,12 +39,13 @@ namespace Phoenix
 
     void LayerStack::PopLayer(Layer::UniqueID layerID)
     {
-        auto it = std::find_if(m_Layers.begin(), m_Layers.end(), [&layerID] (const Layer::UniquePtr& layer) {
+        auto it = std::find_if(m_Layers.begin(), m_Layers.begin() + m_LayerInsertIndex, [&layerID] (const Layer::UniquePtr& layer) {
             return layer->GetLayerID() == layerID;
         });
         
         if (it != m_Layers.end())
         {
+            (*it)->OnDetach();
             m_Layers.erase(it);
             --m_LayerInsertIndex;
         }
@@ -50,12 +53,15 @@ namespace Phoenix
 
     void LayerStack::PopOverlay(Layer::UniqueID overlayID)
     {
-        auto it = std::find_if(m_Layers.begin(), m_Layers.end(), [&overlayID] (const Layer::UniquePtr& layer) {
+        auto it = std::find_if(m_Layers.begin() + m_LayerInsertIndex, m_Layers.end(), [&overlayID] (const Layer::UniquePtr& layer) {
             return layer->GetLayerID() == overlayID;
         });
 
         if (it != m_Layers.end())
+        {
+            (*it)->OnDetach();
             m_Layers.erase(it);
+        }
     }
 
     std::optional<std::reference_wrapper<Layer>> LayerStack::Get(Layer::UniqueID layerID) const
