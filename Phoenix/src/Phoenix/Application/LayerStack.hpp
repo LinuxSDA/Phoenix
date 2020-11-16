@@ -26,6 +26,8 @@ namespace Phoenix
         void PopLayer(Layer::UniqueID layerID);
         void PopOverlay(Layer::UniqueID layerID);
 
+        std::optional<std::reference_wrapper<Layer>> Get(Layer::UniqueID layerID) const;
+        
         std::deque<Layer::UniquePtr>::iterator begin() { return m_Layers.begin(); }
         std::deque<Layer::UniquePtr>::iterator end() { return m_Layers.end(); }
         

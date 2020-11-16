@@ -18,11 +18,11 @@
 
 #include "Phoenix/Application/Window.h"
 #include "Phoenix/Application/Input.h"
+#include "Phoenix/Application/ImGuiLayer.h"
 
 #include "Phoenix/Application/KeyCodes.h"
 #include "Phoenix/Application/MouseButtonCodes.h"
 
-#include "Phoenix/ImGui/ImGuiLayer.hpp"
 
 /* Entry point */
 #include "Phoenix/Application/EntryPoint.h"

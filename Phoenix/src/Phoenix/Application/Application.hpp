@@ -12,10 +12,12 @@
 #include "Core.h"
 
 #include "Window.h"
+#include "Phoenix/Application/ImGuiLayer.h"
 
 #include "LayerStack.hpp"
 #include "Phoenix/Events/Event.h"
 #include "Phoenix/Events/ApplicationEvent.h"
+
 
 namespace Phoenix
 {
@@ -38,10 +40,14 @@ namespace Phoenix
 
         static const Window& GetWindow();
         
+        ImGuiLayer& GetImGuiLayer();
+        
     private:
         bool OnWindowClose(WindowCloseEvent& e);
 
         static std::unique_ptr<Window> m_Window;
+        Layer::UniqueID m_ImGuiLayerID = 0;
+        
         bool m_Running = true;
         LayerStack m_LayerStack;
     };

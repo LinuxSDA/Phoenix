@@ -57,4 +57,17 @@ namespace Phoenix
         if (it != m_Layers.end())
             m_Layers.erase(it);
     }
+
+    std::optional<std::reference_wrapper<Layer>> LayerStack::Get(Layer::UniqueID layerID) const
+    {
+        auto it = std::find_if(m_Layers.begin(), m_Layers.end(), [&layerID] (const Layer::UniquePtr& layer) {
+            return layer->GetLayerID() == layerID;
+        });
+
+        if (it != m_Layers.end())
+            return std::optional<std::reference_wrapper<Layer>>{**it};
+        
+        return std::nullopt;
+    }
+
 }

@@ -26,6 +26,12 @@ namespace Phoenix
 
         PX_ENGINE_TRACE(glGetString(GL_VERSION));
 
+        auto imGuiLayer = ImGuiLayer::Create();
+        PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Cannnot create imgui layer!");
+
+        m_ImGuiLayerID = imGuiLayer->GetLayerID();
+        PushOverlay(std::move(imGuiLayer));
+        
         m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
     }
 
@@ -70,6 +76,16 @@ namespace Phoenix
         return true;
     }
 
+    ImGuiLayer& Application::GetImGuiLayer()
+    {
+        auto imGuiLayerOptional = m_LayerStack.Get(m_ImGuiLayerID);
+        PX_ENGINE_ASSERT(imGuiLayerOptional, "ImGui Layer doesn't exist!");
+
+        ImGuiLayer& imGuiLayer = static_cast<ImGuiLayer&>(imGuiLayerOptional->get());
+        
+        return imGuiLayer;
+    }
+
     void Application::Run()
     {
         while (m_Running)
@@ -80,6 +96,14 @@ namespace Phoenix
             for (auto& layer : m_LayerStack)
                 layer->OnUpdate();
 
+            auto& appImGuiLayer = GetImGuiLayer();
+            appImGuiLayer.Begin();
+            
+            for (auto& layer : m_LayerStack)
+                layer->OnImGuiRender();
+
+            appImGuiLayer.End();
+            
             m_Window->OnUpdate();
         }
     }

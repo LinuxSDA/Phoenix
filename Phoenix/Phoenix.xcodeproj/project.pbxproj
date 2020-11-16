@@ -15,19 +15,18 @@
 		7277A820255EB1330028E5A8 /* Layer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A81E255EB1330028E5A8 /* Layer.hpp */; };
 		7277A823255EB5850028E5A8 /* LayerStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A821255EB5850028E5A8 /* LayerStack.cpp */; };
 		7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A822255EB5850028E5A8 /* LayerStack.hpp */; };
-		7277A84A255FD1B20028E5A8 /* ImGuiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */; };
-		7277A84B255FD1B20028E5A8 /* ImGuiLayer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */; };
+		7277A84A255FD1B20028E5A8 /* MacImGuiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A848255FD1B20028E5A8 /* MacImGuiLayer.cpp */; };
+		7277A84B255FD1B20028E5A8 /* ImGuiLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A849255FD1B20028E5A8 /* ImGuiLayer.h */; };
 		7277A86125600ED90028E5A8 /* glad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85625600C740028E5A8 /* glad.a */; };
-		7277A863256016E80028E5A8 /* imgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A862256016E80028E5A8 /* imgui.a */; };
-		7277A86725601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A86525601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp */; };
-		7277A86825601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A86625601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp */; };
 		7277A86B25618E8E0028E5A8 /* Input.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A86A25618E8E0028E5A8 /* Input.h */; };
 		7277A86E256190750028E5A8 /* MacInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A86C256190750028E5A8 /* MacInput.cpp */; };
 		7277A86F256190750028E5A8 /* MacInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A86D256190750028E5A8 /* MacInput.hpp */; };
 		7277A8862561B08D0028E5A8 /* MouseButtonCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A8852561B08D0028E5A8 /* MouseButtonCodes.h */; };
 		7277A8882561B0C70028E5A8 /* KeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A8872561B0C70028E5A8 /* KeyCodes.h */; };
 		7277A88A2561B1A00028E5A8 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A8892561B1A00028E5A8 /* libglfw3.a */; };
-		7277A88C256268ED0028E5A8 /* ImGuiBuild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A88B256268ED0028E5A8 /* ImGuiBuild.cpp */; };
+		7277A88C256268ED0028E5A8 /* MacImGuiBuild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A88B256268ED0028E5A8 /* MacImGuiBuild.cpp */; };
+		7277A917256272090028E5A8 /* libimgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A902256271520028E5A8 /* libimgui.a */; };
+		7277A91925627CB00028E5A8 /* MacImGuiLayer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7277A91825627CB00028E5A8 /* MacImGuiLayer.hpp */; };
 		728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */; };
 		728FFC29253CAC82006AA2F2 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC28253CAC82006AA2F2 /* Event.h */; };
 		728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 728FFC2A253CACC6006AA2F2 /* KeyEvent.h */; };
@@ -41,6 +40,16 @@
 		72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 72C93CB82530E4D8008D271D /* Logger.hpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7277A901256271520028E5A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7277A8FD256271520028E5A8 /* imgui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7277A8E9256270FA0028E5A8;
+			remoteInfo = imgui;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
 		7277A7F1255DA2F00028E5A8 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
@@ -50,19 +59,19 @@
 		7277A81E255EB1330028E5A8 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
 		7277A821255EB5850028E5A8 /* LayerStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LayerStack.cpp; sourceTree = "<group>"; };
 		7277A822255EB5850028E5A8 /* LayerStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayerStack.hpp; sourceTree = "<group>"; };
-		7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiLayer.cpp; sourceTree = "<group>"; };
-		7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImGuiLayer.hpp; sourceTree = "<group>"; };
+		7277A848255FD1B20028E5A8 /* MacImGuiLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacImGuiLayer.cpp; sourceTree = "<group>"; };
+		7277A849255FD1B20028E5A8 /* ImGuiLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImGuiLayer.h; sourceTree = "<group>"; };
 		7277A85625600C740028E5A8 /* glad.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glad.a; path = vendor/glad/build/glad.a; sourceTree = "<group>"; };
 		7277A862256016E80028E5A8 /* imgui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = imgui.a; path = vendor/imgui/build/imgui.a; sourceTree = "<group>"; };
-		7277A86525601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiOpenGLRenderer.cpp; sourceTree = "<group>"; };
-		7277A86625601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImGuiOpenGLRenderer.hpp; sourceTree = "<group>"; };
 		7277A86A25618E8E0028E5A8 /* Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
 		7277A86C256190750028E5A8 /* MacInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacInput.cpp; sourceTree = "<group>"; };
 		7277A86D256190750028E5A8 /* MacInput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MacInput.hpp; sourceTree = "<group>"; };
 		7277A8852561B08D0028E5A8 /* MouseButtonCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseButtonCodes.h; sourceTree = "<group>"; };
 		7277A8872561B0C70028E5A8 /* KeyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodes.h; sourceTree = "<group>"; };
 		7277A8892561B1A00028E5A8 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = vendor/GLFW/build/libglfw3.a; sourceTree = "<group>"; };
-		7277A88B256268ED0028E5A8 /* ImGuiBuild.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiBuild.cpp; sourceTree = "<group>"; };
+		7277A88B256268ED0028E5A8 /* MacImGuiBuild.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacImGuiBuild.cpp; sourceTree = "<group>"; };
+		7277A8FD256271520028E5A8 /* imgui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = imgui.xcodeproj; path = vendor/imgui/imgui.xcodeproj; sourceTree = "<group>"; };
+		7277A91825627CB00028E5A8 /* MacImGuiLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MacImGuiLayer.hpp; sourceTree = "<group>"; };
 		728FFC26253CAC38006AA2F2 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
 		728FFC28253CAC82006AA2F2 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		728FFC2A253CACC6006AA2F2 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
@@ -82,9 +91,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7277A917256272090028E5A8 /* libimgui.a in Frameworks */,
 				7277A88A2561B1A00028E5A8 /* libglfw3.a in Frameworks */,
 				7277A86125600ED90028E5A8 /* glad.a in Frameworks */,
-				7277A863256016E80028E5A8 /* imgui.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +103,7 @@
 		7277A7F3255DA90A0028E5A8 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				7277A864256019430028E5A8 /* OpenGL */,
+				7277A846255FD17B0028E5A8 /* ImGui */,
 				7277A7F4255DA91B0028E5A8 /* Mac */,
 			);
 			path = Platform;
@@ -124,20 +133,11 @@
 		7277A846255FD17B0028E5A8 /* ImGui */ = {
 			isa = PBXGroup;
 			children = (
-				7277A848255FD1B20028E5A8 /* ImGuiLayer.cpp */,
-				7277A849255FD1B20028E5A8 /* ImGuiLayer.hpp */,
-				7277A88B256268ED0028E5A8 /* ImGuiBuild.cpp */,
+				7277A88B256268ED0028E5A8 /* MacImGuiBuild.cpp */,
+				7277A848255FD1B20028E5A8 /* MacImGuiLayer.cpp */,
+				7277A91825627CB00028E5A8 /* MacImGuiLayer.hpp */,
 			);
 			path = ImGui;
-			sourceTree = "<group>";
-		};
-		7277A864256019430028E5A8 /* OpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				7277A86525601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp */,
-				7277A86625601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp */,
-			);
-			path = OpenGL;
 			sourceTree = "<group>";
 		};
 		7277A869256182960028E5A8 /* Application */ = {
@@ -157,8 +157,17 @@
 				7277A86A25618E8E0028E5A8 /* Input.h */,
 				7277A8852561B08D0028E5A8 /* MouseButtonCodes.h */,
 				7277A8872561B0C70028E5A8 /* KeyCodes.h */,
+				7277A849255FD1B20028E5A8 /* ImGuiLayer.h */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7277A8FE256271520028E5A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7277A902256271520028E5A8 /* libimgui.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		728FFC25253CABFC006AA2F2 /* Events */ = {
@@ -175,6 +184,7 @@
 		72C93C6E25305EF8008D271D = {
 			isa = PBXGroup;
 			children = (
+				7277A8FD256271520028E5A8 /* imgui.xcodeproj */,
 				72C93CA32530682B008D271D /* src */,
 				72C93C7825305EF8008D271D /* Products */,
 				7277A7F9255DBB4B0028E5A8 /* Frameworks */,
@@ -204,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				7277A869256182960028E5A8 /* Application */,
-				7277A846255FD17B0028E5A8 /* ImGui */,
 				728FFC25253CABFC006AA2F2 /* Events */,
 			);
 			path = Phoenix;
@@ -221,13 +230,13 @@
 				7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */,
 				72C93CB42530D09A008D271D /* Phoenix.h in Headers */,
 				72C93CBA2530E4D8008D271D /* Logger.hpp in Headers */,
-				7277A86825601AA80028E5A8 /* ImGuiOpenGLRenderer.hpp in Headers */,
+				7277A91925627CB00028E5A8 /* MacImGuiLayer.hpp in Headers */,
 				7277A86F256190750028E5A8 /* MacInput.hpp in Headers */,
 				728FFC2D253CACF4006AA2F2 /* MouseEvent.h in Headers */,
 				72C93CAC2530CD7A008D271D /* Core.h in Headers */,
 				728FFC2B253CACC6006AA2F2 /* KeyEvent.h in Headers */,
 				728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */,
-				7277A84B255FD1B20028E5A8 /* ImGuiLayer.hpp in Headers */,
+				7277A84B255FD1B20028E5A8 /* ImGuiLayer.h in Headers */,
 				7277A8862561B08D0028E5A8 /* MouseButtonCodes.h in Headers */,
 				72C93CB62530D749008D271D /* EntryPoint.h in Headers */,
 				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
@@ -286,6 +295,12 @@
 			mainGroup = 72C93C6E25305EF8008D271D;
 			productRefGroup = 72C93C7825305EF8008D271D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7277A8FE256271520028E5A8 /* Products */;
+					ProjectRef = 7277A8FD256271520028E5A8 /* imgui.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				72C93C7625305EF8008D271D /* Phoenix */,
@@ -293,19 +308,28 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		7277A902256271520028E5A8 /* libimgui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libimgui.a;
+			remoteRef = 7277A901256271520028E5A8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		72C93C7425305EF8008D271D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */,
-				7277A84A255FD1B20028E5A8 /* ImGuiLayer.cpp in Sources */,
+				7277A84A255FD1B20028E5A8 /* MacImGuiLayer.cpp in Sources */,
 				72C93CAF2530CDA4008D271D /* Application.cpp in Sources */,
 				72C93CB92530E4D8008D271D /* Logger.cpp in Sources */,
 				7277A823255EB5850028E5A8 /* LayerStack.cpp in Sources */,
-				7277A86725601AA80028E5A8 /* ImGuiOpenGLRenderer.cpp in Sources */,
 				7277A86E256190750028E5A8 /* MacInput.cpp in Sources */,
-				7277A88C256268ED0028E5A8 /* ImGuiBuild.cpp in Sources */,
+				7277A88C256268ED0028E5A8 /* MacImGuiBuild.cpp in Sources */,
 				7277A81F255EB1330028E5A8 /* Layer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,14 +467,13 @@
 					"\"$(SRCROOT)/vendor/spdlog/include\"",
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
 					"\"$(SRCROOT)/vendor/glad/include\"",
-					"\"$(SRCROOT)/vendor/imgui/include\"",
+					"\"$(SRCROOT)/vendor/imgui\"",
 					"\"$(SRCROOT)/vendor/glm\"",
 					"\"$(SRCROOT)/src\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/vendor/glad/build",
-					"$(PROJECT_DIR)/vendor/imgui/build",
 					"$(PROJECT_DIR)/vendor/GLFW/build",
 				);
 				LLVM_LTO = NO;
@@ -481,14 +504,13 @@
 					"\"$(SRCROOT)/vendor/spdlog/include\"",
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
 					"\"$(SRCROOT)/vendor/glad/include\"",
-					"\"$(SRCROOT)/vendor/imgui/include\"",
+					"\"$(SRCROOT)/vendor/imgui\"",
 					"\"$(SRCROOT)/vendor/glm\"",
 					"\"$(SRCROOT)/src\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/vendor/glad/build",
-					"$(PROJECT_DIR)/vendor/imgui/build",
 					"$(PROJECT_DIR)/vendor/GLFW/build",
 				);
 				LLVM_LTO = YES;

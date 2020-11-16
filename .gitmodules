@@ -1,9 +1,12 @@
 [submodule "Phoenix/vendor/spdlog"]
 	path = Phoenix/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	ignore = dirty
 [submodule "Phoenix/vendor/glm"]
 	path = Phoenix/vendor/glm
 	url = https://github.com/g-truc/glm
+	ignore = dirty
 [submodule "Phoenix/vendor/imgui"]
 	path = Phoenix/vendor/imgui
 	url = https://github.com/ocornut/imgui
+	ignore = dirty
