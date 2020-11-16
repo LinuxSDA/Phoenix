@@ -440,6 +440,7 @@
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
 					"\"$(SRCROOT)/vendor/glad/include\"",
 					"\"$(SRCROOT)/vendor/imgui/include\"",
+					"\"$(SRCROOT)/vendor/glm\"",
 					"\"$(SRCROOT)/src\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -477,6 +478,7 @@
 					"\"$(SRCROOT)/vendor/GLFW/include\"",
 					"\"$(SRCROOT)/vendor/glad/include\"",
 					"\"$(SRCROOT)/vendor/imgui/include\"",
+					"\"$(SRCROOT)/vendor/glm\"",
 					"\"$(SRCROOT)/src\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
