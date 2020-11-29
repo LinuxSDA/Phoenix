@@ -7,13 +7,18 @@
 //
 
 #include "px.pch"
-#include "Shader.hpp"
+#include "OpenGLShader.hpp"
 
 #include <glad/glad.h>
 
 namespace Phoenix
 {
-    Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
+    std::unique_ptr<Shader> Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc)
+    {
+        return std::make_unique<OpenGLShader>(vertexSrc, fragmentSrc);
+    }
+
+    OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
     {
         // Create an empty vertex shader handle
         GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -117,17 +122,17 @@ namespace Phoenix
         glDetachShader(program, fragmentShader);
     }
 
-    Shader::~Shader()
+    OpenGLShader::~OpenGLShader()
     {
         glDeleteProgram(m_RendererID);
     }
 
-    void Shader::Bind() const
+    void OpenGLShader::Bind() const
     {
         glUseProgram(m_RendererID);
     }
 
-    void Shader::Unbind() const
+    void OpenGLShader::Unbind() const
     {
         glUseProgram(0);
     }

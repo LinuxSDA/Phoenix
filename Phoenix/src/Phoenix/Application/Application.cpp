@@ -71,7 +71,7 @@ namespace Phoenix
         "   color = vec4(0.0, 1.0, 0.0, 1.0);\n"
         "}\n";
         
-        m_Shader = std::make_unique<Shader>(vertexShader, fragmentShader);
+        m_Shader = Shader::Create(vertexShader, fragmentShader);
     }
 
     const Window& Application::GetWindow()
