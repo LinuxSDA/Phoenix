@@ -23,16 +23,61 @@ namespace Phoenix
         PX_ENGINE_ASSERT(m_Window == nullptr, "Application already exists!");
         m_Window = Window::Create();
         PX_ENGINE_ASSERT(m_Window != nullptr, "Cannnot create window!");
+        m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
 
-        PX_ENGINE_TRACE(glGetString(GL_VERSION));
+        PX_ENGINE_TRACE("GL Version: ", glGetString(GL_VERSION));
 
         auto imGuiLayer = ImGuiLayer::Create();
         PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Cannnot create imgui layer!");
 
         m_ImGuiLayerID = imGuiLayer->GetLayerID();
         PushOverlay(std::move(imGuiLayer));
+
+        /*---------------------*/
+        glGenVertexArrays(1, &m_VertexArray);
+        glBindVertexArray(m_VertexArray);
         
-        m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
+        glGenBuffers(1, &m_VertexBuffer);
+        glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+        
+        float vertices[9] = {
+            -0.5f, -0.5f, 0.0f,
+             0.5f, -0.5f, 0.0f,
+             0.0f,  0.5f, 0.0f
+        };
+        
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+        
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+        
+        glGenBuffers(1, &m_IndexBuffer);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+
+        unsigned int indices[3] = {0, 1, 2};
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+        
+        
+        std::string vertexShader =
+        "#version 330 core\n"
+        "\n"
+        "layout(location = 0) in vec4 position;\n"
+        "\n"
+        "void main() {\n"
+        "   gl_Position = position;\n"
+        "}\n";
+        
+
+        std::string fragmentShader =
+        "#version 330 core\n"
+        "\n"
+        "layout(location = 0) out vec4 color;\n"
+        "\n"
+        "void main() {\n"
+        "   color = vec4(0.0, 1.0, 0.0, 1.0);\n"
+        "}\n";
+        
+        m_Shader = std::make_unique<Shader>(vertexShader, fragmentShader);
     }
 
     const Window& Application::GetWindow()
@@ -81,15 +126,20 @@ namespace Phoenix
 
     void Application::Run()
     {
+        auto& appImGuiLayer = GetImGuiLayer();
+
         while (m_Running)
         {
-            glClearColor(1,1,0,1);
+            glClearColor(0.1f, 0.1f, 0.1f, 1);
             glClear(GL_COLOR_BUFFER_BIT);
                         
+            m_Shader->Bind();
+            glBindVertexArray(m_VertexArray);
+            glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+            
             for (auto& layer : m_LayerStack)
                 layer->OnUpdate();
 
-            auto& appImGuiLayer = GetImGuiLayer();
             appImGuiLayer.Begin();
             
             for (auto& layer : m_LayerStack)

@@ -16,7 +16,7 @@
 #include "LayerStack.hpp"
 #include "Phoenix/Events/Event.h"
 #include "Phoenix/Events/ApplicationEvent.h"
-
+#include "Phoenix/Renderer/Shader.hpp"
 
 namespace Phoenix
 {
@@ -49,6 +49,9 @@ namespace Phoenix
         
         bool m_Running = true;
         LayerStack m_LayerStack;
+        
+        unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+        std::unique_ptr<Shader> m_Shader;
     };
 }
 

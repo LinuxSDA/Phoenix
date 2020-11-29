@@ -13,9 +13,18 @@
 
 namespace Phoenix
 {
-    std::unique_ptr<Input> Input::s_Instance = std::make_unique<MacInput>();
+    const Input& Input::GetInstance()
+    {
+        return MacInput::GetInstance();
+    }
 
-    bool MacInput::IsKeyPressedImpl(int keycode)
+    const MacInput& MacInput::GetInstance()
+    {
+        static MacInput s_InputInstance;
+        return s_InputInstance;
+    }
+
+    bool MacInput::IsKeyPressedImpl(int keycode) const
     {
         const auto& window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
         auto state = glfwGetKey(window, keycode);
@@ -23,14 +32,14 @@ namespace Phoenix
     }
 
 
-    bool MacInput::IsMouseButtonPressedImpl(int button)
+    bool MacInput::IsMouseButtonPressedImpl(int button) const
     {
         auto window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
         auto state = glfwGetMouseButton(window, button);
         return state == GLFW_PRESS;
     }
 
-    std::pair<float, float> MacInput::GetMousePositionImpl()
+    std::pair<float, float> MacInput::GetMousePositionImpl() const
     {
         auto window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
         double xpos, ypos;
@@ -39,13 +48,13 @@ namespace Phoenix
         return { (float)xpos, (float)ypos };
     }
 
-    float MacInput::GetMouseXImpl()
+    float MacInput::GetMouseXImpl() const
     {
         auto[x, y] = GetMousePositionImpl();
         return x;
     }
 
-    float MacInput::GetMouseYImpl()
+    float MacInput::GetMouseYImpl() const
     {
         auto[x, y] = GetMousePositionImpl();
         return y;
