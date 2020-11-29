@@ -17,16 +17,16 @@ namespace Phoenix
     ////////////  VertexBuffer ////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
-    std::unique_ptr<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
+    std::unique_ptr<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t count)
     {
-        return std::make_unique<OpenGLVertexBuffer>(vertices, size);
+        return std::make_unique<OpenGLVertexBuffer>(vertices, count);
     }
 
-    OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
+    OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t count)
     {
         glGenBuffers(1, &m_RendererID);
         glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-        glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), vertices, GL_STATIC_DRAW);
     }
 
     OpenGLVertexBuffer::~OpenGLVertexBuffer()

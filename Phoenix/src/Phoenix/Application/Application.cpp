@@ -25,7 +25,7 @@ namespace Phoenix
         PX_ENGINE_ASSERT(m_Window != nullptr, "Cannnot create window!");
         m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
 
-        PX_ENGINE_TRACE("GL Version: ", glGetString(GL_VERSION));
+        PX_ENGINE_TRACE("GL Version: {0}", glGetString(GL_VERSION));
 
         auto imGuiLayer = ImGuiLayer::Create();
         PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Cannnot create imgui layer!");
@@ -34,31 +34,68 @@ namespace Phoenix
         PushOverlay(std::move(imGuiLayer));
 
         /*---------------------*/
-        glGenVertexArrays(1, &m_VertexArray);
-        glBindVertexArray(m_VertexArray);
+        m_VertexArray = VertexArray::Create();
         
         std::vector<float> vertices = {
-            -0.5f, -0.5f, 0.0f,
-             0.5f, -0.5f, 0.0f,
-             0.0f,  0.5f, 0.0f
+            -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+             0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+             0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
         };
 
         std::vector<uint32_t> indices = {0, 1, 2};
 
-        m_VertexBuffer = VertexBuffer::Create(vertices.data(), static_cast<uint32_t>(vertices.size() * sizeof(vertices[0])));
-        m_IndexBuffer = IndexBuffer::Create(indices.data(), static_cast<uint32_t>(indices.size()));
+        std::shared_ptr<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertices.data(), static_cast<uint32_t>(vertices.size()));
+
+        BufferLayout layout = {
+            {ShaderDataType::Float3, "position"},
+            {ShaderDataType::Float4, "color"}
+        };
         
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-                
+        vertexBuffer->SetLayout(layout);
+        m_VertexArray->AddVertexBuffer(vertexBuffer);
+
+        std::shared_ptr<IndexBuffer> indexBuffer = IndexBuffer::Create(indices.data(), static_cast<uint32_t>(indices.size()));
+        m_VertexArray->SetIndexBuffer(indexBuffer);
+
         
+        std::vector<float> sqVertices = {
+            -0.75f, -0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
+             0.75f, -0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
+             0.75f,  0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
+            -0.75f,  0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f
+        };
+
+        std::vector<uint32_t> sqIndices = {0, 1, 2, 2, 3, 0};
+        
+        m_SquareVA = VertexArray::Create();
+        
+        std::shared_ptr<VertexBuffer> sqVBuffer = VertexBuffer::Create(sqVertices.data(), static_cast<uint32_t>(sqVertices.size()));
+        
+        BufferLayout sqlayout = {
+            {ShaderDataType::Float3, "position"},
+            {ShaderDataType::Float4, "color"}
+        };
+        
+        sqVBuffer->SetLayout(sqlayout);
+        m_SquareVA->AddVertexBuffer(sqVBuffer);
+
+        std::shared_ptr<IndexBuffer>  sqIBuffer = IndexBuffer::Create(sqIndices.data(), static_cast<uint32_t>(sqIndices.size()));
+        m_SquareVA->SetIndexBuffer(sqIBuffer);
+
         std::string vertexShader =
         "#version 330 core\n"
         "\n"
-        "layout(location = 0) in vec4 position;\n"
+        "layout(location = 0) in vec3 position;\n"
+        "layout(location = 1) in vec4 color;\n"
+        "\n"
+        "out vec3 v_position;"
+        "\n"
+        "out vec4 v_color;"
         "\n"
         "void main() {\n"
-        "   gl_Position = position;\n"
+        "   gl_Position = vec4(position, 1.0f);\n"
+        "   v_position  = position;\n"
+        "   v_color     = color;\n"
         "}\n";
         
 
@@ -67,8 +104,12 @@ namespace Phoenix
         "\n"
         "layout(location = 0) out vec4 color;\n"
         "\n"
+        "in vec3 v_position;"
+        "\n"
+        "in vec4 v_color;"
+        "\n"
         "void main() {\n"
-        "   color = vec4(0.0, 1.0, 0.0, 1.0);\n"
+        "   color = v_color;\n"
         "}\n";
         
         m_Shader = Shader::Create(vertexShader, fragmentShader);
@@ -128,9 +169,13 @@ namespace Phoenix
             glClear(GL_COLOR_BUFFER_BIT);
                         
             m_Shader->Bind();
-            glBindVertexArray(m_VertexArray);
-            glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
             
+            m_SquareVA->Bind();
+            glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+            m_VertexArray->Bind();
+            glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
             for (auto& layer : m_LayerStack)
                 layer->OnUpdate();
 
