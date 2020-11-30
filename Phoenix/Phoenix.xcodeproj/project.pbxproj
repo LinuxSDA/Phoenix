@@ -11,7 +11,7 @@
 		725C5D572562C3C7009AC83F /* OpenGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D552562C3C7009AC83F /* OpenGLContext.cpp */; };
 		725C5D582562C3C7009AC83F /* OpenGLContext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D562562C3C7009AC83F /* OpenGLContext.hpp */; };
 		725C5D5C257359D9009AC83F /* OpenGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D5A257359D9009AC83F /* OpenGLShader.cpp */; };
-		725C5D5D257359D9009AC83F /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D5B257359D9009AC83F /* Shader.h */; };
+		725C5D5D257359D9009AC83F /* Shader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D5B257359D9009AC83F /* Shader.hpp */; };
 		725C5D6225737AC0009AC83F /* Buffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D6025737AC0009AC83F /* Buffer.hpp */; };
 		725C5D652573844B009AC83F /* OpenGLBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D632573844B009AC83F /* OpenGLBuffer.cpp */; };
 		725C5D662573844B009AC83F /* OpenGLBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D642573844B009AC83F /* OpenGLBuffer.hpp */; };
@@ -29,6 +29,7 @@
 		725C5D802574EC8C009AC83F /* OpenGLRendererAPI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D7E2574EC8C009AC83F /* OpenGLRendererAPI.hpp */; };
 		725C5D842574F256009AC83F /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D832574F256009AC83F /* Buffer.cpp */; };
 		725C5D862574F577009AC83F /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D852574F577009AC83F /* VertexArray.cpp */; };
+		725C5D8825751971009AC83F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D8725751971009AC83F /* Shader.cpp */; };
 		7277A7F0255D36930028E5A8 /* px.pch in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7EF255D36930028E5A8 /* px.pch */; };
 		7277A7F2255DA2F00028E5A8 /* Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F1255DA2F00028E5A8 /* Window.h */; };
 		7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */; };
@@ -77,7 +78,7 @@
 		725C5D552562C3C7009AC83F /* OpenGLContext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLContext.cpp; sourceTree = "<group>"; };
 		725C5D562562C3C7009AC83F /* OpenGLContext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLContext.hpp; sourceTree = "<group>"; };
 		725C5D5A257359D9009AC83F /* OpenGLShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLShader.cpp; sourceTree = "<group>"; };
-		725C5D5B257359D9009AC83F /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		725C5D5B257359D9009AC83F /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		725C5D6025737AC0009AC83F /* Buffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
 		725C5D632573844B009AC83F /* OpenGLBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLBuffer.cpp; sourceTree = "<group>"; };
 		725C5D642573844B009AC83F /* OpenGLBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLBuffer.hpp; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		725C5D7E2574EC8C009AC83F /* OpenGLRendererAPI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLRendererAPI.hpp; sourceTree = "<group>"; };
 		725C5D832574F256009AC83F /* Buffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
 		725C5D852574F577009AC83F /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
+		725C5D8725751971009AC83F /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
 		7277A7F1255DA2F00028E5A8 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacWindow.cpp; sourceTree = "<group>"; };
@@ -166,9 +168,10 @@
 				725C5D6825738C0C009AC83F /* Renderer.hpp */,
 				725C5D752574E1AC009AC83F /* RendererAPI.cpp */,
 				725C5D762574E1AC009AC83F /* RendererAPI.hpp */,
-				725C5D5B257359D9009AC83F /* Shader.h */,
+				725C5D5B257359D9009AC83F /* Shader.hpp */,
 				725C5D852574F577009AC83F /* VertexArray.cpp */,
 				725C5D6E25741687009AC83F /* VertexArray.hpp */,
+				725C5D8725751971009AC83F /* Shader.cpp */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -354,7 +357,7 @@
 				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
 				728FFC29253CAC82006AA2F2 /* Event.h in Headers */,
 				7277A820255EB1330028E5A8 /* Layer.hpp in Headers */,
-				725C5D5D257359D9009AC83F /* Shader.h in Headers */,
+				725C5D5D257359D9009AC83F /* Shader.hpp in Headers */,
 				725C5D582562C3C7009AC83F /* OpenGLContext.hpp in Headers */,
 				7277A7F2255DA2F00028E5A8 /* Window.h in Headers */,
 				725C5D662573844B009AC83F /* OpenGLBuffer.hpp in Headers */,
@@ -456,6 +459,7 @@
 				725C5D7F2574EC8C009AC83F /* OpenGLRendererAPI.cpp in Sources */,
 				725C5D772574E1AC009AC83F /* RendererAPI.cpp in Sources */,
 				7277A81F255EB1330028E5A8 /* Layer.cpp in Sources */,
+				725C5D8825751971009AC83F /* Shader.cpp in Sources */,
 				725C5D572562C3C7009AC83F /* OpenGLContext.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
