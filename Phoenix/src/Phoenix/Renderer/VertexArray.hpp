@@ -9,7 +9,7 @@
 #pragma once
 
 #include <memory>
-#include "Buffer.h"
+#include "Buffer.hpp"
 
 namespace Phoenix
 {

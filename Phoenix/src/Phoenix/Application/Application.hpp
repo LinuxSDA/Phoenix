@@ -17,8 +17,8 @@
 #include "Phoenix/Events/Event.h"
 #include "Phoenix/Events/ApplicationEvent.h"
 #include "Phoenix/Renderer/Shader.h"
-#include "Phoenix/Renderer/Buffer.h"
-#include "Phoenix/Renderer/VertexArray.h"
+#include "Phoenix/Renderer/Buffer.hpp"
+#include "Phoenix/Renderer/VertexArray.hpp"
 
 namespace Phoenix
 {
@@ -52,8 +52,8 @@ namespace Phoenix
         bool m_Running = true;
         LayerStack m_LayerStack;
 
-        std::unique_ptr<VertexArray> m_SquareVA;
-        std::unique_ptr<VertexArray> m_VertexArray;
+        std::shared_ptr<VertexArray> m_SquareVA;
+        std::shared_ptr<VertexArray> m_VertexArray;
         std::unique_ptr<Shader>      m_Shader;
     };
 }

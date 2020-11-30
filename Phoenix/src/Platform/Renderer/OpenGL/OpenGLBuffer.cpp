@@ -17,11 +17,6 @@ namespace Phoenix
     ////////////  VertexBuffer ////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
-    std::unique_ptr<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t count)
-    {
-        return std::make_unique<OpenGLVertexBuffer>(vertices, count);
-    }
-
     OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t count)
     {
         glGenBuffers(1, &m_RendererID);
@@ -47,11 +42,6 @@ namespace Phoenix
     /////////////////////////////////////////////////////////////////////////////
     ///////// IndexBuffer ///////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
-
-    std::unique_ptr<IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t size)
-    {
-        return std::make_unique<OpenGLIndexBuffer>(indices, size);
-    }
 
     OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
         : m_Count(count)

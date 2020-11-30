@@ -12,7 +12,7 @@
 #include "Logger.hpp"
 #include "Input.h"
 
-#include <glad/glad.h>
+#include "Phoenix/Renderer/Renderer.hpp"
 
 namespace Phoenix
 {
@@ -24,8 +24,6 @@ namespace Phoenix
         m_Window = Window::Create();
         PX_ENGINE_ASSERT(m_Window != nullptr, "Cannnot create window!");
         m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
-
-        PX_ENGINE_TRACE("GL Version: {0}", glGetString(GL_VERSION));
 
         auto imGuiLayer = ImGuiLayer::Create();
         PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Cannnot create imgui layer!");
@@ -165,16 +163,16 @@ namespace Phoenix
 
         while (m_Running)
         {
-            glClearColor(0.1f, 0.1f, 0.1f, 1);
-            glClear(GL_COLOR_BUFFER_BIT);
+            RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+            RenderCommand::Clear();
                         
-            m_Shader->Bind();
-            
-            m_SquareVA->Bind();
-            glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
-            m_VertexArray->Bind();
-            glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+            Renderer::BeginScene();
+            {
+                m_Shader->Bind();
+                Renderer::Submit(m_SquareVA);
+                Renderer::Submit(m_VertexArray);
+            }
+            Renderer::EndScene();
 
             for (auto& layer : m_LayerStack)
                 layer->OnUpdate();
