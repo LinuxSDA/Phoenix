@@ -12,6 +12,8 @@
 
 namespace Phoenix
 {
+    /* Platform specific, created in Platform/<Mac/Win>*/
+
     class Input
     {
     public:

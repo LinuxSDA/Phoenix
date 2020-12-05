@@ -159,38 +159,19 @@
 		725C5D512562C29A009AC83F /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				725C5D832574F256009AC83F /* Buffer.cpp */,
-				725C5D6025737AC0009AC83F /* Buffer.hpp */,
-				725C5D522562C2BC009AC83F /* GraphicsContext.h */,
-				725C5D7B2574E7F2009AC83F /* RenderCommand.cpp */,
-				725C5D792574E47B009AC83F /* RenderCommand.hpp */,
-				725C5D6725738C0C009AC83F /* Renderer.cpp */,
-				725C5D6825738C0C009AC83F /* Renderer.hpp */,
-				725C5D752574E1AC009AC83F /* RendererAPI.cpp */,
-				725C5D762574E1AC009AC83F /* RendererAPI.hpp */,
-				725C5D5B257359D9009AC83F /* Shader.hpp */,
-				725C5D852574F577009AC83F /* VertexArray.cpp */,
-				725C5D6E25741687009AC83F /* VertexArray.hpp */,
-				725C5D8725751971009AC83F /* Shader.cpp */,
+				725C5D89257BE5C1009AC83F /* Interface */,
+				725C5D822574EF8C009AC83F /* OpenGL */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
 		};
-		725C5D542562C3A8009AC83F /* OpenGL */ = {
+		725C5D542562C3A8009AC83F /* Context */ = {
 			isa = PBXGroup;
 			children = (
 				725C5D552562C3C7009AC83F /* OpenGLContext.cpp */,
 				725C5D562562C3C7009AC83F /* OpenGLContext.hpp */,
 			);
-			path = OpenGL;
-			sourceTree = "<group>";
-		};
-		725C5D812574EF82009AC83F /* Renderer */ = {
-			isa = PBXGroup;
-			children = (
-				725C5D822574EF8C009AC83F /* OpenGL */,
-			);
-			path = Renderer;
+			path = Context;
 			sourceTree = "<group>";
 		};
 		725C5D822574EF8C009AC83F /* OpenGL */ = {
@@ -208,10 +189,29 @@
 			path = OpenGL;
 			sourceTree = "<group>";
 		};
+		725C5D89257BE5C1009AC83F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				725C5D832574F256009AC83F /* Buffer.cpp */,
+				725C5D6025737AC0009AC83F /* Buffer.hpp */,
+				725C5D522562C2BC009AC83F /* GraphicsContext.h */,
+				725C5D7B2574E7F2009AC83F /* RenderCommand.cpp */,
+				725C5D792574E47B009AC83F /* RenderCommand.hpp */,
+				725C5D6725738C0C009AC83F /* Renderer.cpp */,
+				725C5D6825738C0C009AC83F /* Renderer.hpp */,
+				725C5D752574E1AC009AC83F /* RendererAPI.cpp */,
+				725C5D762574E1AC009AC83F /* RendererAPI.hpp */,
+				725C5D5B257359D9009AC83F /* Shader.hpp */,
+				725C5D852574F577009AC83F /* VertexArray.cpp */,
+				725C5D6E25741687009AC83F /* VertexArray.hpp */,
+				725C5D8725751971009AC83F /* Shader.cpp */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		7277A7F3255DA90A0028E5A8 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				725C5D812574EF82009AC83F /* Renderer */,
 				7277A7F4255DA91B0028E5A8 /* Mac */,
 			);
 			path = Platform;
@@ -220,7 +220,7 @@
 		7277A7F4255DA91B0028E5A8 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
-				725C5D542562C3A8009AC83F /* OpenGL */,
+				725C5D542562C3A8009AC83F /* Context */,
 				7277A846255FD17B0028E5A8 /* ImGui */,
 				725C5D4F25628F04009AC83F /* Window */,
 			);

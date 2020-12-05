@@ -12,7 +12,7 @@
 #include "Logger.hpp"
 #include "Input.h"
 
-#include "Phoenix/Renderer/Renderer.hpp"
+#include "Phoenix/Renderer/Interface/Renderer.hpp"
 
 namespace Phoenix
 {

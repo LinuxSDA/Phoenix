@@ -10,7 +10,7 @@
 #include "Buffer.hpp"
 #include "Renderer.hpp"
 
-#include "Platform/Renderer/OpenGL/OpenGLBuffer.hpp"
+#include "Phoenix/Renderer/OpenGL/OpenGLBuffer.hpp"
 
 namespace Phoenix
 {

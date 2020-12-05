@@ -14,7 +14,7 @@
 #include "Phoenix/Events/MouseEvent.h"
 #include "Phoenix/Events/KeyEvent.h"
 
-#include "Platform/Mac/OpenGL/OpenGLContext.hpp"
+#include "Platform/Mac/Context/OpenGLContext.hpp"
 
 namespace Phoenix
 {

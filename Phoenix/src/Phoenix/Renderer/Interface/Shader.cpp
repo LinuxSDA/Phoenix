@@ -10,7 +10,7 @@
 #include "Shader.hpp"
 
 #include "Renderer.hpp"
-#include "Platform/Renderer/OpenGL/OpenGLShader.hpp"
+#include "Phoenix/Renderer/OpenGL/OpenGLShader.hpp"
 
 namespace Phoenix
 {

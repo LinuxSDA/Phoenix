@@ -8,6 +8,8 @@
 
 #pragma once
 
+/* Platform specific, created in Platform/<Mac/Win>*/
+
 namespace Phoenix
 {
     class GraphicsContext

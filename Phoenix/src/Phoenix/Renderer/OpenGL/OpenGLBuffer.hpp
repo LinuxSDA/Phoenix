@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Renderer/Buffer.hpp"
+#include "Phoenix/Renderer/Interface/Buffer.hpp"
 
 namespace Phoenix
 {

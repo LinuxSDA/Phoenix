@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Renderer/VertexArray.hpp"
+#include "Phoenix/Renderer/Interface/VertexArray.hpp"
 
 namespace Phoenix
 {

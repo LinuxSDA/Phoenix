@@ -9,7 +9,7 @@
 #include "px.pch"
 #include "RenderCommand.hpp"
 
-#include "Platform/Renderer/OpenGL/OpenGLRendererAPI.hpp"
+#include "Phoenix/Renderer/OpenGL/OpenGLRendererAPI.hpp"
 
 namespace Phoenix
 {

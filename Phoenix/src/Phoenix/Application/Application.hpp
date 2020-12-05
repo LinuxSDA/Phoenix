@@ -16,9 +16,9 @@
 #include "LayerStack.hpp"
 #include "Phoenix/Events/Event.h"
 #include "Phoenix/Events/ApplicationEvent.h"
-#include "Phoenix/Renderer/Shader.hpp"
-#include "Phoenix/Renderer/Buffer.hpp"
-#include "Phoenix/Renderer/VertexArray.hpp"
+#include "Phoenix/Renderer/Interface/Shader.hpp"
+#include "Phoenix/Renderer/Interface/Buffer.hpp"
+#include "Phoenix/Renderer/Interface/VertexArray.hpp"
 
 namespace Phoenix
 {

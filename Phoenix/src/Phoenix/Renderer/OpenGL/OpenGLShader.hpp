@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Renderer/Shader.hpp"
+#include "Phoenix/Renderer/Interface/Shader.hpp"
 
 namespace Phoenix
 {

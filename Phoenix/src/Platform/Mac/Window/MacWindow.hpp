@@ -11,7 +11,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Phoenix/Window.h"
-#include "Phoenix/Renderer/GraphicsContext.h"
+#include "Phoenix/Renderer/Interface/GraphicsContext.h"
 
 namespace Phoenix
 {

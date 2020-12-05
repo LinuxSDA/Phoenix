@@ -12,6 +12,8 @@
 #include "Core.h"
 #include "Phoenix/Events/Event.h"
 
+/* Platform specific, created in Platform/<Mac/Win>*/
+
 namespace Phoenix
 {
     struct WindowProps

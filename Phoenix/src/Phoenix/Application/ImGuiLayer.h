@@ -14,6 +14,8 @@
 #include "Phoenix/Events/MouseEvent.h"
 #include "Phoenix/Events/ApplicationEvent.h"
 
+/* Platform specific, created in Platform/<Mac/Win>*/
+
 namespace Phoenix
 {
     class ImGuiLayer : public Layer

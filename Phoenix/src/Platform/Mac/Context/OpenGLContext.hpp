@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Renderer/GraphicsContext.h"
+#include "Phoenix/Renderer/Interface/GraphicsContext.h"
 
 struct GLFWwindow;
 

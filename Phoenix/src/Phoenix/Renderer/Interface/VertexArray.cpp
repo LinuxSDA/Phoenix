@@ -10,7 +10,7 @@
 #include "VertexArray.hpp"
 
 #include "Renderer.hpp"
-#include "Platform/Renderer/OpenGL/OpenGLVertexArray.hpp"
+#include "Phoenix/Renderer/OpenGL/OpenGLVertexArray.hpp"
 
 namespace Phoenix
 {
