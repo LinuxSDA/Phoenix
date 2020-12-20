@@ -26,7 +26,7 @@ namespace Phoenix
 
     bool MacInput::IsKeyPressedImpl(int keycode) const
     {
-        const auto& window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
+        const auto& window = static_cast<GLFWwindow*>(Application::GetApplication().GetWindow().GetNativeWindow());
         auto state = glfwGetKey(window, keycode);
         return (state == GLFW_PRESS || state == GLFW_REPEAT);
     }
@@ -34,14 +34,14 @@ namespace Phoenix
 
     bool MacInput::IsMouseButtonPressedImpl(int button) const
     {
-        auto window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
+        auto window = static_cast<GLFWwindow*>(Application::GetApplication().GetWindow().GetNativeWindow());
         auto state = glfwGetMouseButton(window, button);
         return state == GLFW_PRESS;
     }
 
     std::pair<float, float> MacInput::GetMousePositionImpl() const
     {
-        auto window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
+        auto window = static_cast<GLFWwindow*>(Application::GetApplication().GetWindow().GetNativeWindow());
         double xpos, ypos;
         glfwGetCursorPos(window, &xpos, &ypos);
 

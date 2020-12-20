@@ -68,6 +68,7 @@ namespace Phoenix
             return GetCategoryFlags() & category;
         }
 
+        /* Layers that consume the event need to set m_Handled to true. */
         bool m_Handled = false;
     };
 

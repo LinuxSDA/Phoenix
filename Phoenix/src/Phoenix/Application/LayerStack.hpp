@@ -31,6 +31,9 @@ namespace Phoenix
         std::deque<Layer::UniquePtr>::iterator begin() { return m_Layers.begin(); }
         std::deque<Layer::UniquePtr>::iterator end() { return m_Layers.end(); }
 
+        std::deque<Layer::UniquePtr>::reverse_iterator rbegin() { return m_Layers.rbegin(); }
+        std::deque<Layer::UniquePtr>::reverse_iterator rend() { return m_Layers.rend(); }
+        
         std::deque<Layer::UniquePtr>::const_iterator begin() const { return m_Layers.begin(); }
         std::deque<Layer::UniquePtr>::const_iterator end() const { return m_Layers.end(); }
 

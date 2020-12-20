@@ -56,7 +56,7 @@ namespace Phoenix
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
 
-        GLFWwindow* window = static_cast<GLFWwindow*>(Application::GetWindow().GetNativeWindow());
+        GLFWwindow* window = static_cast<GLFWwindow*>(Application::GetApplication().GetWindow().GetNativeWindow());
 
         // Setup Platform/Renderer bindings
         ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -80,7 +80,7 @@ namespace Phoenix
     void MacImGuiLayer::End()
     {
         ImGuiIO& io = ImGui::GetIO();
-        const Window& window = Application::GetWindow();
+        const Window& window = Application::GetApplication().GetWindow();
         io.DisplaySize = ImVec2((float)window.GetWidth(), (float)window.GetHeight());
         // Rendering
         ImGui::Render();

@@ -16,21 +16,26 @@
 
 namespace Phoenix
 {
-    std::unique_ptr<Window> Application::m_Window;
+    Application::ObserverApplicationPtr Application::m_ApplicationPointer = nullptr;
 
     Application::Application()
     {
-        PX_ENGINE_ASSERT(m_Window == nullptr, "Application already exists!");
+        PX_ENGINE_ASSERT(m_ApplicationPointer == nullptr, "Application already exists!");
+
+        m_ApplicationPointer = this;
+
+        // Window //
         m_Window = Window::Create();
         PX_ENGINE_ASSERT(m_Window != nullptr, "Cannnot create window!");
         m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
 
+        // ImGUI Layer//
         auto imGuiLayer = ImGuiLayer::Create();
-        PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Cannnot create imgui layer!");
-
+        PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Can not create imgui layer!");
         m_ImGuiLayerID = imGuiLayer->GetLayerID();
         PushOverlay(std::move(imGuiLayer));
 
+        
         /*---------------------*/
         m_VertexArray = VertexArray::Create();
         
@@ -113,7 +118,7 @@ namespace Phoenix
         m_Shader = Shader::Create(vertexShader, fragmentShader);
     }
 
-    const Window& Application::GetWindow()
+    const Window& Application::GetWindow() const
     {
         PX_ENGINE_ASSERT(m_Window != nullptr, "Window not intialized!");
         return *m_Window;
@@ -135,9 +140,12 @@ namespace Phoenix
         
         dispatch.Dispatch<WindowCloseEvent>(PX_BIND_EVENT_FN(Application::OnWindowClose));
         
-        for (auto it = m_LayerStack.end(); it != m_LayerStack.begin() && !e.m_Handled; )
+        for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
         {
-            (*--it)->OnEvent(e);
+            if(e.m_Handled)
+                break;
+
+            (*it)->OnEvent(e);
         }
     }
 

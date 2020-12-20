@@ -39,14 +39,22 @@ namespace Phoenix
         void PushLayer(std::unique_ptr<Layer> layer);
         void PushOverlay(std::unique_ptr<Layer> layer);
 
-        static const Window& GetWindow();
+        const Window& GetWindow() const;
         
         ImGuiLayer& GetImGuiLayer();
         
+        using ObserverApplicationPtr = Application*;
+        inline static const Application& GetApplication() { return *m_ApplicationPointer;}
+
     private:
         bool OnWindowClose(WindowCloseEvent& e);
 
-        static std::unique_ptr<Window> m_Window;
+
+    private:
+        static ObserverApplicationPtr m_ApplicationPointer;
+        
+        std::unique_ptr<Window> m_Window;        
+        
         Layer::UniqueID m_ImGuiLayerID = 0;
         
         bool m_Running = true;
