@@ -42,7 +42,8 @@ namespace Phoenix
 
         virtual unsigned int GetWidth() const = 0;
         virtual unsigned int GetHeight() const = 0;
-
+        virtual float GetCurrentTime() const = 0;
+        
         // Window attributes
         virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
         virtual void SetVSync(bool enabled) = 0;

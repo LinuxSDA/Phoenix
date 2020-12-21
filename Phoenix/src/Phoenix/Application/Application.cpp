@@ -11,6 +11,7 @@
 #include "Application.hpp"
 #include "Logger.hpp"
 #include "Input.h"
+#include "Timestep.h"
 
 #include "Phoenix/Renderer/Interface/Renderer.hpp"
 
@@ -89,8 +90,12 @@ namespace Phoenix
 
         while (m_Running)
         {
+            float time = m_Window->GetCurrentTime();
+            Timestep ts = time - m_LastFrameTime;
+            m_LastFrameTime = time;
+            
             for (auto& layer : m_LayerStack)
-                layer->OnUpdate();
+                layer->OnUpdate(ts);
 
             appImGuiLayer.Begin();
             

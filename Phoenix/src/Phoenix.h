@@ -14,6 +14,7 @@
 #include "Phoenix/Application/Application.hpp"
 #include "Phoenix/Application/Logger.hpp"
 #include "Phoenix/Application/Layer.hpp"
+#include "Phoenix/Application/Timestep.h"
 
 #include "Phoenix/Application/Window.h"
 #include "Phoenix/Application/Input.h"

@@ -109,25 +109,25 @@ public:
 
     }
 
-    void OnUpdate() override
+    void OnUpdate(Phoenix::Timestep ts) override
     {
         Phoenix::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Phoenix::RenderCommand::Clear();
-
+        
         if (Phoenix::Input::IsKeyPressed(PX_KEY_LEFT))
-            m_CameraPosition.x -= s_CameraMoveSpeed;
+            m_CameraPosition.x -= s_CameraMoveSpeed * ts;
         else if (Phoenix::Input::IsKeyPressed(PX_KEY_RIGHT))
-            m_CameraPosition.x += s_CameraMoveSpeed;
+            m_CameraPosition.x += s_CameraMoveSpeed * ts;
 
         if (Phoenix::Input::IsKeyPressed(PX_KEY_UP))
-            m_CameraPosition.y += s_CameraMoveSpeed;
+            m_CameraPosition.y += s_CameraMoveSpeed * ts;
         else if (Phoenix::Input::IsKeyPressed(PX_KEY_DOWN))
-            m_CameraPosition.y -= s_CameraMoveSpeed;
+            m_CameraPosition.y -= s_CameraMoveSpeed * ts;
 
         if (Phoenix::Input::IsKeyPressed(PX_KEY_A))
-            m_CameraRotation += s_CameraRotateSpeed;
+            m_CameraRotation += s_CameraRotateSpeed * ts;
         else if (Phoenix::Input::IsKeyPressed(PX_KEY_D))
-            m_CameraRotation -= s_CameraRotateSpeed;
+            m_CameraRotation -= s_CameraRotateSpeed * ts;
 
         m_Camera->SetPosition(m_CameraPosition);
         m_Camera->SetRotation(m_CameraRotation);
@@ -161,8 +161,8 @@ private:
     glm::vec3 m_CameraPosition{};
     float     m_CameraRotation{};
     
-    constexpr static float s_CameraMoveSpeed   = 0.1f;
-    constexpr static float s_CameraRotateSpeed = 1.0f;
+    constexpr static float s_CameraMoveSpeed   = 5.0f;
+    constexpr static float s_CameraRotateSpeed = 180.0f;
 
 };
 

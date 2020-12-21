@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		72525800258F57F70033A545 /* OrthographicCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725257FE258F57F70033A545 /* OrthographicCamera.cpp */; };
 		72525801258F57F70033A545 /* OrthographicCamera.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725257FF258F57F70033A545 /* OrthographicCamera.hpp */; };
+		7252580325908E500033A545 /* Timestep.h in Headers */ = {isa = PBXBuildFile; fileRef = 7252580225908E500033A545 /* Timestep.h */; };
 		725C5D532562C2BC009AC83F /* GraphicsContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D522562C2BC009AC83F /* GraphicsContext.h */; };
 		725C5D572562C3C7009AC83F /* OpenGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D552562C3C7009AC83F /* OpenGLContext.cpp */; };
 		725C5D582562C3C7009AC83F /* OpenGLContext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D562562C3C7009AC83F /* OpenGLContext.hpp */; };
@@ -78,6 +79,7 @@
 /* Begin PBXFileReference section */
 		725257FE258F57F70033A545 /* OrthographicCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrthographicCamera.cpp; sourceTree = "<group>"; };
 		725257FF258F57F70033A545 /* OrthographicCamera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrthographicCamera.hpp; sourceTree = "<group>"; };
+		7252580225908E500033A545 /* Timestep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timestep.h; sourceTree = "<group>"; };
 		725C5D522562C2BC009AC83F /* GraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsContext.h; sourceTree = "<group>"; };
 		725C5D552562C3C7009AC83F /* OpenGLContext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLContext.cpp; sourceTree = "<group>"; };
 		725C5D562562C3C7009AC83F /* OpenGLContext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLContext.hpp; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				7277A8852561B08D0028E5A8 /* MouseButtonCodes.h */,
 				7277A8872561B0C70028E5A8 /* KeyCodes.h */,
 				7277A849255FD1B20028E5A8 /* ImGuiLayer.h */,
+				7252580225908E500033A545 /* Timestep.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				725C5D662573844B009AC83F /* OpenGLBuffer.hpp in Headers */,
 				725C5D7425741A35009AC83F /* OpenGLVertexArray.hpp in Headers */,
 				7277A86B25618E8E0028E5A8 /* Input.h in Headers */,
+				7252580325908E500033A545 /* Timestep.h in Headers */,
 				72C93CB02530CDA4008D271D /* Application.hpp in Headers */,
 				7277A8882561B0C70028E5A8 /* KeyCodes.h in Headers */,
 			);

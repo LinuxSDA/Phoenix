@@ -52,11 +52,10 @@ namespace Phoenix
     private:
         static ObserverPtr m_ApplicationPointer;
         
-        std::unique_ptr<Window> m_Window;        
-        
+        std::unique_ptr<Window> m_Window;
         Layer::UniqueID m_ImGuiLayerID = 0;
-        
         bool m_Running = true;
+        float m_LastFrameTime = 0.0f;
         LayerStack m_LayerStack;
     };
 }

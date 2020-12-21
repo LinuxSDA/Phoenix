@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Timestep.h"
 #include "Phoenix/Events/Event.h"
 
 namespace Phoenix
@@ -41,7 +42,7 @@ namespace Phoenix
 
         virtual void OnAttach() {}
         virtual void OnDetach() {}
-        virtual void OnUpdate() {}
+        virtual void OnUpdate(Timestep ts) {}
         virtual void OnImGuiRender() {}
         virtual void OnEvent(Event& event) {}
 
