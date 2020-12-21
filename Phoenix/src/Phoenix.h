@@ -22,6 +22,17 @@
 #include "Phoenix/Application/KeyCodes.h"
 #include "Phoenix/Application/MouseButtonCodes.h"
 
+// ---Renderer------------------------
+#include "Phoenix/Renderer/Interface/Renderer.hpp"
+#include "Phoenix/Renderer/Interface/RenderCommand.hpp"
 
-/* Entry point */
+#include "Phoenix/Renderer/Interface/Buffer.hpp"
+#include "Phoenix/Renderer/Interface/Shader.hpp"
+#include "Phoenix/Renderer/Interface/VertexArray.hpp"
+
+#include "Phoenix/Renderer/Interface/OrthographicCamera.hpp"
+// -----------------------------------
+
+
+// ---Entry point------------------------
 #include "Phoenix/Application/EntryPoint.h"

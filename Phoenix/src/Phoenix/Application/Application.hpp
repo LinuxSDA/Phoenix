@@ -19,6 +19,7 @@
 #include "Phoenix/Renderer/Interface/Shader.hpp"
 #include "Phoenix/Renderer/Interface/Buffer.hpp"
 #include "Phoenix/Renderer/Interface/VertexArray.hpp"
+#include "Phoenix/Renderer/Interface/OrthographicCamera.hpp"
 
 namespace Phoenix
 {
@@ -33,25 +34,23 @@ namespace Phoenix
         virtual ~Application() = default;
         
         void Run();
-        
-        void OnEvent(Event& e);
-        
+                
         void PushLayer(std::unique_ptr<Layer> layer);
         void PushOverlay(std::unique_ptr<Layer> layer);
 
         const Window& GetWindow() const;
-        
-        ImGuiLayer& GetImGuiLayer();
-        
-        using ObserverApplicationPtr = Application*;
+                
+        using ObserverPtr = Application*;
         inline static const Application& GetApplication() { return *m_ApplicationPointer;}
 
     private:
+        void OnEvent(Event& e);
         bool OnWindowClose(WindowCloseEvent& e);
+        ImGuiLayer& GetApplicationImGuiLayer();
 
 
     private:
-        static ObserverApplicationPtr m_ApplicationPointer;
+        static ObserverPtr m_ApplicationPointer;
         
         std::unique_ptr<Window> m_Window;        
         
@@ -59,10 +58,6 @@ namespace Phoenix
         
         bool m_Running = true;
         LayerStack m_LayerStack;
-
-        std::shared_ptr<VertexArray> m_SquareVA;
-        std::shared_ptr<VertexArray> m_VertexArray;
-        std::unique_ptr<Shader>      m_Shader;
     };
 }
 

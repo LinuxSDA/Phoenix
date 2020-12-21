@@ -25,7 +25,7 @@ namespace Phoenix
             s_RendererAPI->Clear();
         }
 
-        inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+        inline static void DrawIndexed(const std::shared_ptr<const VertexArray>& vertexArray)
         {
             s_RendererAPI->DrawIndexed(vertexArray);
         }

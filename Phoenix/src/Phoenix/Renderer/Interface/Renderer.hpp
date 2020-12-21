@@ -9,17 +9,29 @@
 #pragma once
 
 #include "RenderCommand.hpp"
+#include "Shader.hpp"
+#include "OrthographicCamera.hpp"
 
 namespace Phoenix
 {
     class Renderer
     {
     public:
-        static void BeginScene();
+        Renderer() = delete;
+        
+        static void BeginScene(const std::shared_ptr<const OrthographicCamera>& camera);
         static void EndScene();
 
-        static void Submit(const std::shared_ptr<VertexArray>& va);
+        static void Submit(const std::shared_ptr<const Shader>& shader, const std::shared_ptr<const VertexArray>& va);
         
         inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
+        
+    private:
+        struct SceneData
+        {
+            std::shared_ptr<const OrthographicCamera> camera;
+        };
+        
+        static std::unique_ptr<SceneData> s_SceneData;
     };
 }

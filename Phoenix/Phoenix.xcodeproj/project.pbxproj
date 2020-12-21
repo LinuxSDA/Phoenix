@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72525800258F57F70033A545 /* OrthographicCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725257FE258F57F70033A545 /* OrthographicCamera.cpp */; };
+		72525801258F57F70033A545 /* OrthographicCamera.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725257FF258F57F70033A545 /* OrthographicCamera.hpp */; };
 		725C5D532562C2BC009AC83F /* GraphicsContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D522562C2BC009AC83F /* GraphicsContext.h */; };
 		725C5D572562C3C7009AC83F /* OpenGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D552562C3C7009AC83F /* OpenGLContext.cpp */; };
 		725C5D582562C3C7009AC83F /* OpenGLContext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 725C5D562562C3C7009AC83F /* OpenGLContext.hpp */; };
@@ -74,6 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		725257FE258F57F70033A545 /* OrthographicCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrthographicCamera.cpp; sourceTree = "<group>"; };
+		725257FF258F57F70033A545 /* OrthographicCamera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrthographicCamera.hpp; sourceTree = "<group>"; };
 		725C5D522562C2BC009AC83F /* GraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsContext.h; sourceTree = "<group>"; };
 		725C5D552562C3C7009AC83F /* OpenGLContext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLContext.cpp; sourceTree = "<group>"; };
 		725C5D562562C3C7009AC83F /* OpenGLContext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLContext.hpp; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				725C5D852574F577009AC83F /* VertexArray.cpp */,
 				725C5D6E25741687009AC83F /* VertexArray.hpp */,
 				725C5D8725751971009AC83F /* Shader.cpp */,
+				725257FE258F57F70033A545 /* OrthographicCamera.cpp */,
+				725257FF258F57F70033A545 /* OrthographicCamera.hpp */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				7277A91925627CB00028E5A8 /* MacImGuiLayer.hpp in Headers */,
 				7277A86F256190750028E5A8 /* MacInput.hpp in Headers */,
 				728FFC2D253CACF4006AA2F2 /* MouseEvent.h in Headers */,
+				72525801258F57F70033A545 /* OrthographicCamera.hpp in Headers */,
 				72C93CAC2530CD7A008D271D /* Core.h in Headers */,
 				725C5D7A2574E47B009AC83F /* RenderCommand.hpp in Headers */,
 				725C5D782574E1AC009AC83F /* RendererAPI.hpp in Headers */,
@@ -448,6 +455,7 @@
 				7277A84A255FD1B20028E5A8 /* MacImGuiLayer.cpp in Sources */,
 				72C93CAF2530CDA4008D271D /* Application.cpp in Sources */,
 				725C5D652573844B009AC83F /* OpenGLBuffer.cpp in Sources */,
+				72525800258F57F70033A545 /* OrthographicCamera.cpp in Sources */,
 				72C93CB92530E4D8008D271D /* Logger.cpp in Sources */,
 				725C5D862574F577009AC83F /* VertexArray.cpp in Sources */,
 				725C5D5C257359D9009AC83F /* OpenGLShader.cpp in Sources */,
