@@ -8,6 +8,8 @@
 
 #include <Phoenix.h>
 #include <imgui.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 class ExampleLayer : public Phoenix::Layer
 {
@@ -50,10 +52,10 @@ public:
 
         
         std::vector<float> sqVertices = {
-            -0.75f, -0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
-             0.75f, -0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
-             0.75f,  0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
-            -0.75f,  0.75f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f
+            -0.5f, -0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
+             0.5f, -0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
+             0.5f,  0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
+            -0.5f,  0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f
         };
 
         std::vector<uint32_t> sqIndices = {0, 1, 2, 2, 3, 0};
@@ -73,37 +75,40 @@ public:
         std::shared_ptr<IndexBuffer>  sqIBuffer = IndexBuffer::Create(sqIndices.data(), static_cast<uint32_t>(sqIndices.size()));
         m_SquareVA->SetIndexBuffer(sqIBuffer);
 
-        std::string vertexShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) in vec3 position;\n"
-        "layout(location = 1) in vec4 color;\n"
-        "\n"
-        "uniform mat4 u_ViewProjection;"
-        "\n"
-        "out vec3 v_position;"
-        "\n"
-        "out vec4 v_color;"
-        "\n"
-        "void main() {\n"
-        "   gl_Position = u_ViewProjection * vec4(position, 1.0f);\n"
-        "   v_position  = position;\n"
-        "   v_color     = color;\n"
-        "}\n";
-        
+        std::string vertexShader = R"(
+            #version 330 core
+            layout(location = 0) in vec3 position;
+            layout(location = 1) in vec4 color;
 
-        std::string fragmentShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) out vec4 color;\n"
-        "\n"
-        "in vec3 v_position;"
-        "\n"
-        "in vec4 v_color;"
-        "\n"
-        "void main() {\n"
-        "   color = v_color;\n"
-        "}\n";
+            uniform mat4 u_ViewProjection;
+            uniform mat4 u_Transform;
+            
+            out vec3 v_position;
+            
+            out vec4 v_color;
+            
+            void main()
+            {
+               gl_Position = u_ViewProjection * u_Transform * vec4(position, 1.0f);
+               v_position  = position;
+               v_color     = color;
+            }
+        )";
+
+        std::string fragmentShader = R"(
+            #version 330 core
+
+            layout(location = 0) out vec4 color;
+
+            in vec3 v_position;
+            in vec4 v_color;
+
+            void main()
+            {
+               color = v_color;
+            }
+        )";
+        
         
         m_Shader = Phoenix::Shader::Create(vertexShader, fragmentShader);
 
@@ -134,7 +139,17 @@ public:
 
         Phoenix::Renderer::BeginScene(m_Camera);
         {
-            Phoenix::Renderer::Submit(m_Shader, m_SquareVA);
+            glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+            
+            for (int x = -10; x < 10; x++)
+            {
+                for (int y = -10; y < 10; y++)
+                {
+                    glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.11f * x, 0.11f * y, 0)) * scaleMat;
+                    Phoenix::Renderer::Submit(m_Shader, m_SquareVA, transform);
+                }
+            }
+            
             Phoenix::Renderer::Submit(m_Shader, m_VertexArray);
         }
         Phoenix::Renderer::EndScene();
@@ -160,7 +175,7 @@ private:
     
     glm::vec3 m_CameraPosition{};
     float     m_CameraRotation{};
-    
+        
     constexpr static float s_CameraMoveSpeed   = 5.0f;
     constexpr static float s_CameraRotateSpeed = 180.0f;
 

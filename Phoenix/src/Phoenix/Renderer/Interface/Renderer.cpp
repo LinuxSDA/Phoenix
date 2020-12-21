@@ -22,10 +22,11 @@ namespace Phoenix
     {
     }
 
-    void Renderer::Submit(const std::shared_ptr<const Shader>& shader, const std::shared_ptr<const VertexArray>& va)
+    void Renderer::Submit(const std::shared_ptr<const Shader>& shader, const std::shared_ptr<const VertexArray>& va, const glm::mat4& transform)
     {
         shader->Bind();
         shader->UploadUniformMat4("u_ViewProjection", s_SceneData->camera->GetViewProjectionMatrix());
+        shader->UploadUniformMat4("u_Transform", transform);
 
         va->Bind();
         RenderCommand::DrawIndexed(va);

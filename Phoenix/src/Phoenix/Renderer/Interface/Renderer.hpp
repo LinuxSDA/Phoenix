@@ -22,7 +22,7 @@ namespace Phoenix
         static void BeginScene(const std::shared_ptr<const OrthographicCamera>& camera);
         static void EndScene();
 
-        static void Submit(const std::shared_ptr<const Shader>& shader, const std::shared_ptr<const VertexArray>& va);
+        static void Submit(const std::shared_ptr<const Shader>& shader, const std::shared_ptr<const VertexArray>& va, const glm::mat4& transform = glm::mat4(1.0f));
         
         inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
         
