@@ -10,6 +10,7 @@
 #include <imgui.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class ExampleLayer : public Phoenix::Layer
 {
@@ -83,14 +84,11 @@ public:
             uniform mat4 u_ViewProjection;
             uniform mat4 u_Transform;
             
-            out vec3 v_position;
-            
             out vec4 v_color;
             
             void main()
             {
                gl_Position = u_ViewProjection * u_Transform * vec4(position, 1.0f);
-               v_position  = position;
                v_color     = color;
             }
         )";
@@ -100,12 +98,13 @@ public:
 
             layout(location = 0) out vec4 color;
 
-            in vec3 v_position;
             in vec4 v_color;
+            
+            uniform vec3 u_Color;
 
             void main()
             {
-               color = v_color;
+               color = vec4(u_Color, 1.0f);
             }
         )";
         
@@ -141,6 +140,8 @@ public:
         {
             glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
             
+            m_Shader->UploadUniformFloat3("u_Color", m_TileColor);
+
             for (int x = -10; x < 10; x++)
             {
                 for (int y = -10; y < 10; y++)
@@ -150,13 +151,16 @@ public:
                 }
             }
             
-            Phoenix::Renderer::Submit(m_Shader, m_VertexArray);
+//            Phoenix::Renderer::Submit(m_Shader, m_VertexArray);
         }
         Phoenix::Renderer::EndScene();
     }
 
     void OnImGuiRender() override
     {
+        ImGui::Begin("Settings");
+        ImGui::ColorEdit3("Tile Color", glm::value_ptr(m_TileColor));
+        ImGui::End();
     }
     
     void OnEvent(Phoenix::Event& event) override
@@ -174,6 +178,8 @@ private:
     
     
     glm::vec3 m_CameraPosition{};
+    glm::vec3 m_TileColor{1.0f, 1.0f, 1.0f};
+
     float     m_CameraRotation{};
         
     constexpr static float s_CameraMoveSpeed   = 5.0f;

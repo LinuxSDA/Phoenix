@@ -19,7 +19,16 @@ namespace Phoenix
 
         virtual void Bind() const = 0;
         virtual void Unbind() const = 0;
-        virtual void UploadUniformMat4(const std::string&, const glm::mat4&) const = 0;
+        
+        virtual void UploadUniformInt(const std::string& name, int value) const = 0;
+
+        virtual void UploadUniformFloat(const std::string& name, float value) const = 0;
+        virtual void UploadUniformFloat2(const std::string& name, const glm::vec2& value) const = 0;
+        virtual void UploadUniformFloat3(const std::string& name, const glm::vec3& value) const = 0;
+        virtual void UploadUniformFloat4(const std::string& name, const glm::vec4& value) const = 0;
+
+        virtual void UploadUniformMat3(const std::string& name, const glm::mat3& matrix) const = 0;
+        virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const = 0;
 
         static std::unique_ptr<Shader> Create(const std::string& vertexSrc, const std::string& fragmentSrc);
     };
