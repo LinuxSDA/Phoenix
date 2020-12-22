@@ -43,12 +43,12 @@ namespace Phoenix
         return *m_Window;
     }
 
-    void Application::PushLayer(std::unique_ptr<Layer> layer)
+    void Application::PushLayer(Scope<Layer> layer)
     {
         m_LayerStack.PushLayer(std::move(layer));
     }
 
-    void Application::PushOverlay(std::unique_ptr<Layer> layer)
+    void Application::PushOverlay(Scope<Layer> layer)
     {
         m_LayerStack.PushOverlay(std::move(layer));
     }

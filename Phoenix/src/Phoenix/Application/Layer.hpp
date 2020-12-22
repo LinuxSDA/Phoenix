@@ -31,7 +31,6 @@ namespace Phoenix
     {
     public:
         using UniqueID = uint32_t;
-        using UniquePtr = std::unique_ptr<Layer>;
         
         Layer(const std::string& name = "Layer");
 

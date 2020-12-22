@@ -25,12 +25,12 @@ namespace Phoenix
             s_RendererAPI->Clear();
         }
 
-        inline static void DrawIndexed(const std::shared_ptr<const VertexArray>& vertexArray)
+        inline static void DrawIndexed(const Ref<const VertexArray>& vertexArray)
         {
             s_RendererAPI->DrawIndexed(vertexArray);
         }
         
     private:
-        static std::unique_ptr<RendererAPI> s_RendererAPI;
+        static Scope<RendererAPI> s_RendererAPI;
     };
 }

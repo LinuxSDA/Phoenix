@@ -14,7 +14,7 @@
 
 namespace Phoenix
 {
-    std::unique_ptr<Shader> Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc)
+    Scope<Shader> Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc)
     {
         switch (Renderer::GetAPI())
         {

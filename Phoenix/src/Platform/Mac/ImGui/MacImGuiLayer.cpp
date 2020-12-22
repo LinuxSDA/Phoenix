@@ -18,7 +18,7 @@
 
 namespace Phoenix
 {
-    std::unique_ptr<ImGuiLayer> ImGuiLayer::Create()
+    Scope<ImGuiLayer> ImGuiLayer::Create()
     {
         return std::make_unique<MacImGuiLayer>();
     }

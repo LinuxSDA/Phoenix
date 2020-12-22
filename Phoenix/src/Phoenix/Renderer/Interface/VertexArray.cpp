@@ -14,7 +14,7 @@
 
 namespace Phoenix
 {
-    std::unique_ptr<VertexArray> VertexArray::Create()
+    Scope<VertexArray> VertexArray::Create()
     {
         switch (Renderer::GetAPI())
         {

@@ -14,7 +14,7 @@
 
 namespace Phoenix
 {
-    std::unique_ptr<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
+    Scope<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
     {
         switch (Renderer::GetAPI())
         {
@@ -26,7 +26,7 @@ namespace Phoenix
         return nullptr;
     }
 
-    std::unique_ptr<IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t size)
+    Scope<IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t size)
     {
         switch (Renderer::GetAPI())
         {

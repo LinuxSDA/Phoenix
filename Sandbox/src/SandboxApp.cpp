@@ -38,7 +38,7 @@ public:
 
         std::vector<uint32_t> indices = {0, 1, 2};
 
-        std::shared_ptr<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertices.data(), static_cast<uint32_t>(vertices.size()));
+        Phoenix::Ref<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertices.data(), static_cast<uint32_t>(vertices.size()));
 
         Phoenix::BufferLayout layout = {
             {Phoenix::ShaderDataType::Float3, "position"},
@@ -48,7 +48,7 @@ public:
         vertexBuffer->SetLayout(layout);
         m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-        std::shared_ptr<IndexBuffer> indexBuffer = IndexBuffer::Create(indices.data(), static_cast<uint32_t>(indices.size()));
+        Phoenix::Ref<IndexBuffer> indexBuffer = IndexBuffer::Create(indices.data(), static_cast<uint32_t>(indices.size()));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
         
@@ -63,7 +63,7 @@ public:
         
         m_SquareVA = VertexArray::Create();
         
-        std::shared_ptr<VertexBuffer> sqVBuffer = VertexBuffer::Create(sqVertices.data(), static_cast<uint32_t>(sqVertices.size()));
+        Phoenix::Ref<VertexBuffer> sqVBuffer = VertexBuffer::Create(sqVertices.data(), static_cast<uint32_t>(sqVertices.size()));
         
         Phoenix::BufferLayout sqlayout = {
             {Phoenix::ShaderDataType::Float3, "position"},
@@ -73,7 +73,7 @@ public:
         sqVBuffer->SetLayout(sqlayout);
         m_SquareVA->AddVertexBuffer(sqVBuffer);
 
-        std::shared_ptr<IndexBuffer>  sqIBuffer = IndexBuffer::Create(sqIndices.data(), static_cast<uint32_t>(sqIndices.size()));
+        Phoenix::Ref<IndexBuffer>  sqIBuffer = IndexBuffer::Create(sqIndices.data(), static_cast<uint32_t>(sqIndices.size()));
         m_SquareVA->SetIndexBuffer(sqIBuffer);
 
         std::string vertexShader = R"(
@@ -171,10 +171,10 @@ public:
 
 private:
 
-    std::shared_ptr<Phoenix::VertexArray>        m_SquareVA;
-    std::shared_ptr<Phoenix::VertexArray>        m_VertexArray;
-    std::shared_ptr<Phoenix::Shader>             m_Shader;
-    std::shared_ptr<Phoenix::OrthographicCamera> m_Camera;
+    Phoenix::Ref<Phoenix::VertexArray>        m_SquareVA;
+    Phoenix::Ref<Phoenix::VertexArray>        m_VertexArray;
+    Phoenix::Ref<Phoenix::Shader>             m_Shader;
+    Phoenix::Ref<Phoenix::OrthographicCamera> m_Camera;
     
     
     glm::vec3 m_CameraPosition{};
@@ -199,7 +199,7 @@ public:
 };
 
 
-std::unique_ptr<Phoenix::Application> Phoenix::Application::Create()
+Phoenix::Scope<Phoenix::Application> Phoenix::Application::Create()
 {
     return std::make_unique<Sandbox>();
 }

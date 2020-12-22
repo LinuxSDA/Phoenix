@@ -15,6 +15,6 @@ int main()
     
     PX_ENGINE_TRACE("Phoenix Engine!");
 
-    std::unique_ptr<Phoenix::Application> application = Phoenix::Application::Create();
+    Phoenix::Scope<Phoenix::Application> application = Phoenix::Application::Create();
     application->Run();
 }

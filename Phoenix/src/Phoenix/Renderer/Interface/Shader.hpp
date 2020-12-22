@@ -30,6 +30,6 @@ namespace Phoenix
         virtual void UploadUniformMat3(const std::string& name, const glm::mat3& matrix) const = 0;
         virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const = 0;
 
-        static std::unique_ptr<Shader> Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+        static Scope<Shader> Create(const std::string& vertexSrc, const std::string& fragmentSrc);
     };
 }

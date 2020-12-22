@@ -27,7 +27,7 @@ namespace Phoenix
     {
     public:
       /* To be defined in Client */
-      static std::unique_ptr<Application> Create();
+      static Scope<Application> Create();
 
     public:
         Application();
@@ -35,8 +35,8 @@ namespace Phoenix
         
         void Run();
                 
-        void PushLayer(std::unique_ptr<Layer> layer);
-        void PushOverlay(std::unique_ptr<Layer> layer);
+        void PushLayer(Scope<Layer> layer);
+        void PushOverlay(Scope<Layer> layer);
 
         const Window& GetWindow() const;
                 
@@ -52,7 +52,7 @@ namespace Phoenix
     private:
         static ObserverPtr m_ApplicationPointer;
         
-        std::unique_ptr<Window> m_Window;
+        Scope<Window> m_Window;
         Layer::UniqueID m_ImGuiLayerID = 0;
         bool m_Running = true;
         float m_LastFrameTime = 0.0f;

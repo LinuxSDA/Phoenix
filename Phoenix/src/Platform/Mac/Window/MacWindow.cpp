@@ -26,7 +26,7 @@ namespace Phoenix
     }
 
 
-    std::unique_ptr<Window> Window::Create(const WindowProps& props)
+    Scope<Window> Window::Create(const WindowProps& props)
     {
         return std::make_unique<MacWindow>(props);
     }

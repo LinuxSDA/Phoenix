@@ -19,19 +19,19 @@ namespace Phoenix
     public:
         Renderer() = delete;
         
-        static void BeginScene(const std::shared_ptr<const OrthographicCamera>& camera);
+        static void BeginScene(const Ref<const OrthographicCamera>& camera);
         static void EndScene();
 
-        static void Submit(const std::shared_ptr<const Shader>& shader, const std::shared_ptr<const VertexArray>& va, const glm::mat4& transform = glm::mat4(1.0f));
+        static void Submit(const Ref<const Shader>& shader, const Ref<const VertexArray>& va, const glm::mat4& transform = glm::mat4(1.0f));
         
         inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
         
     private:
         struct SceneData
         {
-            std::shared_ptr<const OrthographicCamera> camera;
+            Ref<const OrthographicCamera> camera;
         };
         
-        static std::unique_ptr<SceneData> s_SceneData;
+        static Scope<SceneData> s_SceneData;
     };
 }

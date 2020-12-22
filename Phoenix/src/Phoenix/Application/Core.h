@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Logger.hpp"
+#include <memory>
 
 /* LOGGER CORE MACROS*/
 #define PX_ENGINE_TRACE(...)  ::Phoenix::Logger::GetCoreLogger()->trace(__VA_ARGS__)
@@ -37,3 +38,13 @@
 #endif
 
 #define PX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+
+namespace Phoenix
+{
+    template <typename T>
+    using Scope = std::unique_ptr<T>;
+
+    template <typename T>
+    using Ref = std::shared_ptr<T>;
+}

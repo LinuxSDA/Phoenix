@@ -27,6 +27,6 @@ namespace Phoenix
         virtual void Begin() = 0;
         virtual void End() = 0;
         
-        static std::unique_ptr<ImGuiLayer> Create();
+        static Scope<ImGuiLayer> Create();
     };
 }
