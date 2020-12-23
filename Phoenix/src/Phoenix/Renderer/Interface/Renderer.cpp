@@ -13,6 +13,11 @@ namespace Phoenix
 {
     Scope<Renderer::SceneData> Renderer::s_SceneData = std::make_unique<Renderer::SceneData>();
 
+    void Renderer::Init()
+    {
+        RenderCommand::Init();
+    }
+
     void Renderer::BeginScene(const Ref<const OrthographicCamera>& camera)
     {
         s_SceneData->camera = camera;

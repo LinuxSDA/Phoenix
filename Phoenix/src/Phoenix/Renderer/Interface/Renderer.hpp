@@ -19,6 +19,7 @@ namespace Phoenix
     public:
         Renderer() = delete;
         
+        static void Init();
         static void BeginScene(const Ref<const OrthographicCamera>& camera);
         static void EndScene();
 

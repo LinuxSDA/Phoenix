@@ -30,6 +30,8 @@ namespace Phoenix
         PX_ENGINE_ASSERT(m_Window != nullptr, "Cannnot create window!");
         m_Window->SetEventCallback(PX_BIND_EVENT_FN(Application::OnEvent));
         
+        Renderer::Init();
+        
         // ImGUI Layer//
         auto imGuiLayer = ImGuiLayer::Create();
         PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Can not create imgui layer!");

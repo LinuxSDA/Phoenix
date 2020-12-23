@@ -149,6 +149,10 @@ public:
         }
 
         m_TextureCheckbox = Phoenix::Texture2D::Create("../../Sandbox/assets/textures/Checkerboard.png");
+        m_TextureLogo = Phoenix::Texture2D::Create("../../Branding/PhoenixLogo.png");
+
+        m_TextureShader->Bind();
+        m_TextureShader->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(Phoenix::Timestep ts) override
@@ -191,13 +195,14 @@ public:
             }
             
 //            Phoenix::Renderer::Submit(m_Shader, m_VertexArray);
-            
-            m_TextureShader->Bind();
             m_TextureCheckbox->Bind(0);
-            m_TextureShader->UploadUniformInt("u_Texture", 0);
             scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
             Phoenix::Renderer::Submit(m_TextureShader, m_SquareVA, scaleMat);
 
+            m_TextureLogo->Bind(0);
+            scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
+            Phoenix::Renderer::Submit(m_TextureShader, m_SquareVA, scaleMat);
+            
         }
         Phoenix::Renderer::EndScene();
     }
@@ -225,6 +230,7 @@ private:
     Phoenix::Ref<Phoenix::Shader>             m_TextureShader;
 
     Phoenix::Ref<Phoenix::Texture>             m_TextureCheckbox;
+    Phoenix::Ref<Phoenix::Texture>             m_TextureLogo;
 
     
     glm::vec3 m_CameraPosition{};
