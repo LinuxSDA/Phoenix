@@ -29,6 +29,7 @@
 
 #include "Phoenix/Renderer/Interface/Buffer.hpp"
 #include "Phoenix/Renderer/Interface/Shader.hpp"
+#include "Phoenix/Renderer/Interface/Texture.hpp"
 #include "Phoenix/Renderer/Interface/VertexArray.hpp"
 
 #include "Phoenix/Renderer/Interface/OrthographicCamera.hpp"

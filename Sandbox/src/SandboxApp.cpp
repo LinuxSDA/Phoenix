@@ -53,10 +53,10 @@ public:
 
         
         std::vector<float> sqVertices = {
-            -0.5f, -0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
-             0.5f, -0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
-             0.5f,  0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f,
-            -0.5f,  0.5f, 0.0f,   0.2f, 0.4f, 0.7f, 1.0f
+            -0.5f, -0.5f, 0.0f,  0.0f, 0.0f,
+             0.5f, -0.5f, 0.0f,  1.0f, 0.0f,
+             0.5f,  0.5f, 0.0f,  1.0f, 1.0f,
+            -0.5f,  0.5f, 0.0f,  0.0f, 1.0f
         };
 
         std::vector<uint32_t> sqIndices = {0, 1, 2, 2, 3, 0};
@@ -66,8 +66,8 @@ public:
         Phoenix::Ref<VertexBuffer> sqVBuffer = VertexBuffer::Create(sqVertices.data(), static_cast<uint32_t>(sqVertices.size()));
         
         Phoenix::BufferLayout sqlayout = {
-            {Phoenix::ShaderDataType::Float3, "position"},
-            {Phoenix::ShaderDataType::Float4, "color"}
+            {Phoenix::ShaderDataType::Float3, "a_position"},
+            {Phoenix::ShaderDataType::Float2, "a_texture"}
         };
         
         sqVBuffer->SetLayout(sqlayout);
@@ -76,41 +76,79 @@ public:
         Phoenix::Ref<IndexBuffer>  sqIBuffer = IndexBuffer::Create(sqIndices.data(), static_cast<uint32_t>(sqIndices.size()));
         m_SquareVA->SetIndexBuffer(sqIBuffer);
 
-        std::string vertexShader = R"(
-            #version 330 core
-            layout(location = 0) in vec3 position;
-            layout(location = 1) in vec4 color;
+        {
+            std::string vertexShader = R"(
+                #version 330 core
+                layout(location = 0) in vec3 a_position;
+                layout(location = 1) in vec2 a_texture;
 
-            uniform mat4 u_ViewProjection;
-            uniform mat4 u_Transform;
+                uniform mat4 u_ViewProjection;
+                uniform mat4 u_Transform;
+                
+                out vec2 v_texCoords;
+                
+                void main()
+                {
+                   gl_Position = u_ViewProjection * u_Transform * vec4(a_position, 1.0f);
+                   v_texCoords = a_texture;
+                }
+            )";
+
+            std::string fragmentShader = R"(
+                #version 330 core
+
+                layout(location = 0) out vec4 color;
+
+                in vec2 v_texCoords;
+
+                uniform vec3 u_Color;
+
+                void main()
+                {
+                   color = vec4(u_Color, 1.0f);
+                }
+            )";
             
-            out vec4 v_color;
             
-            void main()
-            {
-               gl_Position = u_ViewProjection * u_Transform * vec4(position, 1.0f);
-               v_color     = color;
-            }
-        )";
+            m_Shader = Phoenix::Shader::Create(vertexShader, fragmentShader);
+        }
 
-        std::string fragmentShader = R"(
-            #version 330 core
+        {
+            std::string vertexShader = R"(
+                #version 330 core
+                layout(location = 0) in vec3 a_position;
+                layout(location = 1) in vec2 a_texture;
 
-            layout(location = 0) out vec4 color;
+                uniform mat4 u_ViewProjection;
+                uniform mat4 u_Transform;
+                
+                out vec2 v_TexCoords;
+                
+                void main()
+                {
+                   gl_Position = u_ViewProjection * u_Transform * vec4(a_position, 1.0f);
+                   v_TexCoords = a_texture;
+                }
+            )";
 
-            in vec4 v_color;
-            
-            uniform vec3 u_Color;
+            std::string fragmentShader = R"(
+                #version 330 core
 
-            void main()
-            {
-               color = vec4(u_Color, 1.0f);
-            }
-        )";
-        
-        
-        m_Shader = Phoenix::Shader::Create(vertexShader, fragmentShader);
+                layout(location = 0) out vec4 color;
 
+                in vec2 v_TexCoords;
+                uniform sampler2D u_Texture;
+
+                void main()
+                {
+                   color = texture(u_Texture, v_TexCoords);
+                }
+            )";
+
+            m_TextureShader = Phoenix::Shader::Create(vertexShader, fragmentShader);
+        }
+
+        m_TextureCheckbox = Phoenix::Texture2D::Create("../../Sandbox/assets/textures/Checkerboard.png");
     }
 
     void OnUpdate(Phoenix::Timestep ts) override
@@ -140,6 +178,7 @@ public:
         {
             glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
             
+            m_Shader->Bind();
             m_Shader->UploadUniformFloat3("u_Color", m_TileColor);
 
             for (int x = -10; x < 10; x++)
@@ -152,6 +191,13 @@ public:
             }
             
 //            Phoenix::Renderer::Submit(m_Shader, m_VertexArray);
+            
+            m_TextureShader->Bind();
+            m_TextureCheckbox->Bind(0);
+            m_TextureShader->UploadUniformInt("u_Texture", 0);
+            scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
+            Phoenix::Renderer::Submit(m_TextureShader, m_SquareVA, scaleMat);
+
         }
         Phoenix::Renderer::EndScene();
     }
@@ -173,9 +219,13 @@ private:
 
     Phoenix::Ref<Phoenix::VertexArray>        m_SquareVA;
     Phoenix::Ref<Phoenix::VertexArray>        m_VertexArray;
-    Phoenix::Ref<Phoenix::Shader>             m_Shader;
     Phoenix::Ref<Phoenix::OrthographicCamera> m_Camera;
-    
+
+    Phoenix::Ref<Phoenix::Shader>             m_Shader;
+    Phoenix::Ref<Phoenix::Shader>             m_TextureShader;
+
+    Phoenix::Ref<Phoenix::Texture>             m_TextureCheckbox;
+
     
     glm::vec3 m_CameraPosition{};
     glm::vec3 m_TileColor{1.0f, 1.0f, 1.0f};
@@ -197,7 +247,6 @@ public:
     }
     ~Sandbox(){}
 };
-
 
 Phoenix::Scope<Phoenix::Application> Phoenix::Application::Create()
 {
