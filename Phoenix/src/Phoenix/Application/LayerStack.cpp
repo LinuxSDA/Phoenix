@@ -43,7 +43,7 @@ namespace Phoenix
             return layer->GetLayerID() == layerID;
         });
         
-        if (it != m_Layers.end())
+        if (it != m_Layers.begin() + m_LayerInsertIndex)
         {
             (*it)->OnDetach();
             m_Layers.erase(it);
