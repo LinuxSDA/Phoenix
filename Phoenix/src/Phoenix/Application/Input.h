@@ -16,6 +16,12 @@ namespace Phoenix
 
     class Input
     {
+    protected:
+        Input() = default;
+    public:
+        Input(const Input&) = delete;
+        Input& operator=(const Input&) = delete;
+
     public:
         inline static bool IsKeyPressed(int keycode) {return GetInstance().IsKeyPressedImpl(keycode);}
         inline static bool IsMouseButtonPressed(int button) { return GetInstance().IsMouseButtonPressedImpl(button); }

@@ -110,49 +110,17 @@ public:
             )";
             
             
-            m_Shader = Phoenix::Shader::Create(vertexShader, fragmentShader);
+            Phoenix::Ref<Phoenix::Shader> shader = Phoenix::Shader::Create("FlatColorShader", vertexShader, fragmentShader);
+            m_ShaderLibrary.Add(shader);
         }
 
-        {
-            std::string vertexShader = R"(
-                #version 330 core
-                layout(location = 0) in vec3 a_position;
-                layout(location = 1) in vec2 a_texture;
-
-                uniform mat4 u_ViewProjection;
-                uniform mat4 u_Transform;
-                
-                out vec2 v_TexCoords;
-                
-                void main()
-                {
-                   gl_Position = u_ViewProjection * u_Transform * vec4(a_position, 1.0f);
-                   v_TexCoords = a_texture;
-                }
-            )";
-
-            std::string fragmentShader = R"(
-                #version 330 core
-
-                layout(location = 0) out vec4 color;
-
-                in vec2 v_TexCoords;
-                uniform sampler2D u_Texture;
-
-                void main()
-                {
-                   color = texture(u_Texture, v_TexCoords);
-                }
-            )";
-
-            m_TextureShader = Phoenix::Shader::Create(vertexShader, fragmentShader);
-        }
+        Phoenix::Ref<Phoenix::Shader> texShader = m_ShaderLibrary.Load("../../Sandbox/assets/shaders/Texture.glsl");
 
         m_TextureCheckbox = Phoenix::Texture2D::Create("../../Sandbox/assets/textures/Checkerboard.png");
         m_TextureLogo = Phoenix::Texture2D::Create("../../Branding/PhoenixLogo.png");
 
-        m_TextureShader->Bind();
-        m_TextureShader->UploadUniformInt("u_Texture", 0);
+        texShader->Bind();
+        texShader->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(Phoenix::Timestep ts) override
@@ -178,30 +146,35 @@ public:
         m_Camera->SetPosition(m_CameraPosition);
         m_Camera->SetRotation(m_CameraRotation);
 
+        auto flatColorShader = m_ShaderLibrary.Get("FlatColorShader");
+
         Phoenix::Renderer::BeginScene(m_Camera);
         {
             glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
             
-            m_Shader->Bind();
-            m_Shader->UploadUniformFloat3("u_Color", m_TileColor);
+            flatColorShader->Bind();
+            flatColorShader->UploadUniformFloat3("u_Color", m_TileColor);
 
             for (int x = -10; x < 10; x++)
             {
                 for (int y = -10; y < 10; y++)
                 {
                     glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.11f * x, 0.11f * y, 0)) * scaleMat;
-                    Phoenix::Renderer::Submit(m_Shader, m_SquareVA, transform);
+                    Phoenix::Renderer::Submit(flatColorShader, m_SquareVA, transform);
                 }
             }
             
 //            Phoenix::Renderer::Submit(m_Shader, m_VertexArray);
+            
+            auto textureShader = m_ShaderLibrary.Get("Texture");
+
             m_TextureCheckbox->Bind(0);
             scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
-            Phoenix::Renderer::Submit(m_TextureShader, m_SquareVA, scaleMat);
+            Phoenix::Renderer::Submit(textureShader, m_SquareVA, scaleMat);
 
             m_TextureLogo->Bind(0);
             scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
-            Phoenix::Renderer::Submit(m_TextureShader, m_SquareVA, scaleMat);
+            Phoenix::Renderer::Submit(textureShader, m_SquareVA, scaleMat);
             
         }
         Phoenix::Renderer::EndScene();
@@ -222,15 +195,14 @@ public:
 
 private:
 
-    Phoenix::Ref<Phoenix::VertexArray>        m_SquareVA;
-    Phoenix::Ref<Phoenix::VertexArray>        m_VertexArray;
-    Phoenix::Ref<Phoenix::OrthographicCamera> m_Camera;
-
-    Phoenix::Ref<Phoenix::Shader>             m_Shader;
-    Phoenix::Ref<Phoenix::Shader>             m_TextureShader;
+    Phoenix::Ref<Phoenix::VertexArray>         m_SquareVA;
+    Phoenix::Ref<Phoenix::VertexArray>         m_VertexArray;
+    Phoenix::Ref<Phoenix::OrthographicCamera>  m_Camera;
 
     Phoenix::Ref<Phoenix::Texture>             m_TextureCheckbox;
     Phoenix::Ref<Phoenix::Texture>             m_TextureLogo;
+
+    Phoenix::ShaderLibrary                     m_ShaderLibrary;
 
     
     glm::vec3 m_CameraPosition{};

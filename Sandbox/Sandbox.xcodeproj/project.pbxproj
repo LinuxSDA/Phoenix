@@ -27,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		725258132595B8090033A545 /* Checkerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkerboard.png; sourceTree = "<group>"; };
+		725258152595B8340033A545 /* Texture.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = Texture.glsl; sourceTree = "<group>"; };
 		7277A85425600AB10028E5A8 /* libPhoenix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPhoenix.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7277A88025619F880028E5A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7277A88225619F960028E5A8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -49,9 +51,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		725258112595B8090033A545 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				725258122595B8090033A545 /* textures */,
+				725258142595B8090033A545 /* shaders */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		725258122595B8090033A545 /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				725258132595B8090033A545 /* Checkerboard.png */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		725258142595B8090033A545 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				725258152595B8340033A545 /* Texture.glsl */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		72C93C8525306498008D271D = {
 			isa = PBXGroup;
 			children = (
+				725258112595B8090033A545 /* assets */,
 				72C93CA02530681C008D271D /* src */,
 				72C93C8F25306498008D271D /* Products */,
 				72C93C982530667B008D271D /* Frameworks */,
