@@ -11,7 +11,7 @@
 
 namespace Phoenix
 {
-    Scope<Renderer::SceneData> Renderer::s_SceneData = std::make_unique<Renderer::SceneData>();
+    Scope<Renderer::SceneData> Renderer::s_SceneData = CreateScope<Renderer::SceneData>();
 
     void Renderer::Init()
     {

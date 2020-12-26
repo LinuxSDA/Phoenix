@@ -195,12 +195,12 @@ class Sandbox : public Phoenix::Application
 public:
     Sandbox()
     {
-        PushLayer(std::make_unique<ExampleLayer>());
+        PushLayer(Phoenix::CreateScope<ExampleLayer>());
     }
     ~Sandbox(){}
 };
 
 Phoenix::Scope<Phoenix::Application> Phoenix::Application::Create()
 {
-    return std::make_unique<Sandbox>();
+    return Phoenix::CreateScope<Sandbox>();
 }

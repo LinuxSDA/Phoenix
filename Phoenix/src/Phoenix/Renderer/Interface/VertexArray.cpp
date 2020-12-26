@@ -19,7 +19,7 @@ namespace Phoenix
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-            case RendererAPI::API::OpenGL:  return std::make_unique<OpenGLVertexArray>();
+            case RendererAPI::API::OpenGL:  return CreateScope<OpenGLVertexArray>();
         }
 
         PX_ENGINE_ASSERT(false, "Unknown RendererAPI!");

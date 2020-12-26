@@ -34,7 +34,7 @@ namespace Phoenix
         
         // Camera Controller //
         float aspectRatio = (float)m_Window->GetWidth()/m_Window->GetHeight();
-        Scope<CameraController> occ = std::make_unique<OrthographicCameraController>(aspectRatio);
+        Scope<CameraController> occ = CreateScope<OrthographicCameraController>(aspectRatio);
         PX_ENGINE_ASSERT(occ != nullptr, "Can not create camera class!");
         m_CameraControllerID = occ->GetLayerID();
         PushLayer(std::move(occ));
