@@ -27,6 +27,11 @@ namespace Phoenix
     {
     }
 
+    void Renderer::OnWindowResize(uint32_t width, uint32_t height)
+    {
+        RenderCommand::SetViewport(0, 0, width, height);
+    }
+
     void Renderer::Submit(const Ref<const Shader>& shader, const Ref<const VertexArray>& va, const glm::mat4& transform)
     {
         shader->Bind();

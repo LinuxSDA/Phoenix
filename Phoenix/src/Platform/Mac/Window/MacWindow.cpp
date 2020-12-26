@@ -44,10 +44,6 @@ namespace Phoenix
 
     void MacWindow::Init(const WindowProps& props)
     {
-        m_Data.Title = props.Title;
-        m_Data.Width = props.Width;
-        m_Data.Height = props.Height;
-
         PX_ENGINE_INFO("Creating Window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
         if (!s_GLFWInitialized)
@@ -65,15 +61,30 @@ namespace Phoenix
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
         
-        m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+        m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
         
         m_Context = std::make_unique<OpenGLContext>(m_Window);
         m_Context->Init();
-                
+        
+        m_Data.Title = props.Title;
+        m_Data.Width = props.Width;
+        m_Data.Height = props.Height;
+        m_Data.ScaleFactor = CalculateScaleFactor();
+
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
     }
 
+    float MacWindow::CalculateScaleFactor()
+    {
+        int framebufferWidth = 0;
+        int framebufferHeight = 0;
+
+        glfwGetFramebufferSize(m_Window, &framebufferWidth, &framebufferHeight);
+        PX_ENGINE_ASSERT(framebufferHeight != 0 || framebufferWidth != 0, "Invalid framebuffer length");
+
+        return (float)framebufferHeight / m_Data.Height;
+    }
     void MacWindow::GLFWSetEventCallbacks()
     {
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)

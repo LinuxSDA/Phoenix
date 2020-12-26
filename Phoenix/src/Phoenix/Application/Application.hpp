@@ -49,8 +49,9 @@ namespace Phoenix
     private:
         void OnEvent(Event& e);
         bool OnWindowClose(WindowCloseEvent& e);
+        bool OnWindowResize(WindowResizeEvent& e);
+        
         ImGuiLayer& GetApplicationImGuiLayer();
-
 
     private:
         static ObserverPtr m_ApplicationPointer;
@@ -62,6 +63,7 @@ namespace Phoenix
         uint32_t            m_CameraControllerID    = 0;
         uint32_t            m_ImGuiLayerID          = 0;
         bool                m_Running               = true;
+        bool                m_Minimized             = false;
         float               m_LastFrameTime         = 0.0f;
     };
 }

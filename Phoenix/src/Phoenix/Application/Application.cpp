@@ -71,10 +71,11 @@ namespace Phoenix
 
     void Application::OnEvent(Event &e)
     {
-        EventDispatcher dispatch(e);
+        EventDispatcher dispatcher(e);
         
-        dispatch.Dispatch<WindowCloseEvent>(PX_BIND_EVENT_FN(Application::OnWindowClose));
-        
+        dispatcher.Dispatch<WindowCloseEvent>(PX_BIND_EVENT_FN(Application::OnWindowClose));
+        dispatcher.Dispatch<WindowResizeEvent>(PX_BIND_EVENT_FN(Application::OnWindowResize));
+
         for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
         {
             if(e.m_Handled)
@@ -88,6 +89,21 @@ namespace Phoenix
     {
         m_Running = false;
         return true;
+    }
+
+    bool Application::OnWindowResize(WindowResizeEvent& e)
+    {
+        if(e.GetWidth() == 0 || e.GetHeight()== 0)
+        {
+            m_Minimized = true;
+        }
+        else
+        {
+            m_Minimized = false;
+            Renderer::OnWindowResize(e.GetWidth() * m_Window->GetScaleFactor(), e.GetHeight() * m_Window->GetScaleFactor());
+        }
+
+        return false;
     }
 
     ImGuiLayer& Application::GetApplicationImGuiLayer()
@@ -106,8 +122,11 @@ namespace Phoenix
             Timestep ts = time - m_LastFrameTime;
             m_LastFrameTime = time;
             
-            for (auto& layer : m_LayerStack)
-                layer->OnUpdate(ts);
+            if (!m_Minimized)
+            {
+                for (auto& layer : m_LayerStack)
+                    layer->OnUpdate(ts);
+            }
 
             appImGuiLayer.Begin();
             

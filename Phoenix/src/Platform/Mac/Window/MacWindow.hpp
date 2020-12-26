@@ -26,6 +26,8 @@ namespace Phoenix
         inline unsigned int GetWidth() const override { return m_Data.Width; }
         inline unsigned int GetHeight() const override { return m_Data.Height; }
         inline float        GetCurrentTime() const override { return glfwGetTime(); }
+        inline float        GetScaleFactor() const override {return m_Data.ScaleFactor;}
+
         // Window attributes
         inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
         void SetVSync(bool enabled) override;
@@ -36,18 +38,20 @@ namespace Phoenix
         virtual void Init(const WindowProps& props);
         virtual void Shutdown();
 
+        float CalculateScaleFactor();
+        void GLFWSetEventCallbacks();
+
     private:
         GLFWwindow* m_Window;
         Scope<GraphicsContext> m_Context;
 
-        void GLFWSetEventCallbacks();
         
         struct WindowData
         {
             std::string Title;
-            unsigned int Width, Height;
+            uint32_t Width, Height;
+            float ScaleFactor;
             bool VSync;
-
             EventCallbackFn EventCallback;
         };
 
