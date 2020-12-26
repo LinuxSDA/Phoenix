@@ -30,8 +30,6 @@ namespace Phoenix
     class Layer
     {
     public:
-        using UniqueID = uint32_t;
-        
         Layer(const std::string& name = "Layer");
 
         Layer(const Layer&) = delete;
@@ -46,13 +44,13 @@ namespace Phoenix
         virtual void OnEvent(Event& event) {}
 
         inline const std::string& GetName() const { return m_DebugName; }
-        inline const UniqueID& GetLayerID() const { return m_UniqueLayerID;}
+        inline const uint32_t& GetLayerID() const { return m_UniqueLayerID;}
 
     protected:
         std::string m_DebugName;
         
     private:
-        UniqueID m_UniqueLayerID;
+        uint32_t m_UniqueLayerID;
     };
 
 }

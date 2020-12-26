@@ -20,7 +20,7 @@ namespace Phoenix
         Renderer() = delete;
         
         static void Init();
-        static void BeginScene(const Ref<const OrthographicCamera>& camera);
+        static void BeginScene(const OrthographicCamera& camera);
         static void EndScene();
 
         static void Submit(const Ref<const Shader>& shader, const Ref<const VertexArray>& va, const glm::mat4& transform = glm::mat4(1.0f));
@@ -30,7 +30,7 @@ namespace Phoenix
     private:
         struct SceneData
         {
-            Ref<const OrthographicCamera> camera;
+            glm::mat4 ViewProjectionMatrix;
         };
         
         static Scope<SceneData> s_SceneData;

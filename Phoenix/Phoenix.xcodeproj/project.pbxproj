@@ -39,6 +39,8 @@
 		725C5D842574F256009AC83F /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D832574F256009AC83F /* Buffer.cpp */; };
 		725C5D862574F577009AC83F /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D852574F577009AC83F /* VertexArray.cpp */; };
 		725C5D8825751971009AC83F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D8725751971009AC83F /* Shader.cpp */; };
+		7272C2F1259724B200DFA7F9 /* OrthographicCameraController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7272C2EF259724B200DFA7F9 /* OrthographicCameraController.cpp */; };
+		7272C2F2259724B200DFA7F9 /* OrthographicCameraController.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */; };
 		7277A7F0255D36930028E5A8 /* px.pch in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7EF255D36930028E5A8 /* px.pch */; };
 		7277A7F2255DA2F00028E5A8 /* Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F1255DA2F00028E5A8 /* Window.h */; };
 		7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */; };
@@ -115,6 +117,8 @@
 		725C5D832574F256009AC83F /* Buffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
 		725C5D852574F577009AC83F /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
 		725C5D8725751971009AC83F /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		7272C2EF259724B200DFA7F9 /* OrthographicCameraController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrthographicCameraController.cpp; sourceTree = "<group>"; };
+		7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrthographicCameraController.hpp; sourceTree = "<group>"; };
 		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
 		7277A7F1255DA2F00028E5A8 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacWindow.cpp; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 				7277A8872561B0C70028E5A8 /* KeyCodes.h */,
 				7277A849255FD1B20028E5A8 /* ImGuiLayer.h */,
 				7252580225908E500033A545 /* Timestep.h */,
+				7272C2EF259724B200DFA7F9 /* OrthographicCameraController.cpp */,
+				7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				725C5D802574EC8C009AC83F /* OpenGLRendererAPI.hpp in Headers */,
 				7277A7F8255DA94E0028E5A8 /* MacWindow.hpp in Headers */,
 				7277A824255EB5850028E5A8 /* LayerStack.hpp in Headers */,
+				7272C2F2259724B200DFA7F9 /* OrthographicCameraController.hpp in Headers */,
 				725C5D6225737AC0009AC83F /* Buffer.hpp in Headers */,
 				725C5D532562C2BC009AC83F /* GraphicsContext.h in Headers */,
 				72C93CB42530D09A008D271D /* Phoenix.h in Headers */,
@@ -498,6 +505,7 @@
 				725C5D7325741A35009AC83F /* OpenGLVertexArray.cpp in Sources */,
 				7277A86E256190750028E5A8 /* MacInput.cpp in Sources */,
 				7277A88C256268ED0028E5A8 /* MacImGuiBuild.cpp in Sources */,
+				7272C2F1259724B200DFA7F9 /* OrthographicCameraController.cpp in Sources */,
 				725C5D842574F256009AC83F /* Buffer.cpp in Sources */,
 				725258062593A5840033A545 /* Texture.cpp in Sources */,
 				725C5D7F2574EC8C009AC83F /* OpenGLRendererAPI.cpp in Sources */,

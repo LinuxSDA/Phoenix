@@ -12,17 +12,17 @@
 #include <memory>
 
 /* LOGGER CORE MACROS*/
-#define PX_ENGINE_TRACE(...)  ::Phoenix::Logger::GetCoreLogger()->trace(__VA_ARGS__)
-#define PX_ENGINE_INFO(...)   ::Phoenix::Logger::GetCoreLogger()->info(__VA_ARGS__)
-#define PX_ENGINE_WARN(...)   ::Phoenix::Logger::GetCoreLogger()->warn(__VA_ARGS__)
-#define PX_ENGINE_ERROR(...)  ::Phoenix::Logger::GetCoreLogger()->error(__VA_ARGS__)
+#define PX_ENGINE_TRACE(...)     ::Phoenix::Logger::GetCoreLogger()->trace(__VA_ARGS__)
+#define PX_ENGINE_INFO(...)      ::Phoenix::Logger::GetCoreLogger()->info(__VA_ARGS__)
+#define PX_ENGINE_WARN(...)      ::Phoenix::Logger::GetCoreLogger()->warn(__VA_ARGS__)
+#define PX_ENGINE_ERROR(...)     ::Phoenix::Logger::GetCoreLogger()->error(__VA_ARGS__)
 #define PX_ENGINE_CRITICAL(...)  ::Phoenix::Logger::GetCoreLogger()->critical(__VA_ARGS__)
 
 /* LOGGER CLIENT MACROS*/
-#define PX_TRACE(...)         ::Phoenix::Logger::GetClientLogger()->trace(__VA_ARGS__)
-#define PX_INFO(...)          ::Phoenix::Logger::GetClientLogger()->info(__VA_ARGS__)
-#define PX_WARN(...)          ::Phoenix::Logger::GetClientLogger()->warn(__VA_ARGS__)
-#define PX_ERROR(...)         ::Phoenix::Logger::GetClientLogger()->error(__VA_ARGS__)
+#define PX_TRACE(...)            ::Phoenix::Logger::GetClientLogger()->trace(__VA_ARGS__)
+#define PX_INFO(...)             ::Phoenix::Logger::GetClientLogger()->info(__VA_ARGS__)
+#define PX_WARN(...)             ::Phoenix::Logger::GetClientLogger()->warn(__VA_ARGS__)
+#define PX_ERROR(...)            ::Phoenix::Logger::GetClientLogger()->error(__VA_ARGS__)
 #define PX_CRITICAL(...)         ::Phoenix::Logger::GetClientLogger()->critical(__VA_ARGS__)
 
 #ifdef DEBUG

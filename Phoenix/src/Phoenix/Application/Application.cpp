@@ -32,17 +32,31 @@ namespace Phoenix
         
         Renderer::Init();
         
+        // Camera Controller //
+        float aspectRatio = (float)m_Window->GetWidth()/m_Window->GetHeight();
+        Scope<CameraController> occ = std::make_unique<OrthographicCameraController>(aspectRatio);
+        PX_ENGINE_ASSERT(occ != nullptr, "Can not create camera class!");
+        m_CameraControllerID = occ->GetLayerID();
+        PushLayer(std::move(occ));
+        
         // ImGUI Layer//
-        auto imGuiLayer = ImGuiLayer::Create();
+        Scope<ImGuiLayer> imGuiLayer = ImGuiLayer::Create();
         PX_ENGINE_ASSERT(imGuiLayer != nullptr, "Can not create imgui layer!");
         m_ImGuiLayerID = imGuiLayer->GetLayerID();
         PushOverlay(std::move(imGuiLayer));
+    
     }
 
     const Window& Application::GetWindow() const
     {
         PX_ENGINE_ASSERT(m_Window != nullptr, "Window not intialized!");
         return *m_Window;
+    }
+
+    const OrthographicCamera& Application::GetOrthographicCamera() const
+    {
+        const CameraController& cameraController = static_cast<const CameraController&>(m_LayerStack.Get(m_CameraControllerID));
+        return cameraController.GetCamera();
     }
 
     void Application::PushLayer(Scope<Layer> layer)
@@ -78,11 +92,7 @@ namespace Phoenix
 
     ImGuiLayer& Application::GetApplicationImGuiLayer()
     {
-        auto imGuiLayerOptional = m_LayerStack.Get(m_ImGuiLayerID);
-        PX_ENGINE_ASSERT(imGuiLayerOptional, "ImGui Layer doesn't exist!");
-
-        ImGuiLayer& imGuiLayer = static_cast<ImGuiLayer&>(imGuiLayerOptional->get());
-        
+        ImGuiLayer& imGuiLayer = static_cast<ImGuiLayer&>(m_LayerStack.Get(m_ImGuiLayerID));
         return imGuiLayer;
     }
 

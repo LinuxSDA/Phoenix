@@ -20,11 +20,6 @@ public:
         using Phoenix::VertexArray;
         using Phoenix::VertexBuffer;
         using Phoenix::IndexBuffer;
-
-        // Camera //
-        const Phoenix::Window& window = Phoenix::Application::GetApplication().GetWindow();
-        float aspectRatio = (float)(window.GetWidth()) / window.GetHeight();
-        m_Camera = std::make_shared<Phoenix::OrthographicCamera>(-aspectRatio, aspectRatio, -1.0f, 1.0f);
         
         
         // Rendering //
@@ -128,27 +123,9 @@ public:
         Phoenix::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Phoenix::RenderCommand::Clear();
         
-        if (Phoenix::Input::IsKeyPressed(PX_KEY_LEFT))
-            m_CameraPosition.x -= s_CameraMoveSpeed * ts;
-        else if (Phoenix::Input::IsKeyPressed(PX_KEY_RIGHT))
-            m_CameraPosition.x += s_CameraMoveSpeed * ts;
-
-        if (Phoenix::Input::IsKeyPressed(PX_KEY_UP))
-            m_CameraPosition.y += s_CameraMoveSpeed * ts;
-        else if (Phoenix::Input::IsKeyPressed(PX_KEY_DOWN))
-            m_CameraPosition.y -= s_CameraMoveSpeed * ts;
-
-        if (Phoenix::Input::IsKeyPressed(PX_KEY_A))
-            m_CameraRotation += s_CameraRotateSpeed * ts;
-        else if (Phoenix::Input::IsKeyPressed(PX_KEY_D))
-            m_CameraRotation -= s_CameraRotateSpeed * ts;
-
-        m_Camera->SetPosition(m_CameraPosition);
-        m_Camera->SetRotation(m_CameraRotation);
-
         auto flatColorShader = m_ShaderLibrary.Get("FlatColorShader");
 
-        Phoenix::Renderer::BeginScene(m_Camera);
+        Phoenix::Renderer::BeginScene(Phoenix::Application::GetApplication().GetOrthographicCamera());
         {
             glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
             
@@ -195,15 +172,13 @@ public:
 
 private:
 
-    Phoenix::Ref<Phoenix::VertexArray>         m_SquareVA;
-    Phoenix::Ref<Phoenix::VertexArray>         m_VertexArray;
-    Phoenix::Ref<Phoenix::OrthographicCamera>  m_Camera;
+    Phoenix::Ref<Phoenix::VertexArray>                  m_SquareVA;
+    Phoenix::Ref<Phoenix::VertexArray>                  m_VertexArray;
 
-    Phoenix::Ref<Phoenix::Texture>             m_TextureCheckbox;
-    Phoenix::Ref<Phoenix::Texture>             m_TextureLogo;
+    Phoenix::Ref<Phoenix::Texture>                      m_TextureCheckbox;
+    Phoenix::Ref<Phoenix::Texture>                      m_TextureLogo;
 
-    Phoenix::ShaderLibrary                     m_ShaderLibrary;
-
+    Phoenix::ShaderLibrary                              m_ShaderLibrary;
     
     glm::vec3 m_CameraPosition{};
     glm::vec3 m_TileColor{1.0f, 1.0f, 1.0f};
@@ -212,7 +187,6 @@ private:
         
     constexpr static float s_CameraMoveSpeed   = 5.0f;
     constexpr static float s_CameraRotateSpeed = 180.0f;
-
 };
 
 class Sandbox : public Phoenix::Application

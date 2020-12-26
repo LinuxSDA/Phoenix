@@ -20,13 +20,13 @@ namespace Phoenix
         LayerStack();
         ~LayerStack();
 
-        Layer::UniqueID PushLayer(Scope<Layer> layer);
-        Layer::UniqueID PushOverlay(Scope<Layer> overlay);
+        uint32_t PushLayer(Scope<Layer> layer);
+        uint32_t PushOverlay(Scope<Layer> overlay);
         
-        void PopLayer(Layer::UniqueID layerID);
-        void PopOverlay(Layer::UniqueID layerID);
+        void PopLayer(uint32_t layerID);
+        void PopOverlay(uint32_t layerID);
 
-        std::optional<std::reference_wrapper<Layer>> Get(Layer::UniqueID layerID) const;
+        Layer& Get(uint32_t layerID) const;
         
         std::deque<Scope<Layer>>::iterator begin() { return m_Layers.begin(); }
         std::deque<Scope<Layer>>::iterator end() { return m_Layers.end(); }

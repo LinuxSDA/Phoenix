@@ -22,6 +22,7 @@
 
 #include "Phoenix/Application/KeyCodes.h"
 #include "Phoenix/Application/MouseButtonCodes.h"
+#include "Phoenix/Application/OrthographicCameraController.hpp"
 
 // ---Renderer------------------------
 #include "Phoenix/Renderer/Interface/Renderer.hpp"

@@ -14,6 +14,8 @@
 #include "Phoenix/Application/ImGuiLayer.h"
 
 #include "LayerStack.hpp"
+#include "OrthographicCameraController.hpp"
+
 #include "Phoenix/Events/Event.h"
 #include "Phoenix/Events/ApplicationEvent.h"
 #include "Phoenix/Renderer/Interface/Shader.hpp"
@@ -39,7 +41,8 @@ namespace Phoenix
         void PushOverlay(Scope<Layer> layer);
 
         const Window& GetWindow() const;
-                
+        const OrthographicCamera& GetOrthographicCamera() const;
+        
         using ObserverPtr = Application*;
         inline static const Application& GetApplication() { return *m_ApplicationPointer;}
 
@@ -52,11 +55,14 @@ namespace Phoenix
     private:
         static ObserverPtr m_ApplicationPointer;
         
-        Scope<Window> m_Window;
-        Layer::UniqueID m_ImGuiLayerID = 0;
-        bool m_Running = true;
-        float m_LastFrameTime = 0.0f;
-        LayerStack m_LayerStack;
+        Scope<Window>       m_Window;
+        LayerStack          m_LayerStack;
+
+        /* TODO: set layer ID 0 as invalid enum (instead of number) */
+        uint32_t            m_CameraControllerID    = 0;
+        uint32_t            m_ImGuiLayerID          = 0;
+        bool                m_Running               = true;
+        float               m_LastFrameTime         = 0.0f;
     };
 }
 

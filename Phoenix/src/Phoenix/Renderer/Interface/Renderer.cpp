@@ -18,9 +18,9 @@ namespace Phoenix
         RenderCommand::Init();
     }
 
-    void Renderer::BeginScene(const Ref<const OrthographicCamera>& camera)
+    void Renderer::BeginScene(const OrthographicCamera& camera)
     {
-        s_SceneData->camera = camera;
+        s_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
     }
 
     void Renderer::EndScene()
@@ -30,7 +30,7 @@ namespace Phoenix
     void Renderer::Submit(const Ref<const Shader>& shader, const Ref<const VertexArray>& va, const glm::mat4& transform)
     {
         shader->Bind();
-        shader->UploadUniformMat4("u_ViewProjection", s_SceneData->camera->GetViewProjectionMatrix());
+        shader->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
         shader->UploadUniformMat4("u_Transform", transform);
 
         va->Bind();
