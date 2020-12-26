@@ -11,18 +11,18 @@
 #include "px.pch"
 
 /* For use by Phoenix applications */
-#include "Phoenix/Application/Application.hpp"
-#include "Phoenix/Application/Logger.hpp"
-#include "Phoenix/Application/Layer.hpp"
-#include "Phoenix/Application/Timestep.h"
+#include "Phoenix/Core/Application.hpp"
+#include "Phoenix/Core/Logger.hpp"
+#include "Phoenix/Core/Layer.hpp"
+#include "Phoenix/Core/Timestep.h"
 
-#include "Phoenix/Application/Window.h"
-#include "Phoenix/Application/Input.h"
-#include "Phoenix/Application/ImGuiLayer.h"
+#include "Phoenix/Core/Window.h"
+#include "Phoenix/Core/Input.h"
+#include "Phoenix/Core/ImGuiLayer.h"
 
-#include "Phoenix/Application/KeyCodes.h"
-#include "Phoenix/Application/MouseButtonCodes.h"
-#include "Phoenix/Application/OrthographicCameraController.hpp"
+#include "Phoenix/Core/KeyCodes.h"
+#include "Phoenix/Core/MouseButtonCodes.h"
+#include "Phoenix/Core/OrthographicCameraController.hpp"
 
 // ---Renderer------------------------
 #include "Phoenix/Renderer/Interface/Renderer.hpp"
@@ -38,4 +38,4 @@
 
 
 // ---Entry point------------------------
-#include "Phoenix/Application/EntryPoint.h"
+#include "Phoenix/Core/EntryPoint.h"

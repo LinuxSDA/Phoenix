@@ -7,7 +7,7 @@
 //
 
 #include "MacInput.hpp"
-#include "Phoenix/Application/Application.hpp"
+#include "Phoenix/Core/Application.hpp"
 
 #include <GLFW/glfw3.h>
 

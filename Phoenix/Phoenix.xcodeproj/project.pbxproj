@@ -283,7 +283,7 @@
 			path = ImGui;
 			sourceTree = "<group>";
 		};
-		7277A869256182960028E5A8 /* Application */ = {
+		7277A869256182960028E5A8 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				72C93CAB2530CD7A008D271D /* Core.h */,
@@ -305,7 +305,7 @@
 				7272C2EF259724B200DFA7F9 /* OrthographicCameraController.cpp */,
 				7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */,
 			);
-			path = Application;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		7277A8FE256271520028E5A8 /* Products */ = {
@@ -361,7 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				725C5D512562C29A009AC83F /* Renderer */,
-				7277A869256182960028E5A8 /* Application */,
+				7277A869256182960028E5A8 /* Core */,
 				728FFC25253CABFC006AA2F2 /* Events */,
 			);
 			path = Phoenix;

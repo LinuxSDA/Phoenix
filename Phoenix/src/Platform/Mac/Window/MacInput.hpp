@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Application/Input.h"
+#include "Phoenix/Core/Input.h"
 
 namespace Phoenix
 {

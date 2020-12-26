@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Application/Layer.hpp"
+#include "Phoenix/Core/Layer.hpp"
 
 #include "Phoenix/Events/KeyEvent.h"
 #include "Phoenix/Events/MouseEvent.h"

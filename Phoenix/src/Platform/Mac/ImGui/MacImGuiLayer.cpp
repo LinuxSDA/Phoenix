@@ -7,7 +7,7 @@
 //
 
 #include "px.pch"
-#include "Phoenix/Application/Application.hpp"
+#include "Phoenix/Core/Application.hpp"
 #include "MacImGuiLayer.hpp"
 
 #include <imgui.h>

@@ -83,8 +83,13 @@ namespace Phoenix
         glfwGetFramebufferSize(m_Window, &framebufferWidth, &framebufferHeight);
         PX_ENGINE_ASSERT(framebufferHeight != 0 || framebufferWidth != 0, "Invalid framebuffer length");
 
-        return (float)framebufferHeight / m_Data.Height;
+        float scalefactor = (float)framebufferHeight / m_Data.Height;
+
+        PX_ENGINE_INFO("ScaleFactor of display: {0}", scalefactor);
+        
+        return scalefactor;
     }
+
     void MacWindow::GLFWSetEventCallbacks()
     {
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)

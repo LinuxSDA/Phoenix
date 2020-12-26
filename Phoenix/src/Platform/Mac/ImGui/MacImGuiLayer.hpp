@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Phoenix/Application/ImGuiLayer.h"
+#include "Phoenix/Core/ImGuiLayer.h"
 
 namespace Phoenix
 {
