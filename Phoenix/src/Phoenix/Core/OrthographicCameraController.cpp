@@ -24,22 +24,19 @@ namespace Phoenix
     void OrthographicCameraController::OnUpdate(Timestep ts)
     {
         if (Input::IsKeyPressed(PX_KEY_A))
-            m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
+            m_Camera.Translate(glm::vec3{-m_CameraTranslationSpeed * ts, 0, 0});
         else if (Input::IsKeyPressed(PX_KEY_D))
-            m_CameraPosition.x += m_CameraTranslationSpeed * ts;
+            m_Camera.Translate(glm::vec3{m_CameraTranslationSpeed * ts, 0, 0});
 
         if (Input::IsKeyPressed(PX_KEY_W))
-            m_CameraPosition.y += m_CameraTranslationSpeed * ts;
+            m_Camera.Translate(glm::vec3{0, m_CameraTranslationSpeed * ts, 0});
         else if (Input::IsKeyPressed(PX_KEY_S))
-            m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
+            m_Camera.Translate(glm::vec3{0, -m_CameraTranslationSpeed * ts, 0});
 
         if (Input::IsKeyPressed(PX_KEY_Q))
-            m_CameraRotation += m_CameraRotationSpeed * ts;
+            m_Camera.Rotate(m_CameraRotationSpeed * ts);
         else if (Input::IsKeyPressed(PX_KEY_E))
-            m_CameraRotation -= m_CameraRotationSpeed * ts;
-
-        m_Camera.SetPosition(m_CameraPosition);
-        m_Camera.SetRotation(m_CameraRotation);
+            m_Camera.Rotate(-m_CameraRotationSpeed * ts);
     }
     
     void OrthographicCameraController::OnEvent(Event& event)

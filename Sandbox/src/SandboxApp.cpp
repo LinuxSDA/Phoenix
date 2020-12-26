@@ -132,9 +132,9 @@ public:
             flatColorShader->Bind();
             flatColorShader->UploadUniformFloat3("u_Color", m_TileColor);
 
-            for (int x = -10; x < 10; x++)
+            for (int x = 0; x < 10; x++)
             {
-                for (int y = -10; y < 10; y++)
+                for (int y = 0; y < 10; y++)
                 {
                     glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.11f * x, 0.11f * y, 0)) * scaleMat;
                     Phoenix::Renderer::Submit(flatColorShader, m_SquareVA, transform);
@@ -146,11 +146,11 @@ public:
             auto textureShader = m_ShaderLibrary.Get("Texture");
 
             m_TextureCheckbox->Bind(0);
-            scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
+            scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
             Phoenix::Renderer::Submit(textureShader, m_SquareVA, scaleMat);
 
             m_TextureLogo->Bind(0);
-            scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f));
+            scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f));
             Phoenix::Renderer::Submit(textureShader, m_SquareVA, scaleMat);
             
         }
