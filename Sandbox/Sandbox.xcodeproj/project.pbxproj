@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7272C2F72598582E00DFA7F9 /* Sandbox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7272C2F52598582E00DFA7F9 /* Sandbox2D.cpp */; };
 		7277A85525600AB10028E5A8 /* libPhoenix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85425600AB10028E5A8 /* libPhoenix.a */; };
 		7277A85925600DFD0028E5A8 /* libPhoenix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A85425600AB10028E5A8 /* libPhoenix.a */; };
 		7277A88125619F890028E5A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7277A88025619F880028E5A8 /* Cocoa.framework */; };
@@ -29,6 +30,9 @@
 /* Begin PBXFileReference section */
 		725258132595B8090033A545 /* Checkerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkerboard.png; sourceTree = "<group>"; };
 		725258152595B8340033A545 /* Texture.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = Texture.glsl; sourceTree = "<group>"; };
+		7272C2F4259857F100DFA7F9 /* FlatColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FlatColor.glsl; sourceTree = "<group>"; };
+		7272C2F52598582E00DFA7F9 /* Sandbox2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sandbox2D.cpp; sourceTree = "<group>"; };
+		7272C2F62598582E00DFA7F9 /* Sandbox2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Sandbox2D.hpp; sourceTree = "<group>"; };
 		7277A85425600AB10028E5A8 /* libPhoenix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPhoenix.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7277A88025619F880028E5A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7277A88225619F960028E5A8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -71,6 +75,7 @@
 		725258142595B8090033A545 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				7272C2F4259857F100DFA7F9 /* FlatColor.glsl */,
 				725258152595B8340033A545 /* Texture.glsl */,
 			);
 			path = shaders;
@@ -108,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				72C93CB12530D05E008D271D /* SandboxApp.cpp */,
+				7272C2F52598582E00DFA7F9 /* Sandbox2D.cpp */,
+				7272C2F62598582E00DFA7F9 /* Sandbox2D.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C93CB22530D05E008D271D /* SandboxApp.cpp in Sources */,
+				7272C2F72598582E00DFA7F9 /* Sandbox2D.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

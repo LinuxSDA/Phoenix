@@ -7,10 +7,14 @@
 //
 
 #include <Phoenix.h>
+#include <Phoenix/Core/EntryPoint.h>
+
 #include <imgui.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.hpp"
 
 class ExampleLayer : public Phoenix::Layer
 {
@@ -132,9 +136,9 @@ public:
             flatColorShader->Bind();
             flatColorShader->UploadUniformFloat3("u_Color", m_TileColor);
 
-            for (int x = 0; x < 10; x++)
+            for (int x = -10; x < 10; x++)
             {
-                for (int y = 0; y < 10; y++)
+                for (int y = -10; y < 10; y++)
                 {
                     glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.11f * x, 0.11f * y, 0)) * scaleMat;
                     Phoenix::Renderer::Submit(flatColorShader, m_SquareVA, transform);
@@ -195,7 +199,8 @@ class Sandbox : public Phoenix::Application
 public:
     Sandbox()
     {
-        PushLayer(Phoenix::CreateScope<ExampleLayer>());
+//        PushLayer(Phoenix::CreateScope<ExampleLayer>());
+        PushLayer(Phoenix::CreateScope<Sandbox2D>());
     }
     ~Sandbox(){}
 };

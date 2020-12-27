@@ -35,7 +35,3 @@
 
 #include "Phoenix/Renderer/Interface/OrthographicCamera.hpp"
 // -----------------------------------
-
-
-// ---Entry point------------------------
-#include "Phoenix/Core/EntryPoint.h"
