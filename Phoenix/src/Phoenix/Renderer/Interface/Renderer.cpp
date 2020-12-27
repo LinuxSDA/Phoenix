@@ -8,6 +8,7 @@
 
 #include "px.pch"
 #include "Renderer.hpp"
+#include "Renderer2D.hpp"
 
 namespace Phoenix
 {
@@ -16,6 +17,7 @@ namespace Phoenix
     void Renderer::Init()
     {
         RenderCommand::Init();
+        Renderer2D::Init();
     }
 
     void Renderer::BeginScene(const OrthographicCamera& camera)

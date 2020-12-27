@@ -26,6 +26,7 @@
 
 // ---Renderer------------------------
 #include "Phoenix/Renderer/Interface/Renderer.hpp"
+#include "Phoenix/Renderer/Interface/Renderer2D.hpp"
 #include "Phoenix/Renderer/Interface/RenderCommand.hpp"
 
 #include "Phoenix/Renderer/Interface/Buffer.hpp"

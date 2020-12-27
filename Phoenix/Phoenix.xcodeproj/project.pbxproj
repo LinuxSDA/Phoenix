@@ -41,6 +41,8 @@
 		725C5D8825751971009AC83F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D8725751971009AC83F /* Shader.cpp */; };
 		7272C2F1259724B200DFA7F9 /* OrthographicCameraController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7272C2EF259724B200DFA7F9 /* OrthographicCameraController.cpp */; };
 		7272C2F2259724B200DFA7F9 /* OrthographicCameraController.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */; };
+		7272C2FA2598DEA000DFA7F9 /* Renderer2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7272C2F82598DEA000DFA7F9 /* Renderer2D.cpp */; };
+		7272C2FB2598DEA000DFA7F9 /* Renderer2D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7272C2F92598DEA000DFA7F9 /* Renderer2D.hpp */; };
 		7277A7F0255D36930028E5A8 /* px.pch in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7EF255D36930028E5A8 /* px.pch */; };
 		7277A7F2255DA2F00028E5A8 /* Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F1255DA2F00028E5A8 /* Window.h */; };
 		7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */; };
@@ -119,6 +121,8 @@
 		725C5D8725751971009AC83F /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		7272C2EF259724B200DFA7F9 /* OrthographicCameraController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrthographicCameraController.cpp; sourceTree = "<group>"; };
 		7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrthographicCameraController.hpp; sourceTree = "<group>"; };
+		7272C2F82598DEA000DFA7F9 /* Renderer2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer2D.cpp; sourceTree = "<group>"; };
+		7272C2F92598DEA000DFA7F9 /* Renderer2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer2D.hpp; sourceTree = "<group>"; };
 		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
 		7277A7F1255DA2F00028E5A8 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacWindow.cpp; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				725257FF258F57F70033A545 /* OrthographicCamera.hpp */,
 				725258042593A5840033A545 /* Texture.cpp */,
 				725258052593A5840033A545 /* Texture.hpp */,
+				7272C2F82598DEA000DFA7F9 /* Renderer2D.cpp */,
+				7272C2F92598DEA000DFA7F9 /* Renderer2D.hpp */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 				728FFC27253CAC38006AA2F2 /* ApplicationEvent.h in Headers */,
 				725C5D7025741687009AC83F /* VertexArray.hpp in Headers */,
 				7277A84B255FD1B20028E5A8 /* ImGuiLayer.h in Headers */,
+				7272C2FB2598DEA000DFA7F9 /* Renderer2D.hpp in Headers */,
 				7277A8862561B08D0028E5A8 /* MouseButtonCodes.h in Headers */,
 				72C93CB62530D749008D271D /* EntryPoint.h in Headers */,
 				7277A7F0255D36930028E5A8 /* px.pch in Headers */,
@@ -497,6 +504,7 @@
 				725C5D652573844B009AC83F /* OpenGLBuffer.cpp in Sources */,
 				72525800258F57F70033A545 /* OrthographicCamera.cpp in Sources */,
 				72C93CB92530E4D8008D271D /* Logger.cpp in Sources */,
+				7272C2FA2598DEA000DFA7F9 /* Renderer2D.cpp in Sources */,
 				725C5D862574F577009AC83F /* VertexArray.cpp in Sources */,
 				725258102593B3C80033A545 /* stb_image.cpp in Sources */,
 				725C5D5C257359D9009AC83F /* OpenGLShader.cpp in Sources */,

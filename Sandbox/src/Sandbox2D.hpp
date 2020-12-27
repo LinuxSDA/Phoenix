@@ -23,9 +23,6 @@ public:
     virtual void OnImGuiRender() override;
     void OnEvent(Phoenix::Event& e) override;
 private:
-    // Temp
-    Phoenix::Ref<Phoenix::VertexArray>  m_SquareVA;
-    Phoenix::Ref<Phoenix::Shader>       m_FlatColorShader;
 
     glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
