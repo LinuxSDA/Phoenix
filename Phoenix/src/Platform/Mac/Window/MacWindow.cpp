@@ -48,7 +48,6 @@ namespace Phoenix
 
         if (!s_GLFWInitialized)
         {
-            // TODO: glfwTerminate on system shutdown
             int success = glfwInit();
             PX_ENGINE_ASSERT(success, "Could not intialize GLFW!");
 
@@ -186,6 +185,7 @@ namespace Phoenix
     void MacWindow::Shutdown()
     {
         glfwDestroyWindow(m_Window);
+        glfwTerminate();
     }
 
     void MacWindow::OnUpdate()

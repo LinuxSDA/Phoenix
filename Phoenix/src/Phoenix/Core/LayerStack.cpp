@@ -16,6 +16,8 @@ namespace Phoenix
 
     LayerStack::~LayerStack()
     {
+        for(auto& layer: m_Layers)
+            layer->OnDetach();
     }
 
     uint32_t LayerStack::PushLayer(Scope<Layer> layer)
