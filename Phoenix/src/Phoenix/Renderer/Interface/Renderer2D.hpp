@@ -43,7 +43,8 @@ namespace Phoenix
         struct Renderer2DData
         {
             Ref<VertexArray>   QuadVertexArray;
-            Ref<ShaderLibrary> ShaderLib;
+            Ref<Shader>        QuadShader;
+            Ref<Texture2D>     WhiteTexture;
         };
 
         static Scope<Renderer2DData> s_Data;

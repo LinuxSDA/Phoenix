@@ -12,8 +12,6 @@
 
 #include "Utils/ScopeExit.h"
 
-#include <glad/glad.h>
-
 namespace Phoenix
 {
     OpenGLTexture2D::OpenGLTexture2D(const std::string& path) : m_Path(path)
@@ -32,36 +30,70 @@ namespace Phoenix
 
         m_Width = width;
         m_Height = height;
+        m_Channels = channels;
+        
+        SetGLFormat(channels);
 
-        GLenum internalFormat = 0, dataFormat = 0;
+        GenerateTexture();
+        SetTextureParams();
+        SetData(data, m_Width * m_Height * m_Channels);
+        Unbind();
+    }
 
-        if (channels == 1)
-        {
-            dataFormat = GL_RED;
-            internalFormat = GL_RED;
-        }
-        else if (channels == 3)
-        {
-            dataFormat = GL_RGB;
-            internalFormat = GL_RGB8;
-        }
-        else if (channels == 4)
-        {
-            dataFormat = GL_RGBA;
-            internalFormat = GL_RGBA8;
-        }
+    OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height, Format format) : m_Width(width), m_Height(height), m_Channels(format)
+    {
+        SetGLFormat(m_Channels);
 
+        GenerateTexture();
+        SetTextureParams();
+        SetData(nullptr, m_Width * m_Height * m_Channels);
+        Unbind();
+    }
+
+    void OpenGLTexture2D::SetGLFormat(int channels)
+    {
+        if (m_Channels == 1)
+        {
+            m_DataFormat = GL_RED;
+            m_InternalFormat = GL_RED;
+        }
+        else if (m_Channels == 3)
+        {
+            m_DataFormat = GL_RGB;
+            m_InternalFormat = GL_RGB8;
+        }
+        else if (m_Channels == 4)
+        {
+            m_DataFormat = GL_RGBA;
+            m_InternalFormat = GL_RGBA8;
+        }
+        else
+        {
+            PX_ENGINE_ASSERT(false, "Bad channel request!");
+        }
+    }
+
+    void OpenGLTexture2D::GenerateTexture()
+    {
         glGenTextures(1, &m_RendererID);
         glBindTexture(GL_TEXTURE_2D, m_RendererID);
-                        
+    }
+
+    void OpenGLTexture2D::SetTextureParams()
+    {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        
-        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, m_Width, m_Height, 0, dataFormat, GL_UNSIGNED_BYTE, data);
-        glBindTexture(GL_TEXTURE_2D, 0);
     }
+
+    void OpenGLTexture2D::SetData(uint8_t* data, uint32_t size)
+    {
+        PX_ENGINE_ASSERT(size == m_Width * m_Height * m_Channels, "Data must be entire texture!");
+        glTexImage2D(GL_TEXTURE_2D, 0, m_InternalFormat, m_Width, m_Height, 0, m_DataFormat, GL_UNSIGNED_BYTE, data);
+    }
+
 
     OpenGLTexture2D::~OpenGLTexture2D()
     {
@@ -74,4 +106,8 @@ namespace Phoenix
         glBindTexture(GL_TEXTURE_2D, m_RendererID);
     }
 
+    void OpenGLTexture2D::Unbind() const
+    {
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
 }

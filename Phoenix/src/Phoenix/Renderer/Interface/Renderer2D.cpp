@@ -21,7 +21,6 @@ namespace Phoenix
         s_Data = CreateScope<Renderer2DData>();
         
         s_Data->QuadVertexArray = VertexArray::Create();
-        s_Data->ShaderLib       = ShaderLibrary::Create();
 
         std::vector<float> squareVertices {
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -43,11 +42,14 @@ namespace Phoenix
         s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 
         /* TODO: These shaders should be in Phoenix instead of sandbox*/
-        s_Data->ShaderLib->Load("../../Sandbox/assets/shaders/FlatColor.glsl");
-        s_Data->ShaderLib->Load("../../Sandbox/assets/shaders/Texture.glsl");
+        s_Data->QuadShader = Shader::Create("../../Sandbox/assets/shaders/Texture.glsl");
+        s_Data->QuadShader->Bind();
+        s_Data->QuadShader->SetInt("u_Texture", 0);
         
-        s_Data->ShaderLib->Get("Texture")->Bind();
-        s_Data->ShaderLib->Get("Texture")->SetInt("u_Texture", 0);
+        s_Data->WhiteTexture = Texture2D::Create(1, 1, Texture2D::Format::RGBA);
+        uint32_t whiteTextureData = 0xffffffff;
+        s_Data->WhiteTexture->Bind(0);
+        s_Data->WhiteTexture->SetData((uint8_t*)&whiteTextureData, sizeof(whiteTextureData));
     }
     
     void Renderer2D::Shutdown()
@@ -57,11 +59,8 @@ namespace Phoenix
 
     void Renderer2D::BeginScene(const OrthographicCamera& camera)
     {
-        s_Data->ShaderLib->Get("FlatColor")->Bind();
-        s_Data->ShaderLib->Get("FlatColor")->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
-
-        s_Data->ShaderLib->Get("Texture")->Bind();
-        s_Data->ShaderLib->Get("Texture")->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
+        s_Data->QuadShader->Bind();
+        s_Data->QuadShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
     }
 
     void Renderer2D::EndScene()
@@ -91,9 +90,13 @@ namespace Phoenix
 
     void Renderer2D::DrawQuad(const glm::mat4& TRS, const glm::vec4& color)
     {
-        s_Data->ShaderLib->Get("FlatColor")->Bind();
-        s_Data->ShaderLib->Get("FlatColor")->SetFloat4("u_Color", color);
-        s_Data->ShaderLib->Get("FlatColor")->SetMat4("u_Transform", TRS);
+        s_Data->QuadShader->Bind();
+        s_Data->WhiteTexture->Bind(0);
+
+        s_Data->QuadShader->SetFloat4("u_Color", color);
+        s_Data->QuadShader->SetInt("u_Texture", 0);
+        s_Data->QuadShader->SetMat4("u_Transform", TRS);
+        s_Data->QuadShader->SetInt("u_TileCount", 1);
 
         s_Data->QuadVertexArray->Bind();
         RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
@@ -112,11 +115,13 @@ namespace Phoenix
 
     void Renderer2D::DrawQuad(const glm::mat4& TRS, const Ref<Texture>& texture, uint8_t tileCount)
     {
-        s_Data->ShaderLib->Get("Texture")->Bind();
-        s_Data->ShaderLib->Get("Texture")->SetMat4("u_Transform", TRS);
-        s_Data->ShaderLib->Get("Texture")->SetInt("u_TileCount", tileCount);
-
+        s_Data->QuadShader->Bind();
         texture->Bind(0);
+
+        s_Data->QuadShader->SetFloat4("u_Color", glm::vec4(1.0f));
+        s_Data->QuadShader->SetInt("u_Texture", 0);
+        s_Data->QuadShader->SetMat4("u_Transform", TRS);
+        s_Data->QuadShader->SetInt("u_TileCount", tileCount);
 
         s_Data->QuadVertexArray->Bind();
         RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
