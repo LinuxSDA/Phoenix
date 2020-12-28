@@ -56,7 +56,6 @@ namespace Phoenix
 
     Ref<Shader> ShaderLibrary::Get(const std::string& name) const
     {
-        PX_ENGINE_ASSERT(Exists(name), "Shader doesn't exist!");
         return m_Shaders.at(name);
     }
 
@@ -65,4 +64,8 @@ namespace Phoenix
         return m_Shaders.find(name) != m_Shaders.end();
     }
 
+    Scope<ShaderLibrary> ShaderLibrary::Create()
+    {
+        return CreateScope<ShaderLibrary>();
+    }
 }

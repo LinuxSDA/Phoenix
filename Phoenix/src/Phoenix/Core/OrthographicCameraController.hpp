@@ -51,7 +51,7 @@ namespace Phoenix
 
         OrthographicCamera m_Camera;
 
-        float m_CameraTranslationSpeed = 1.0f, m_CameraRotationSpeed = 180.0f;
+        float m_CameraTranslationSpeed = 1.0f, m_CameraRotationSpeed = M_PI;
         
         float m_ZoomMaxLimit = 0.25;
         float m_ZoomMinLimit = 4;

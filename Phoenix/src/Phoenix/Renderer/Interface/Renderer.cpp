@@ -37,8 +37,8 @@ namespace Phoenix
     void Renderer::Submit(const Ref<const Shader>& shader, const Ref<const VertexArray>& va, const glm::mat4& transform)
     {
         shader->Bind();
-        shader->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
-        shader->UploadUniformMat4("u_Transform", transform);
+        shader->SetMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
+        shader->SetMat4("u_Transform", transform);
 
         va->Bind();
         RenderCommand::DrawIndexed(va);

@@ -119,7 +119,7 @@ public:
         m_TextureLogo = Phoenix::Texture2D::Create("../../Branding/PhoenixLogo.png");
 
         texShader->Bind();
-        texShader->UploadUniformInt("u_Texture", 0);
+        texShader->SetInt("u_Texture", 0);
     }
 
     void OnUpdate(Phoenix::Timestep ts) override
@@ -134,7 +134,7 @@ public:
             glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
             
             flatColorShader->Bind();
-            flatColorShader->UploadUniformFloat3("u_Color", m_TileColor);
+            flatColorShader->SetFloat3("u_Color", m_TileColor);
 
             for (int x = -10; x < 10; x++)
             {

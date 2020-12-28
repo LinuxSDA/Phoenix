@@ -29,9 +29,9 @@ namespace Phoenix
         RecalculateMatrices();
     }
 
-    void OrthographicCamera::Rotate(float degrees)
+    void OrthographicCamera::Rotate(float radians)
     {
-        m_TransformMatrix = glm::rotate(m_TransformMatrix, glm::radians(degrees), glm::vec3(0, 0, 1));
+        m_TransformMatrix = glm::rotate(m_TransformMatrix, radians, glm::vec3(0, 0, 1));
         RecalculateMatrices();
     }
 
