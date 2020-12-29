@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Phoenix/vendor/imgui.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Phoenix/Phoenix.xcodeproj">
    </FileRef>
    <FileRef
