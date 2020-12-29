@@ -39,6 +39,7 @@
 
 #define PX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
+#define PX_PROFILE_PERFORMANCE 1
 
 namespace Phoenix
 {

@@ -21,6 +21,8 @@ namespace Phoenix
 
     OpenGLShader::OpenGLShader(const std::string& filepath)
     {
+        PX_PROFILE_FUNCTION();
+
         std::string source = ReadFile(filepath);
         auto shaderSources = PreProcess(source);
         Compile(shaderSources);
@@ -35,6 +37,8 @@ namespace Phoenix
 
     OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc) : m_Name(name)
     {
+        PX_PROFILE_FUNCTION();
+
         std::map<GLenum, std::string> shaderSources;
 
         shaderSources[GL_VERTEX_SHADER] = vertexSrc;
@@ -45,11 +49,15 @@ namespace Phoenix
 
     OpenGLShader::~OpenGLShader()
     {
+        PX_PROFILE_FUNCTION();
+
         glDeleteProgram(m_RendererID);
     }
 
     std::string OpenGLShader::ReadFile(const std::string& filepath)
     {
+        PX_PROFILE_FUNCTION();
+
         std::ifstream inStream(filepath, std::ios::in | std::ios::binary);
         PX_ENGINE_ASSERT(inStream.good(), "Filepath invalid!");
 
@@ -61,6 +69,8 @@ namespace Phoenix
 
     std::map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
     {
+        PX_PROFILE_FUNCTION();
+
         std::map<GLenum, std::string> shaderSources;
         size_t pos = source.find(k_TypeToken);
 
@@ -87,6 +97,8 @@ namespace Phoenix
 
     GLenum OpenGLShader::ShaderTypeFromString(const std::string& type)
     {
+        PX_PROFILE_FUNCTION();
+
         if (type == k_VertexShader)
             return GL_VERTEX_SHADER;
         if (type == k_FragmentShader || type == k_PixelShader)
@@ -98,6 +110,8 @@ namespace Phoenix
 
     void OpenGLShader::Compile(const std::map<GLenum, std::string>& shaderSources)
     {
+        PX_PROFILE_FUNCTION();
+
         GLuint program = glCreateProgram();
         std::vector<GLenum> glShaderIDs;
         glShaderIDs.reserve(shaderSources.size());
@@ -171,37 +185,51 @@ namespace Phoenix
 
     void OpenGLShader::Bind() const
     {
+        PX_PROFILE_FUNCTION();
+
         glUseProgram(m_RendererID);
     }
 
     void OpenGLShader::Unbind() const
     {
+        PX_PROFILE_FUNCTION();
+
         glUseProgram(0);
     }
 
 
     void OpenGLShader::SetInt(const std::string& name, int value) const
     {
+        PX_PROFILE_FUNCTION();
+
         UploadUniformInt(name, value);
     }
 
     void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value) const
     {
+        PX_PROFILE_FUNCTION();
+
         UploadUniformFloat3(name, value);
     }
 
     void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value) const
     {
+        PX_PROFILE_FUNCTION();
+
         UploadUniformFloat4(name, value);
     }
 
     void OpenGLShader::SetMat3(const std::string& name, const glm::mat3& matrix) const
     {
+        PX_PROFILE_FUNCTION();
+
         UploadUniformMat3(name, matrix);
     }
 
     void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& matrix) const
     {
+        PX_PROFILE_FUNCTION();
+
         UploadUniformMat4(name, matrix);
     }
 

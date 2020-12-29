@@ -16,6 +16,8 @@ namespace Phoenix
 {
     Scope<VertexArray> VertexArray::Create()
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;

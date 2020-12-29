@@ -16,6 +16,8 @@ namespace Phoenix
 
     void Renderer::Init()
     {
+        PX_PROFILE_FUNCTION();
+
         RenderCommand::Init();
         Renderer2D::Init();
     }
@@ -36,6 +38,8 @@ namespace Phoenix
 
     void Renderer::Submit(const Ref<const Shader>& shader, const Ref<const VertexArray>& va, const glm::mat4& transform)
     {
+        PX_PROFILE_FUNCTION();
+
         shader->Bind();
         shader->SetMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
         shader->SetMat4("u_Transform", transform);

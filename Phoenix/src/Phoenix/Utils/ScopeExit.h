@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include "px.pch"
-
 namespace Phoenix
 {
     class ScopeExit
@@ -29,6 +27,6 @@ namespace Phoenix
         std::function<void()> m_Destructor;
     };
 
-    #define AT_SCOPE_EXIT(x) ScopeExit Phoenix_ScopeExit_exit([&]()x)
+    #define AT_SCOPE_EXIT(x) ScopeExit Phoenix_ScopeExit_##__LINE__([&]()x)
 }
 

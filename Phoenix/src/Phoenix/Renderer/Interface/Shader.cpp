@@ -17,6 +17,8 @@ namespace Phoenix
 
     Scope<Shader> Shader::Create(const std::string& filepath)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
@@ -30,6 +32,8 @@ namespace Phoenix
 
     Scope<Shader> Shader::Create(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
@@ -48,6 +52,8 @@ namespace Phoenix
 
     Ref<Shader> ShaderLibrary::Load(const std::string& filepath)
     {
+        PX_PROFILE_FUNCTION();
+
         Ref<Shader> shader = Shader::Create(filepath);
         Add(shader);
 
@@ -56,16 +62,22 @@ namespace Phoenix
 
     Ref<Shader> ShaderLibrary::Get(const std::string& name) const
     {
+        PX_PROFILE_FUNCTION();
+
         return m_Shaders.at(name);
     }
 
     bool ShaderLibrary::Exists(const std::string& name) const
     {
+        PX_PROFILE_FUNCTION();
+
         return m_Shaders.find(name) != m_Shaders.end();
     }
 
     Scope<ShaderLibrary> ShaderLibrary::Create()
     {
+        PX_PROFILE_FUNCTION();
+
         return CreateScope<ShaderLibrary>();
     }
 }

@@ -16,6 +16,8 @@ namespace Phoenix
 {
     Scope<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t count)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
@@ -28,6 +30,8 @@ namespace Phoenix
 
     Scope<IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t count)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;

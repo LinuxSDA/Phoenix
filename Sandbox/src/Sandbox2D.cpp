@@ -19,6 +19,8 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+    PX_PROFILE_FUNCTION();
+
     m_CheckerboardTexture = Phoenix::Texture2D::Create("../../Sandbox/assets/textures/Checkerboard.png");
 }
 
@@ -28,6 +30,7 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Phoenix::Timestep ts)
 {
+    PX_PROFILE_FUNCTION();
     // Render
     Phoenix::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
     Phoenix::RenderCommand::Clear();
@@ -45,6 +48,8 @@ void Sandbox2D::OnUpdate(Phoenix::Timestep ts)
 
 void Sandbox2D::OnImGuiRender()
 {
+    PX_PROFILE_FUNCTION();
+
     ImGui::Begin("Settings");
     ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
     ImGui::End();

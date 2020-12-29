@@ -43,6 +43,7 @@
 		7272C2F2259724B200DFA7F9 /* OrthographicCameraController.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */; };
 		7272C2FA2598DEA000DFA7F9 /* Renderer2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7272C2F82598DEA000DFA7F9 /* Renderer2D.cpp */; };
 		7272C2FB2598DEA000DFA7F9 /* Renderer2D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7272C2F92598DEA000DFA7F9 /* Renderer2D.hpp */; };
+		7272C2FD259B1A7C00DFA7F9 /* Instrumentor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7272C2FC259B1A7C00DFA7F9 /* Instrumentor.h */; };
 		7277A7F0255D36930028E5A8 /* px.pch in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7EF255D36930028E5A8 /* px.pch */; };
 		7277A7F2255DA2F00028E5A8 /* Window.h in Headers */ = {isa = PBXBuildFile; fileRef = 7277A7F1255DA2F00028E5A8 /* Window.h */; };
 		7277A7F7255DA94E0028E5A8 /* MacWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */; };
@@ -123,6 +124,7 @@
 		7272C2F0259724B200DFA7F9 /* OrthographicCameraController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrthographicCameraController.hpp; sourceTree = "<group>"; };
 		7272C2F82598DEA000DFA7F9 /* Renderer2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer2D.cpp; sourceTree = "<group>"; };
 		7272C2F92598DEA000DFA7F9 /* Renderer2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer2D.hpp; sourceTree = "<group>"; };
+		7272C2FC259B1A7C00DFA7F9 /* Instrumentor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Instrumentor.h; sourceTree = "<group>"; };
 		7277A7EF255D36930028E5A8 /* px.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = px.pch; sourceTree = "<group>"; };
 		7277A7F1255DA2F00028E5A8 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		7277A7F5255DA94E0028E5A8 /* MacWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacWindow.cpp; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				7252580D2593B1BA0033A545 /* ScopeExit.h */,
+				7272C2FC259B1A7C00DFA7F9 /* Instrumentor.h */,
 				7252580F2593B3C80033A545 /* stb_image.cpp */,
 			);
 			path = Utils;
@@ -354,7 +357,6 @@
 		72C93CA32530682B008D271D /* src */ = {
 			isa = PBXGroup;
 			children = (
-				7252580C2593B1950033A545 /* Utils */,
 				7277A7F3255DA90A0028E5A8 /* Platform */,
 				72C93CAA2530CB82008D271D /* Phoenix */,
 				72C93CB32530D09A008D271D /* Phoenix.h */,
@@ -366,6 +368,7 @@
 		72C93CAA2530CB82008D271D /* Phoenix */ = {
 			isa = PBXGroup;
 			children = (
+				7252580C2593B1950033A545 /* Utils */,
 				725C5D512562C29A009AC83F /* Renderer */,
 				7277A869256182960028E5A8 /* Core */,
 				728FFC25253CABFC006AA2F2 /* Events */,
@@ -418,6 +421,7 @@
 				7277A86B25618E8E0028E5A8 /* Input.h in Headers */,
 				7252580325908E500033A545 /* Timestep.h in Headers */,
 				72C93CB02530CDA4008D271D /* Application.hpp in Headers */,
+				7272C2FD259B1A7C00DFA7F9 /* Instrumentor.h in Headers */,
 				7277A8882561B0C70028E5A8 /* KeyCodes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

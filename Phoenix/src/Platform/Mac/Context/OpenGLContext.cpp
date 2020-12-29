@@ -21,6 +21,7 @@ namespace Phoenix
 
     void OpenGLContext::Init()
     {
+        PX_PROFILE_FUNCTION();
         glfwMakeContextCurrent(m_WindowHandle);
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         PX_ENGINE_ASSERT(status, "Failed to load glad!");
@@ -28,6 +29,7 @@ namespace Phoenix
 
     void OpenGLContext::SwapBuffers()
     {
+        PX_PROFILE_FUNCTION();
         glfwSwapBuffers(m_WindowHandle);
     }
 }

@@ -28,5 +28,8 @@
 #include <unordered_set>
 
 #include <filesystem>
+#include <thread>
+#include <chrono>
 
 #include "Phoenix/Core/Logger.hpp"
+#include "Phoenix/Utils/Instrumentor.h"

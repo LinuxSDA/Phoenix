@@ -10,12 +10,14 @@
 #include "OpenGLTexture.hpp"
 #include "stb_image.h"
 
-#include "Utils/ScopeExit.h"
+#include "Phoenix/Utils/ScopeExit.h"
 
 namespace Phoenix
 {
     OpenGLTexture2D::OpenGLTexture2D(const std::string& path) : m_Path(path)
     {
+        PX_PROFILE_FUNCTION();
+
         std::ifstream fstream(m_Path.c_str());
         PX_ENGINE_ASSERT(fstream.good(), "Filepath invalid!");
 
@@ -42,6 +44,8 @@ namespace Phoenix
 
     OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height, Format format) : m_Width(width), m_Height(height), m_Channels(format)
     {
+        PX_PROFILE_FUNCTION();
+
         SetGLFormat(m_Channels);
 
         GenerateTexture();
@@ -52,6 +56,8 @@ namespace Phoenix
 
     void OpenGLTexture2D::SetGLFormat(int channels)
     {
+        PX_PROFILE_FUNCTION();
+
         if (m_Channels == 1)
         {
             m_DataFormat = GL_RED;
@@ -75,12 +81,16 @@ namespace Phoenix
 
     void OpenGLTexture2D::GenerateTexture()
     {
+        PX_PROFILE_FUNCTION();
+
         glGenTextures(1, &m_RendererID);
         glBindTexture(GL_TEXTURE_2D, m_RendererID);
     }
 
     void OpenGLTexture2D::SetTextureParams()
     {
+        PX_PROFILE_FUNCTION();
+
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
@@ -90,6 +100,8 @@ namespace Phoenix
 
     void OpenGLTexture2D::SetData(uint8_t* data, uint32_t size)
     {
+        PX_PROFILE_FUNCTION();
+
         PX_ENGINE_ASSERT(size == m_Width * m_Height * m_Channels, "Data must be entire texture!");
         glTexImage2D(GL_TEXTURE_2D, 0, m_InternalFormat, m_Width, m_Height, 0, m_DataFormat, GL_UNSIGNED_BYTE, data);
     }
@@ -97,17 +109,23 @@ namespace Phoenix
 
     OpenGLTexture2D::~OpenGLTexture2D()
     {
+        PX_PROFILE_FUNCTION();
+
         glDeleteTextures(1, &m_RendererID);
     }
 
     void OpenGLTexture2D::Bind(uint32_t slot) const
     {
+        PX_PROFILE_FUNCTION();
+
         glActiveTexture(GL_TEXTURE0 + slot);
         glBindTexture(GL_TEXTURE_2D, m_RendererID);
     }
 
     void OpenGLTexture2D::Unbind() const
     {
+        PX_PROFILE_FUNCTION();
+
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 }

@@ -18,6 +18,8 @@ namespace Phoenix
 
     void Renderer2D::Init()
     {
+        PX_PROFILE_FUNCTION();
+
         s_Data = CreateScope<Renderer2DData>();
         
         s_Data->QuadVertexArray = VertexArray::Create();
@@ -59,6 +61,8 @@ namespace Phoenix
 
     void Renderer2D::BeginScene(const OrthographicCamera& camera)
     {
+        PX_PROFILE_FUNCTION();
+
         s_Data->QuadShader->Bind();
         s_Data->QuadShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
     }
@@ -70,6 +74,8 @@ namespace Phoenix
 
     glm::mat4 Renderer2D::CalculateTRS(const glm::vec3& position, float radians, const glm::vec2& size)
     {
+        PX_PROFILE_FUNCTION();
+
         glm::mat4 TRS = glm::translate(glm::mat4(1.0f), position) *
                         glm::rotate(glm::mat4(1.0f), radians, glm::vec3(0, 0, 1)) *
                         glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
@@ -90,7 +96,8 @@ namespace Phoenix
 
     void Renderer2D::DrawQuad(const glm::mat4& TRS, const glm::vec4& color)
     {
-        s_Data->QuadShader->Bind();
+        PX_PROFILE_FUNCTION();
+
         s_Data->WhiteTexture->Bind(0);
 
         s_Data->QuadShader->SetFloat4("u_Color", color);
@@ -115,7 +122,8 @@ namespace Phoenix
 
     void Renderer2D::DrawQuad(const glm::mat4& TRS, const Ref<Texture>& texture, uint8_t tileCount)
     {
-        s_Data->QuadShader->Bind();
+        PX_PROFILE_FUNCTION();
+
         texture->Bind(0);
 
         s_Data->QuadShader->SetFloat4("u_Color", glm::vec4(1.0f));

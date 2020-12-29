@@ -15,6 +15,8 @@ namespace Phoenix
 {
     Scope<Texture2D> Texture2D::Create(uint32_t width, uint32_t height, Format format)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
@@ -27,6 +29,8 @@ namespace Phoenix
 
     Scope<Texture2D> Texture2D::Create(const std::string& path)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;

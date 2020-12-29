@@ -21,6 +21,8 @@ namespace Phoenix
 
     Application::Application()
     {
+        PX_PROFILE_FUNCTION();
+
         PX_ENGINE_ASSERT(m_ApplicationPointer == nullptr, "Application already exists!");
 
         m_ApplicationPointer = this;
@@ -55,22 +57,30 @@ namespace Phoenix
 
     const OrthographicCamera& Application::GetOrthographicCamera() const
     {
+        PX_PROFILE_FUNCTION();
+
         const CameraController& cameraController = static_cast<const CameraController&>(m_LayerStack.Get(m_CameraControllerID));
         return cameraController.GetCamera();
     }
 
     void Application::PushLayer(Scope<Layer> layer)
     {
+        PX_PROFILE_FUNCTION();
+
         m_LayerStack.PushLayer(std::move(layer));
     }
 
     void Application::PushOverlay(Scope<Layer> layer)
     {
+        PX_PROFILE_FUNCTION();
+
         m_LayerStack.PushOverlay(std::move(layer));
     }
 
     void Application::OnEvent(Event &e)
     {
+        PX_PROFILE_FUNCTION();
+
         EventDispatcher dispatcher(e);
         
         dispatcher.Dispatch<WindowCloseEvent>(PX_BIND_EVENT_FN(Application::OnWindowClose));
@@ -93,6 +103,8 @@ namespace Phoenix
 
     bool Application::OnWindowResize(WindowResizeEvent& e)
     {
+        PX_PROFILE_FUNCTION();
+
         if(e.GetWidth() == 0 || e.GetHeight()== 0)
         {
             m_Minimized = true;
@@ -108,12 +120,16 @@ namespace Phoenix
 
     ImGuiLayer& Application::GetApplicationImGuiLayer()
     {
+        PX_PROFILE_FUNCTION();
+
         ImGuiLayer& imGuiLayer = static_cast<ImGuiLayer&>(m_LayerStack.Get(m_ImGuiLayerID));
         return imGuiLayer;
     }
 
     void Application::Run()
     {
+        PX_PROFILE_FUNCTION();
+
         auto& appImGuiLayer = GetApplicationImGuiLayer();
 
         while (m_Running)

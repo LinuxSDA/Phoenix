@@ -22,6 +22,5 @@ namespace Phoenix
         virtual void OnDetach() override;
         virtual void Begin() override;
         virtual void End() override;
-        virtual void OnImGuiRender() override;
     };
 }

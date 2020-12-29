@@ -11,6 +11,7 @@
 #include "px.pch"
 
 /* For use by Phoenix applications */
+#include "Phoenix/Core/Core.h"
 #include "Phoenix/Core/Application.hpp"
 #include "Phoenix/Core/Logger.hpp"
 #include "Phoenix/Core/Layer.hpp"

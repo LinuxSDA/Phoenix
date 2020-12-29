@@ -28,26 +28,36 @@ namespace Phoenix
 
     Scope<Window> Window::Create(const WindowProps& props)
     {
+        PX_PROFILE_FUNCTION();
+
         return CreateScope<MacWindow>(props);
     }
 
     MacWindow::MacWindow(const WindowProps& props)
     {
+        PX_PROFILE_FUNCTION();
+
         Init(props);
         GLFWSetEventCallbacks();
     }
 
     MacWindow::~MacWindow()
     {
+        PX_PROFILE_FUNCTION();
+
         Shutdown();
     }
 
     void MacWindow::Init(const WindowProps& props)
     {
+        PX_PROFILE_FUNCTION();
+
         PX_ENGINE_INFO("Creating Window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
         if (!s_GLFWInitialized)
         {
+            PX_PROFILE_SCOPE("glfwInit");
+
             int success = glfwInit();
             PX_ENGINE_ASSERT(success, "Could not intialize GLFW!");
 
@@ -76,6 +86,8 @@ namespace Phoenix
 
     float MacWindow::CalculateScaleFactor()
     {
+        PX_PROFILE_FUNCTION();
+
         int framebufferWidth = 0;
         int framebufferHeight = 0;
 
@@ -91,6 +103,8 @@ namespace Phoenix
 
     void MacWindow::GLFWSetEventCallbacks()
     {
+        PX_PROFILE_FUNCTION();
+
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
         {
             WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
@@ -184,18 +198,24 @@ namespace Phoenix
 
     void MacWindow::Shutdown()
     {
+        PX_PROFILE_FUNCTION();
+
         glfwDestroyWindow(m_Window);
         glfwTerminate();
     }
 
     void MacWindow::OnUpdate()
     {
+        PX_PROFILE_FUNCTION();
+
         glfwPollEvents();
         m_Context->SwapBuffers();
     }
 
     void MacWindow::SetVSync(bool enabled)
     {
+        PX_PROFILE_FUNCTION();
+
         if (enabled)
             glfwSwapInterval(1);
         else

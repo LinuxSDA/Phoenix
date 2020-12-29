@@ -14,6 +14,8 @@ namespace Phoenix
 {
     static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
     {
+        PX_PROFILE_FUNCTION();
+
         switch (type)
         {
             case ShaderDataType::Float:    return GL_FLOAT;
@@ -37,26 +39,36 @@ namespace Phoenix
 
     OpenGLVertexArray::OpenGLVertexArray()
     {
+        PX_PROFILE_FUNCTION();
+
         glGenVertexArrays(1, &m_RendererID);
     }
 
     OpenGLVertexArray::~OpenGLVertexArray()
     {
+        PX_PROFILE_FUNCTION();
+
         glDeleteVertexArrays(1, &m_RendererID);
     }
 
     void OpenGLVertexArray::Bind() const
     {
+        PX_PROFILE_FUNCTION();
+
         glBindVertexArray(m_RendererID);
     }
 
     void OpenGLVertexArray::Unbind() const
     {
+        PX_PROFILE_FUNCTION();
+
         glBindVertexArray(0);
     }
 
     void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
     {
+        PX_PROFILE_FUNCTION();
+
         PX_ENGINE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
         glBindVertexArray(m_RendererID);
@@ -80,6 +92,8 @@ namespace Phoenix
 
     void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
     {
+        PX_PROFILE_FUNCTION();
+
         glBindVertexArray(m_RendererID);
         indexBuffer->Bind();
 
