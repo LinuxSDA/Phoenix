@@ -15,6 +15,29 @@
 
 namespace Phoenix
 {
+    struct QuadProperties
+    {
+        float Radians        = 0.0f;
+        glm::vec3 Position   = glm::vec3(0.0f);
+        glm::vec2 Scale      = glm::vec2(1.0f);
+        glm::vec4 Color      = glm::vec4(1.0f);
+        Ref<Texture> Texture = nullptr;
+        float TilingFactor   = 1.0f;
+                
+    public:
+        inline void SetPosition(const glm::vec2& position) { Position = glm::vec3(position, 0.0f); }
+        inline void SetPosition(const glm::vec3& position) { Position = position; }
+        inline void Reset()
+        {
+            Radians      = 0.0f;
+            Position     = glm::vec3(0.0f);
+            Scale        = glm::vec2(1.0f);
+            Color        = glm::vec4(1.0f);
+            Texture      = nullptr;
+            TilingFactor = 1.0f;
+        }
+    };
+
     class Renderer2D
     {
     public:
@@ -27,14 +50,7 @@ namespace Phoenix
         static void EndScene();
 
         // Primitives
-        static void DrawQuad(const glm::vec2& position, float radians, const glm::vec2& size, const glm::vec4& color);
-        static void DrawQuad(const glm::vec3& position, float radians, const glm::vec2& size, const glm::vec4& color);
-
-        static void DrawQuad(const glm::vec2& position, float radians, const glm::vec2& size, const Ref<Texture>& texture, uint8_t tileCount = 1);
-        static void DrawQuad(const glm::vec3& position, float radians, const glm::vec2& size, const Ref<Texture>& texture, uint8_t tileCount = 1);
-
-        static void DrawQuad(const glm::mat4& TRS, const glm::vec4& color);
-        static void DrawQuad(const glm::mat4& TRS, const Ref<Texture>& texture, uint8_t tileCount = 1);
+        static void DrawQuad(const QuadProperties& properties);
 
     private:
         static glm::mat4 CalculateTRS(const glm::vec3& position, float radians, const glm::vec2& size);

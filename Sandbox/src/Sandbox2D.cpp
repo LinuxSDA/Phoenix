@@ -35,13 +35,26 @@ void Sandbox2D::OnUpdate(Phoenix::Timestep ts)
     Phoenix::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
     Phoenix::RenderCommand::Clear();
 
+    Phoenix::QuadProperties quadProperties;
     
     Phoenix::Renderer2D::BeginScene(Phoenix::Application::GetApplication().GetOrthographicCamera());
     {
-        Phoenix::Renderer2D::DrawQuad({0.0f, 0.0f}, 0, {0.5f, 0.5f}, m_SquareColor);
-        Phoenix::Renderer2D::DrawQuad({0.0f, 0.0f, -0.1f}, 0, {10.0f, 10.0f}, m_CheckerboardTexture, 10);
+        quadProperties.Scale = {0.5f, 0.5f};
+        quadProperties.Color = m_SquareColor;
+        Phoenix::Renderer2D::DrawQuad(quadProperties);
 
-        Phoenix::Renderer2D::DrawQuad({-1.0f, 1.0f}, M_PI_4, {1.0f, 1.0f}, {1.0, 0.2, 0.4, 1.0f});
+        quadProperties.Reset();
+        quadProperties.Position = {0.0f, 0.0f, -0.1f};
+        quadProperties.Scale = {15.0f, 15.0f};
+        quadProperties.Texture = m_CheckerboardTexture;
+        quadProperties.TilingFactor = 15.0f;
+        Phoenix::Renderer2D::DrawQuad(quadProperties);
+
+        quadProperties.Reset();
+        quadProperties.SetPosition({-1.0f, 1.0f});
+        quadProperties.Radians = M_PI_4;
+        quadProperties.Color = {1.0, 0.2, 0.4, 1.0f};
+        Phoenix::Renderer2D::DrawQuad(quadProperties);
     }
     Phoenix::Renderer::EndScene();
 }

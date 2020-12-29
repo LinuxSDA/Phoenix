@@ -76,62 +76,31 @@ namespace Phoenix
     {
         PX_PROFILE_FUNCTION();
 
-        glm::mat4 TRS = glm::translate(glm::mat4(1.0f), position) *
-                        glm::rotate(glm::mat4(1.0f), radians, glm::vec3(0, 0, 1)) *
-                        glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
-
-        return TRS;
+        return glm::translate(glm::mat4(1.0f), position) *
+               glm::rotate(glm::mat4(1.0f), radians, glm::vec3(0, 0, 1)) *
+               glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f));
     }
 
-    void Renderer2D::DrawQuad(const glm::vec2& position, float radians, const glm::vec2& size, const glm::vec4& color)
-    {
-        DrawQuad({ position.x, position.y, 0.0f }, radians, size, color);
-    }
-
-    void Renderer2D::DrawQuad(const glm::vec3& position, float radians, const glm::vec2& size, const glm::vec4& color)
-    {
-        glm::mat4 TRS = CalculateTRS(position, radians, size);
-        DrawQuad(TRS, color);
-    }
-
-    void Renderer2D::DrawQuad(const glm::mat4& TRS, const glm::vec4& color)
+    void Renderer2D::DrawQuad(const QuadProperties& properties)
     {
         PX_PROFILE_FUNCTION();
 
-        s_Data->WhiteTexture->Bind(0);
+        PX_ENGINE_ASSERT(properties.TilingFactor > 0.09, "Invalid tiling factor");
+        
+        glm::mat4 TRS = CalculateTRS(properties.Position, properties.Radians, properties.Scale);
 
-        s_Data->QuadShader->SetFloat4("u_Color", color);
-        s_Data->QuadShader->SetInt("u_Texture", 0);
+        auto& currentTexture = properties.Texture ? properties.Texture : s_Data->WhiteTexture;
+        int textureSlot = 0;
+
+        currentTexture->Bind(textureSlot);
+        
+        s_Data->QuadShader->SetFloat4("u_Color", properties.Color);
+        s_Data->QuadShader->SetInt("u_Texture", textureSlot);
         s_Data->QuadShader->SetMat4("u_Transform", TRS);
-        s_Data->QuadShader->SetInt("u_TileCount", 1);
+        s_Data->QuadShader->SetInt("u_TileCount", properties.TilingFactor);
 
         s_Data->QuadVertexArray->Bind();
         RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
     }
 
-    void Renderer2D::DrawQuad(const glm::vec2& position, float radians, const glm::vec2& size, const Ref<Texture>& texture, uint8_t tileCount)
-    {
-        DrawQuad({ position.x, position.y, 0.0f }, radians, size, texture, tileCount);
-    }
-
-    void Renderer2D::DrawQuad(const glm::vec3& position, float radians, const glm::vec2& size, const Ref<Texture>& texture, uint8_t tileCount)
-    {
-        glm::mat4 TRS = CalculateTRS(position, radians, size);
-        DrawQuad(TRS, texture, tileCount);
-    }
-
-    void Renderer2D::DrawQuad(const glm::mat4& TRS, const Ref<Texture>& texture, uint8_t tileCount)
-    {
-        PX_PROFILE_FUNCTION();
-
-        texture->Bind(0);
-
-        s_Data->QuadShader->SetFloat4("u_Color", glm::vec4(1.0f));
-        s_Data->QuadShader->SetInt("u_Texture", 0);
-        s_Data->QuadShader->SetMat4("u_Transform", TRS);
-        s_Data->QuadShader->SetInt("u_TileCount", tileCount);
-
-        s_Data->QuadVertexArray->Bind();
-        RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
-    }
 }
