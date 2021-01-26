@@ -84,8 +84,6 @@ namespace Phoenix
     void Renderer2D::DrawQuad(const QuadProperties& properties)
     {
         PX_PROFILE_FUNCTION();
-
-        PX_ENGINE_ASSERT(properties.TilingFactor > 0.09, "Invalid tiling factor");
         
         glm::mat4 TRS = CalculateTRS(properties.Position, properties.Radians, properties.Scale);
 
