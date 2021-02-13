@@ -9,13 +9,16 @@
 #pragma once
 
 #include "Phoenix/Renderer/Interface/Buffer.hpp"
+#include <glad/glad.h>
 
 namespace Phoenix
 {
     class OpenGLVertexBuffer : public VertexBuffer
     {
     public:
-        OpenGLVertexBuffer(float* vertices, uint32_t count);
+        OpenGLVertexBuffer(uint32_t size);
+        OpenGLVertexBuffer(void* vertices, uint32_t size);
+
         virtual ~OpenGLVertexBuffer();
 
         virtual void Bind() const override;
@@ -23,6 +26,8 @@ namespace Phoenix
         
         virtual const BufferLayout& GetLayout() const override { return m_Layout; }
         virtual void SetLayout(const BufferLayout& layout) override { m_Layout = layout; }
+
+        virtual void SetData(void* vertices, uint32_t size) override;
 
     private:
         uint32_t m_RendererID;

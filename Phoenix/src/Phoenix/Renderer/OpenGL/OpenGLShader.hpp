@@ -25,6 +25,7 @@ namespace Phoenix
         virtual inline const std::string& GetName() const override { return m_Name;}
 
         virtual void SetInt(const std::string& name, int value) const override;
+        virtual void SetIntArray(const std::string& name, int* values, uint32_t count) const override;
 
         virtual void SetFloat3(const std::string& name, const glm::vec3& value) const override;
         virtual void SetFloat4(const std::string& name, const glm::vec4& value) const override;
@@ -35,6 +36,7 @@ namespace Phoenix
 
     private:
         virtual void UploadUniformInt(const std::string& name, int value) const;
+        virtual void UploadUniformIntArray(const std::string& name, int* values, uint32_t count) const;
 
         virtual void UploadUniformFloat(const std::string& name, float value) const;
         virtual void UploadUniformFloat2(const std::string& name, const glm::vec2& value) const;

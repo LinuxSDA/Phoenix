@@ -125,7 +125,9 @@ namespace Phoenix
 
         virtual const BufferLayout& GetLayout() const = 0;
         virtual void SetLayout(const BufferLayout& layout) = 0;
-
+        virtual void SetData(void* vertices, uint32_t size) = 0; /* TODO: Add offset if required */
+        
+        static Scope<VertexBuffer> Create(uint32_t count);
         static Scope<VertexBuffer> Create(float* vertices, uint32_t count);
     };
 
@@ -141,7 +143,7 @@ namespace Phoenix
 
         virtual uint32_t GetCount() const = 0;
 
-        static Scope<IndexBuffer> Create(uint32_t* indices, uint32_t count);
+        static Scope<IndexBuffer> Create(uint32_t* indices, uint32_t count); /* Only 32-bit indicies are supported right now*/
     };
 
 }

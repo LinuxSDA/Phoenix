@@ -59,7 +59,7 @@ namespace Phoenix
             PX_PROFILE_SCOPE("glfwInit");
 
             int success = glfwInit();
-            PX_ENGINE_ASSERT(success, "Could not intialize GLFW!");
+            PX_ENGINE_ASSERT(success, "Could not initialize GLFW!");
 
             glfwSetErrorCallback(GLFWErrorCallback);
             s_GLFWInitialized = true;

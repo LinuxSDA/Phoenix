@@ -39,6 +39,7 @@
 
 #define PX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
+// TODO: Profile performance only when a button is toggled
 #define PX_PROFILE_PERFORMANCE 0
 
 namespace Phoenix

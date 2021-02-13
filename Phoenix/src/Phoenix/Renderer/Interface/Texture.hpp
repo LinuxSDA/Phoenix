@@ -31,6 +31,7 @@ namespace Phoenix
         virtual void Bind(uint32_t slot) const = 0;
         virtual void Unbind() const = 0;
 
+        virtual bool Compare(const Texture& texture) const = 0;
     };
 
     class Texture2D : public Texture

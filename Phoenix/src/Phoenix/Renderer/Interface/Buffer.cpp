@@ -14,14 +14,29 @@
 
 namespace Phoenix
 {
-    Scope<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t count)
+
+    Scope<VertexBuffer> VertexBuffer::Create(uint32_t size)
     {
         PX_PROFILE_FUNCTION();
 
         switch (Renderer::GetAPI())
         {
             case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-            case RendererAPI::API::OpenGL:  return CreateScope<OpenGLVertexBuffer>(vertices, count);
+            case RendererAPI::API::OpenGL:  return CreateScope<OpenGLVertexBuffer>(size);
+        }
+
+        PX_ENGINE_ASSERT(false, "Unknown RendererAPI!");
+        return nullptr;
+    }
+
+    Scope<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
+    {
+        PX_PROFILE_FUNCTION();
+
+        switch (Renderer::GetAPI())
+        {
+            case RendererAPI::API::None:    PX_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+            case RendererAPI::API::OpenGL:  return CreateScope<OpenGLVertexBuffer>(vertices, size);
         }
 
         PX_ENGINE_ASSERT(false, "Unknown RendererAPI!");

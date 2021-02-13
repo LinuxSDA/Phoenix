@@ -9,21 +9,28 @@
 #include "px.pch"
 #include "OpenGLBuffer.hpp"
 
-#include <glad/glad.h>
-
 namespace Phoenix
 {
     ///////////////////////////////////////////////////////////////////////////
     ////////////  VertexBuffer ////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
-    OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t count)
+    OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
     {
         PX_PROFILE_FUNCTION();
 
         glGenBuffers(1, &m_RendererID);
         glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-        glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), vertices, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
+    }
+
+    OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size)
+    {
+        PX_PROFILE_FUNCTION();
+
+        glGenBuffers(1, &m_RendererID);
+        glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+        glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
     }
 
     OpenGLVertexBuffer::~OpenGLVertexBuffer()
@@ -45,6 +52,13 @@ namespace Phoenix
         PX_PROFILE_FUNCTION();
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+    
+    void OpenGLVertexBuffer::SetData(void* vertices, uint32_t size)
+    {
+        PX_PROFILE_FUNCTION();
+        
+        glBufferSubData(GL_ARRAY_BUFFER, 0, size, vertices);
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -81,5 +95,4 @@ namespace Phoenix
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
-
 }

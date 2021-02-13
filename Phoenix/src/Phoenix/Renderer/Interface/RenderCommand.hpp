@@ -31,14 +31,19 @@ namespace Phoenix
             s_RendererAPI->Clear();
         }
 
-        inline static void DrawIndexed(const Ref<const VertexArray>& vertexArray)
+        inline static void DrawIndexed(const Ref<const VertexArray>& vertexArray, uint32_t count = 0)
         {
-            s_RendererAPI->DrawIndexed(vertexArray);
+            s_RendererAPI->DrawIndexed(vertexArray, count);
         }
 
         inline static void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
         {
             s_RendererAPI->SetViewport(x, y, width, height);
+        }
+        
+        inline static int32_t GetMaxSupportedTextureSlots()
+        {
+            return s_RendererAPI->GetMaxSupportedTextureSlots();
         }
 
     private:

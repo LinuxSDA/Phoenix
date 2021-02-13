@@ -30,6 +30,8 @@ namespace Phoenix
         virtual void Bind(uint32_t slot) const override;
         virtual void Unbind() const override;
 
+        virtual bool Compare(const Texture& texture) const override;
+
     private:
         void SetGLFormat(int channel);
         void GenerateTexture();

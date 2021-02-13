@@ -147,6 +147,7 @@
 		72C93CB52530D749008D271D /* EntryPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntryPoint.h; sourceTree = "<group>"; };
 		72C93CB72530E4D8008D271D /* Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 		72C93CB82530E4D8008D271D /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		72DF467325C00E7E0094621B /* Texture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Texture.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +206,7 @@
 		725C5D822574EF8C009AC83F /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				72DF467225C00E7E0094621B /* shaders */,
 				725C5D632573844B009AC83F /* OpenGLBuffer.cpp */,
 				725C5D642573844B009AC83F /* OpenGLBuffer.hpp */,
 				725C5D5A257359D9009AC83F /* OpenGLShader.cpp */,
@@ -356,6 +358,14 @@
 				728FFC25253CABFC006AA2F2 /* Events */,
 			);
 			path = Phoenix;
+			sourceTree = "<group>";
+		};
+		72DF467225C00E7E0094621B /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				72DF467325C00E7E0094621B /* Texture.glsl */,
+			);
+			path = shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -22,11 +22,13 @@ void Sandbox2D::OnAttach()
     PX_PROFILE_FUNCTION();
 
     m_CheckerboardTexture = Phoenix::Texture2D::Create("../../Sandbox/assets/textures/Checkerboard.png");
+    m_PhoenixTexture      = Phoenix::Texture2D::Create("../../Branding/PhoenixLogo.png");
 }
 
 void Sandbox2D::OnDetach()
 {
 }
+
 
 void Sandbox2D::OnUpdate(Phoenix::Timestep ts)
 {
@@ -37,34 +39,46 @@ void Sandbox2D::OnUpdate(Phoenix::Timestep ts)
 
     Phoenix::QuadProperties quadProperties;
     
+    Phoenix::Renderer2D::ResetStats();
     Phoenix::Renderer2D::BeginScene(Phoenix::Application::GetApplication().GetOrthographicCamera());
     {
-        quadProperties.Scale = {0.5f, 0.5f};
-        quadProperties.Color = m_SquareColor;
-        Phoenix::Renderer2D::DrawQuad(quadProperties);
+        float increment = 0.2f;
+        
+        for(float i = -1.0f; i < 1.0f; i+=increment)
+        {
+            for(float j = -1.0f; j < 1.0f; j+=increment)
+            {
+                quadProperties.Scale = {increment, increment};
+                quadProperties.Color = {((i+1)/2.f), 0.2f, (j + 1.f)/2.f, 1.0f};
+                quadProperties.Center = {i, j, 0.0f};
+
+                Phoenix::Renderer2D::DrawQuad(quadProperties);
+            }
+        }
 
         quadProperties.Reset();
-        quadProperties.Position = {0.0f, 0.0f, -0.1f};
+        quadProperties.Center = {0.0f, 0.0f, -0.1f};
         quadProperties.Scale = {15.0f, 15.0f};
         quadProperties.Texture = m_CheckerboardTexture;
         quadProperties.TilingFactor = 15.0f;
         Phoenix::Renderer2D::DrawQuad(quadProperties);
 
         quadProperties.Reset();
-        quadProperties.SetPosition({-1.0f, 1.0f});
-        quadProperties.Radians = M_PI_4;
-        quadProperties.Color = {1.0, 0.2, 0.4, 1.0f};
+        quadProperties.Center = {0.0f, 0.0f, 0.1f};
+        quadProperties.Texture = m_PhoenixTexture;
         Phoenix::Renderer2D::DrawQuad(quadProperties);
     }
-    Phoenix::Renderer::EndScene();
+    Phoenix::Renderer2D::EndScene();
 }
 
 void Sandbox2D::OnImGuiRender()
 {
     PX_PROFILE_FUNCTION();
 
-    ImGui::Begin("Settings");
-    ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+    ImGui::Begin("RenderStats");
+    ImGui::Text("Quads %d", Phoenix::Renderer2D::GetStats().QuadCount);
+    ImGui::Text("DrawCalls %d", Phoenix::Renderer2D::GetStats().DrawCalls);
+    ImGui::Text("Frames %f", ImGui::GetIO().Framerate);
     ImGui::End();
 }
 

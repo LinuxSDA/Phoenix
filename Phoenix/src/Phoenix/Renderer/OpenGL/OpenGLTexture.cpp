@@ -128,4 +128,16 @@ namespace Phoenix
 
         glBindTexture(GL_TEXTURE_2D, 0);
     }
+
+    bool OpenGLTexture2D::Compare(const Texture& texture) const
+    {
+        // TODO: Try catch #define
+        try
+        {
+            return (m_RendererID == dynamic_cast<const OpenGLTexture2D&>(texture).m_RendererID);
+        }
+        catch (...) {}
+
+        return false;
+    }
 }
