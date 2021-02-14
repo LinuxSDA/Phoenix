@@ -118,14 +118,18 @@ namespace Phoenix
     {
         PX_PROFILE_FUNCTION();
 
-        // Bind textures
-        for (uint32_t i = 0; i < s_Data->NextAvailableTextureSlot; i++)
-            s_Data->TextureSlotBindings[i]->Bind(i);
+        if(s_Data->QuadIndex > 0)
+        {
+            // Bind textures
+            for (uint32_t i = 0; i < s_Data->NextAvailableTextureSlot; i++)
+                s_Data->TextureSlotBindings[i]->Bind(i);
 
-        s_Data->QuadVertexBuffer->SetData(s_Data->QuadVertexData.data(), s_Data->QuadIndex * sizeof(QuadVertex) * s_Data->NumVertices);
-        RenderCommand::DrawIndexed(s_Data->QuadVertexArray, s_Data->NumIndices * s_Data->QuadIndex);
+            s_Data->QuadVertexBuffer->SetData(s_Data->QuadVertexData.data(), s_Data->QuadIndex * sizeof(QuadVertex) * s_Data->NumVertices);
+            RenderCommand::DrawIndexed(s_Data->QuadVertexArray, s_Data->NumIndices * s_Data->QuadIndex);
 
-        s_Data->Stats.DrawCalls++;
+            s_Data->Stats.DrawCalls++;
+        }
+
         ResetBatchMetadata();
     }
 
@@ -147,7 +151,8 @@ namespace Phoenix
     glm::mat4 Renderer2D::CreateQuadVertices(const glm::vec3& center, float radians, const glm::vec2& size)
     {
         PX_PROFILE_FUNCTION();
-
+        
+        /* TODO: maybe add cache someday? */
         return glm::translate(glm::mat4(1.0f), center) *
                glm::rotate(glm::mat4(1.0f), radians, glm::vec3(0.0f, 0.0f, 1.0f)) *
                glm::scale(glm::mat4(1.0f), glm::vec3(size.x, size.y, 1.0f)) *

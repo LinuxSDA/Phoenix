@@ -27,11 +27,15 @@
 
 #ifdef DEBUG
     #define PX_ENABLE_ASSERTS 1
+    #define HZ_DEBUGBREAK() __asm("int3")
+#else
+    #define HZ_DEBUGBREAK()
 #endif
 
+
 #if PX_ENABLE_ASSERTS
-    #define PX_ASSERT(x, ...) { if(!(x)) { PX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __asm("int3"); } }
-    #define PX_ENGINE_ASSERT(x, ...) { if(!(x)) { PX_ENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __asm("int3"); } }
+    #define PX_ASSERT(x, ...) { if(!(x)) { PX_ERROR("Assertion Failed: {0}", __VA_ARGS__); HZ_DEBUGBREAK(); } }
+    #define PX_ENGINE_ASSERT(x, ...) { if(!(x)) { PX_ENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); HZ_DEBUGBREAK(); } }
 #else
     #define PX_ASSERT(x, ...) {(void)(x);}
     #define PX_ENGINE_ASSERT(x, ...) {(void)(x);}

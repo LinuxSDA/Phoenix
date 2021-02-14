@@ -102,4 +102,12 @@ namespace Phoenix
             glfwMakeContextCurrent(backup_current_context);
         }
     }
+
+    void MacImGuiLayer::OnEvent(Event& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        e.m_Handled |= e.IsInCategory(EventCategoryMouse) & io.WantCaptureMouse;
+        e.m_Handled |= e.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;
+    }
+
 }
