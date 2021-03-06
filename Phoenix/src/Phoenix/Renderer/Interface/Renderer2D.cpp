@@ -101,7 +101,8 @@ namespace Phoenix
     
     void Renderer2D::Shutdown()
     {
-        
+        PX_PROFILE_FUNCTION();
+
     }
 
     void Renderer2D::BeginScene(const OrthographicCamera& camera)
