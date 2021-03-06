@@ -42,7 +42,8 @@ namespace Phoenix
 
         const Window& GetWindow() const;
         const OrthographicCamera& GetOrthographicCamera() const;
-        
+
+        void Close();
         using ObserverPtr = Application*;
         inline static const Application& GetApplication() { return *m_ApplicationPointer;}
 

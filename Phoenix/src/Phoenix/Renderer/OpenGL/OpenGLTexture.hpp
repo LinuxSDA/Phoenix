@@ -22,6 +22,7 @@ namespace Phoenix
         
         virtual ~OpenGLTexture2D();
 
+        virtual uint32_t GetRendererID() const override { return m_RendererID; }
         virtual uint32_t GetWidth() const override { return m_Width;  }
         virtual uint32_t GetHeight() const override { return m_Height; }
 
