@@ -34,10 +34,6 @@ namespace Phoenix
                                                                      0.5f, -0.5f, 0.0f, 1.0f,
                                                                      0.5f,  0.5f, 0.0f, 1.0f,
                                                                     -0.5f,  0.5f, 0.0f, 1.0f),
-                                                   BaseQuadTexCoords(0.0f, 0.0f,
-                                                                     1.0f, 0.0f,
-                                                                     1.0f, 1.0f,
-                                                                     0.0f, 1.0f),
                                                    BaseQuadIndices( { 0, 1, 2,
                                                                       2, 3, 0} ),
                                                    QuadIndex(0)
@@ -160,6 +156,25 @@ namespace Phoenix
                s_Data->BaseQuadVertices;
     }
 
+    glm::vec2 Renderer2D::GetVertexTextureCoordinates(const glm::vec4& subCoords, int vertexID)
+    {
+        PX_PROFILE_FUNCTION();
+
+        // Texture coordinate starts from bottom-left
+        
+        switch (vertexID)
+        {
+            case 0: return { subCoords[0],                  subCoords[1] };
+            case 1: return { subCoords[0] + subCoords[2],   subCoords[1] };
+            case 2: return { subCoords[0] + subCoords[2],   subCoords[1] + subCoords[3] };
+            case 3: return { subCoords[0],                  subCoords[1] + subCoords[3] };
+        }
+        
+        PX_ENGINE_ASSERT(false, "Vertex ID is invalid!");
+        
+        return {0.0f, 0.0f};
+    }
+
     void Renderer2D::DrawQuad(const QuadProperties& properties)
     {
         PX_PROFILE_FUNCTION();
@@ -170,7 +185,7 @@ namespace Phoenix
         if(s_Data->NextAvailableTextureSlot > (s_Data->MaxSupportedTextures - 1))
             Flush();
         
-        const auto& currentTexture = properties.Texture ? properties.Texture : s_Data->WhiteTexture;
+        const auto& currentTexture = properties.GetTexture() ? properties.GetTexture() : s_Data->WhiteTexture;
 
         int32_t textureIndex = -1;
         
@@ -192,15 +207,17 @@ namespace Phoenix
 
         PX_ENGINE_ASSERT(textureIndex != -1, "Wrong texture index!");
         
-        glm::mat4 vertices = CreateQuadVertices(properties.Center, properties.Radians, properties.Scale);
+        glm::mat4 vertices = CreateQuadVertices(properties.GetCenter(), properties.GetRotation(), properties.GetScale());
         
         for (int vID = 0; vID < s_Data->NumVertices; vID++)
         {
-            s_Data->QuadVertexData[s_Data->QuadIndex * s_Data->NumVertices + vID].Position   = vertices[vID];
-            s_Data->QuadVertexData[s_Data->QuadIndex * s_Data->NumVertices + vID].Color      = properties.Color;
-            s_Data->QuadVertexData[s_Data->QuadIndex * s_Data->NumVertices + vID].TexCoord   = s_Data->BaseQuadTexCoords[vID];
-            s_Data->QuadVertexData[s_Data->QuadIndex * s_Data->NumVertices + vID].TexID      = static_cast<float>(textureIndex);
-            s_Data->QuadVertexData[s_Data->QuadIndex * s_Data->NumVertices + vID].TileFactor = properties.TilingFactor;
+            auto index = s_Data->QuadIndex * s_Data->NumVertices + vID;
+            
+            s_Data->QuadVertexData[index].Position   = vertices[vID];
+            s_Data->QuadVertexData[index].Color      = properties.GetColor();
+            s_Data->QuadVertexData[index].TexCoord   = GetVertexTextureCoordinates(properties.GetTextureCoords(), vID);
+            s_Data->QuadVertexData[index].TexID      = static_cast<float>(textureIndex);
+            s_Data->QuadVertexData[index].TileFactor = properties.GetTilingFactor();
         }
 
         s_Data->QuadIndex++;
